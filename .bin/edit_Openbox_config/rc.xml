@@ -1781,4 +1781,79 @@
      #JDow 
     <!-- <application class="JDownloader" name="sun-awt-X11-XFramePeer"><desktop>1</desktop><layer>normal</layer><maximized>true</maximized><decor>no</decor></application> -->
      #PacMan 
-    <!--
+    <!-- <application Title="normal" class="Pamac-manager" name="pamac-manager"><desktop>2</desktop><layer>normal</layer><size><width>830</width></size><position force="yes"><x>268</x><y>90</y></position></application> -->
+     #Translater Midori 
+    <application class='Midori' name='midori4'>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         vertical 
+      </maximized>
+      <size>
+        <width>
+           390 
+        </width>
+      </size>
+      <shade>
+         no 
+      </shade>
+      <decor>
+         no 
+      </decor>
+      <position force='yes'>
+        <x>
+           0 
+        </x>
+        <y>
+           0 
+        </y>
+      </position>
+    </application>
+     #IntelliJ 
+    <application Title='IntelliJ IDEA 2017.1' class='jetbrains-idea' name='sun-awt-X11-XFramePeer' type='normal'>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         yes 
+      </decor>
+    </application>
+     #RubyMine 
+    <application Title='RubyMine 2016.1.2' class='jetbrains-rubymine' name='sun-awt-X11-XFramePeer' type='normal'>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         yes 
+      </decor>
+    </application>
+     #Kodi 
+    <application Title='Kodi' class='Kodi' name='Kodi' type='normal'>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
+    </application>
+  </applications>
+</openbox_config>
