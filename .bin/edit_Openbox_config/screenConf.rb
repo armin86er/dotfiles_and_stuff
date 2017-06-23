@@ -1,6 +1,8 @@
 #!/bin/ruby
 require 'rexml/document'
+require 'yaml'
 include REXML
+
 
 class ScreenConf
     bigSc_width = "1040"
@@ -8,7 +10,7 @@ class ScreenConf
     smSc_width = "889"
     smSc_height = "694"
     @i = 0
-    @add = ""
+    # @add = ""
     @arr = []
 
     changes2 = {"applications" => {
@@ -16,42 +18,64 @@ class ScreenConf
             "@[class=" => {
                 "Xfce4-terminal" => { "]size/width" => "135560" },
                 "name" => {  "size/width" => "1360"  },
-                "anotherName" => {   "size/width" => "1360"   }}
+                "anotherName" => {   "size/width" => "1360"   }},
+            "@[name=" => {
+                    "Xfce4-terminal" => { "]size/width" => "135560" },
+                    "name" => {  "size/width" => "1360"  },
+                    "anotherName" => {   "size/width" => "1360"   }
+                }
         }
     }
     }
     changes2.default = "nil"
 
-    def self.hashProcessing hashy 
-        begin
-            if hashy
-                hashy.each { |key, value| 
-                    # puts hashy.keys
-                    if value.is_a?(Hash)
-                        # print "Laenge: ", value.length,"  key: ", key, "\n"
-                        # print "  ", hashy.length, "   "
-                        # print key
-                        if hashy.length == 1
-                            @add = @add + key
-                        else
-                            # if value.is_a?(Hash)
-                                # (1..k)
-                                # print @add, key, "\n"
-                            # elsif value.is_a?(String)
-                            # end
-                        end
-                        hashProcessing hashy[ hashy.keys[@i] ]
-                    else
-                        # print key ,value, "\n"
-                    end
-                }
+
+    def self.stringify_values(obj, string)
+        obj.each do |k, v|
+            if v.is_a?(Hash)
+                stringify_values v, string + k.to_s
+            else
+                @arr.push(string + k.to_s + v.to_s);
+                return string
             end
-        rescue
-            puts "\nresc"
-            @i = @i + 1
         end
     end
-    hashProcessing changes2
+
+    stringify_values(changes2, "")
+    puts @arr
+
+    # def self.hashProcessing hashy
+    #     begin
+    #         if hashy
+    #             hashy.each { |key, value|
+    #                 # puts hashy.keys
+    #                 if value.is_a?(Hash)
+    #                     # print "Laenge: ", value.length,"  key: ", key, "\n"
+    #                     # print "  ", hashy.length, "   "
+    #                     # print key
+    #                     if hashy.length == 1
+    #                         @add = @add + key
+    #                     else
+    #                         if value.is_a?(Hash)
+    #                             # (1..k)
+    #                             print @add, key, "\n"
+    #                         # elsif value.is_a?(String)
+    #                         elsif value.is_a?(String)
+    #                             puts value, key
+    #                         end
+    #                     end
+    #                     hashProcessing hashy[ hashy.keys[@i] ]
+    #                 else
+    #                     # print key ,value, "\n"
+    #                 end
+    #             }
+    #         end
+    #     rescue
+    #         puts "\nresc"
+    #         @i = @i + 1
+    #     end
+    # end
+    # hashProcessing changes2
 
     # def self.hashProcessing hashy
     #     begin
