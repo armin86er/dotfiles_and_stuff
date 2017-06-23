@@ -16,7 +16,7 @@ class HandleDisplays
         end
     end
 
-    print "# connected displays -> #{displays}"
+    puts "# connected displays -> #{displays}"
 
     if status
         `xrandr --output DP1 --auto && xrandr --output eDP1 --off`
