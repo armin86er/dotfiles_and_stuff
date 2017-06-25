@@ -4,19 +4,33 @@ include REXML
 
 
 class ScreenConf
-    bigSc_width = "1040"
+    bigSc_width = 1040
     bigSc_height = "1145"
-    smSc_width = "889"
+    smSc_width = 889
     smSc_height = "694"
+
 
     @values = []
     @keys = []
     @x, @y = `xrandr`.scan(/current (\d+) x (\d+)/).flatten
-    # if x == '2560' && y == '1440'
-    # else
-    # end
+    if @x == '2560' && @y == '1440'
+        @state = 1
+    else
+        @state = 0
+    end
 
-    # file = File.open("/home/armin/.config/openbox/rc.xml","r")
+    # offset = (@x.to_i - 500).to_s
+    
+    def self.calc mode
+        # case mode
+        # when "fullSize"
+            # puts 'gotcha'
+        # when "yMax_xCen"
+        # when "yMax_xHalf_small"
+        # when "yMax_xHalf_big"
+        # end
+    end
+
     file = File.new("/home/armin/.bin/edit_Openbox_config/rc.xml", "r")
     @doc = Document.new(file)
 
@@ -41,15 +55,15 @@ class ScreenConf
     changes = {"applications" => {
         "/application" => {
             "[@class=" => {
-                "'Xfce4-terminal']" => {"/size/width" => "1455", "/maximized" => "true"},
-				# "name" => {"size/width" => "1360"},
-				# "anotherName" => {"size/width" => "1360"}
+                # "'Xfce4-terminal']" => {"/size/width" => Array.new( smSc_width, bigSc_width ), "/maximized" => ["true", "vertical"]},
+                "'Atom']" => {  "/size/width" => ["true", "vertical"], "/maximized" => ["true", "vertical"], "/decor" => ["no", "yes"] },
+                # "'Thunar']" => {  "/size/width" => [smSc_width, bigSc_width ], "/maximized" => ["true", "vertical"], "/decor" => ["no", "yes"] },
+
             },
             "@[name=" => {}
         }
     }}
     changes.default = "nil"
-
 
     def self.stringify_values(obj, string)
         obj.each do |k, v|
@@ -64,26 +78,18 @@ class ScreenConf
     end
     stringify_values(changes, "")
 
-    # puts @values
-    # puts @keys
-
     def self.applyChanges 
         counter = 0
         @values.each do |i|
             begin
-				# puts @values[counter]
 				puts i
-                puts @keys[counter]
-                # puts "Keys ", @keys[counter]
-                # puts @doc.root.elements[@values[counter]].text
+                puts @keys[counter][1]
 
                 if not @doc.root.elements[@values[counter]]
                     raise "Error in #{@arr[i]}"
                 end
 
-                @doc.root.elements[i].text = @keys[counter]
-                # puts '##############################'
-                # puts @doc.root.elements[@values[counter]]
+                @doc.root.elements[i].text = @keys[counter][@state]
 
                 counter = counter + 1
             rescue Exception => e

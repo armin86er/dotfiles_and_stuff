@@ -1424,11 +1424,11 @@
          normal 
       </layer>
       <maximized>
-        true
+         vertical 
       </maximized>
       <size>
         <width>
-          1455
+           1455 
         </width>
       </size>
       <position force='yes'>
