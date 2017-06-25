@@ -1424,7 +1424,7 @@
          normal 
       </layer>
       <maximized>
-         vertical 
+        true
       </maximized>
       <size>
         <width>

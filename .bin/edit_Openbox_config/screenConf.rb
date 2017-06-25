@@ -41,14 +41,13 @@ class ScreenConf
     changes = {"applications" => {
         "/application" => {
             "[@class=" => {
-                "'Xfce4-terminal]'" => {"/size/width" => "1455"},
-                "name" => {"size/width" => "1360"},
-                # "anotherName" => {"size/width" => "1360"}
+                "'Xfce4-terminal']" => {"/size/width" => "1455", "/maximized" => "true"},
+				# "name" => {"size/width" => "1360"},
+				# "anotherName" => {"size/width" => "1360"}
             },
             "@[name=" => {}
         }
-    }
-    }
+    }}
     changes.default = "nil"
 
 
@@ -59,7 +58,7 @@ class ScreenConf
             else
                 @values.push(string + k.to_s )
                 @keys.push(v.to_s)
-                return string
+                # return string
             end
         end
     end
@@ -72,21 +71,23 @@ class ScreenConf
         counter = 0
         @values.each do |i|
             begin
-                puts @values[counter]
-                puts "Keys ", @keys[counter]
-                puts @doc.root.elements[@values[counter]].text
+				# puts @values[counter]
+				puts i
+                puts @keys[counter]
+                # puts "Keys ", @keys[counter]
+                # puts @doc.root.elements[@values[counter]].text
 
                 if not @doc.root.elements[@values[counter]]
                     raise "Error in #{@arr[i]}"
                 end
 
-                @doc.root.elements[@values[counter]].text = @keys[counter]
-                puts '##############################'
-                puts @doc.root.elements[@values[counter]]
+                @doc.root.elements[i].text = @keys[counter]
+                # puts '##############################'
+                # puts @doc.root.elements[@values[counter]]
 
                 counter = counter + 1
             rescue Exception => e
-                puts "check your data in Element #{counter} \n#{i}"
+                puts "check your data in \n#{i}"
                 puts e.message
                 exit
             end
