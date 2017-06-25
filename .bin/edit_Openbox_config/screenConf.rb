@@ -11,7 +11,11 @@ class ScreenConf
 
     @values = []
     @keys = []
-    
+    @x, @y = `xrandr`.scan(/current (\d+) x (\d+)/).flatten
+    # if x == '2560' && y == '1440'
+    # else
+    # end
+
     # file = File.open("/home/armin/.config/openbox/rc.xml","r")
     file = File.new("/home/armin/.bin/edit_Openbox_config/rc.xml", "r")
     @doc = Document.new(file)
@@ -36,11 +40,11 @@ class ScreenConf
 
     changes = {"applications" => {
         "/application" => {
-            "@[class=" => {
-                "Xfce4-terminal" => {"]/size/width/" => "1455"},
-                # "name" => {"size/width" => "1360"},
+            "[@class=" => {
+                "'Xfce4-terminal]'" => {"/size/width" => "1455"},
+                "name" => {"size/width" => "1360"},
                 # "anotherName" => {"size/width" => "1360"}
-                },
+            },
             "@[name=" => {}
         }
     }
@@ -66,15 +70,10 @@ class ScreenConf
 
     def self.applyChanges 
         counter = 0
-        x, y = `xrandr`.scan(/current (\d+) x (\d+)/).flatten
-        if x == '2560' && y == '1440'
-            state = 2 # 2560x1440
-        else
-            state = 3
-        end
-        begin
-            @values.each do |i|
+        @values.each do |i|
+            begin
                 puts @values[counter]
+                puts "Keys ", @keys[counter]
                 puts @doc.root.elements[@values[counter]].text
 
                 if not @doc.root.elements[@values[counter]]
@@ -86,11 +85,11 @@ class ScreenConf
                 puts @doc.root.elements[@values[counter]]
 
                 counter = counter + 1
+            rescue Exception => e
+                puts "check your data in Element #{counter} \n#{i}"
+                puts e.message
+                exit
             end
-        rescue Exception => e
-            puts "check your data"
-            puts e.message
-            exit
         end
     end
     applyChanges 
