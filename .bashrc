@@ -26,27 +26,10 @@ export POWLINE=/usr/lib/python2.7/site-packages/powerline/
 export PAGER=/usr/bin/vimpager
 export SPROJ=/home/armin/Documents/Studium/Projekt_Software/SoftwareP.git/
 export SNIPS=/usr/share/vim/vimfiles/UltiSnips
+# export XDG_CONFIG_HOME=/home/armin/.config/xdg/
 
 . /usr/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 
-cl() {
-	local dir="$1"
-	local dir="${dir:=$HOME}"
-	if [[ -d "$dir" ]]; then
-		cd "$dir" >/dev/null; ls -at
-	else
-		echo "bash: cl: $dir: Directory not found"
-	fi
-}
-
-man() {
-	local width=$(tput cols)
-	[ $width -gt $MANWIDTH ] && width=$MANWIDTH
-	env MANWIDTH=$width \
-		man "$@"
-}
-
-
 source /etc/profile.d/autojump.bash
 
-exec fish
+exec zsh

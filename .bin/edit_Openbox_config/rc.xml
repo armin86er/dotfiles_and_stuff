@@ -1417,6 +1417,7 @@
     <!-- <application class="libprs500" name="calibre-ebook-viewer"><desktop>2</desktop><layer>normal</layer><maximized>vertical</maximized><size><width>826</width></size>[><shade>yes</shade><focus>no</focus> <]<position force="yes"><x>260</x><y>0</y></position></application> -->
      # Terminal 
     <application Title='Terminal' class='Xfce4-terminal' name='xfce4-terminal'>
+      1455
       <desktop>
          2 
       </desktop>
