@@ -669,7 +669,7 @@
     <keybind key='Hyper-a'>
       <action name='Execute'>
         <command>
-           xfce4-terminal
+           xfce4-terminal 
         </command>
       </action>
     </keybind>
@@ -774,7 +774,7 @@
     <keybind key='Hyper-m'>
       <action name='Execute'>
         <command>
-           VBoxManage startvm ArchLinuxTesting
+           VBoxManage startvm ArchLinuxTesting 
         </command>
         <startupnotify>
           <enabled>
@@ -789,7 +789,7 @@
     <keybind key='Hyper-S-m'>
       <action name='Execute'>
         <command>
-           VBoxManage startvm ArchLinuxTrashing
+           VBoxManage startvm ArchLinuxTrashing 
         </command>
         <startupnotify>
           <enabled>
@@ -804,7 +804,7 @@
     <keybind key='Hyper-C-m'>
       <action name='Execute'>
         <command>
-            sh ~/.bin/startWhonix.sh
+           sh ~/.bin/startWhonix.sh 
         </command>
         <startupnotify>
           <enabled>
@@ -1434,8 +1434,7 @@
     # 'Horizontal', 'Vertical' or boolean (yes/no)
   </application>
 -->
-
-     <!-- Terminal  -->
+    <!-- Terminal  -->
     <application Title='Terminal' class='Xfce4-terminal' name='xfce4-terminal'>
       <desktop>
          2 
@@ -1444,7 +1443,7 @@
          normal 
       </layer>
       <maximized>
-         vertical 
+        vertical
       </maximized>
       <size>
         <width>
@@ -1463,451 +1462,434 @@
          no 
       </decor>
     </application>
-
     <!-- Terminal Sakura  -->
     <application Title='Sakura' class='Sakura' name='sakura'>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            vertical 
-        </maximized>
-        <size>
-            <width>
-                466
-            </width>
-        </size>
-        <position force='yes'>
-            <x>
-                900 
-            </x>
-            <y>
-                0 
-            </y>
-        </position>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         vertical 
+      </maximized>
+      <size>
+        <width>
+          660
+        </width>
+      </size>
+      <position force='yes'>
+        <x>
+          1900
+        </x>
+        <y>
+           0 
+        </y>
+      </position>
+      <decor>
+        yes
+      </decor>
     </application>
-
     <!-- Atom  -->
     <application class='Atom' name='atom'>
-        <desktop>
-            2 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            vertical 
-        </maximized>
-        <size>
-            <width>
-                2100
-            </width>
-        </size>
-        <position force='yes'>
-            <x>
-                220 
-            </x>
-            <y>
-                0 
-            </y>
-        </position>
-        <decor>
-            yes
-        </decor>
+      <desktop>
+         2 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+        vertical
+      </maximized>
+      <size>
+        <width>
+          2100
+        </width>
+      </size>
+      <position force='yes'>
+        <x>
+           220 
+        </x>
+        <y>
+           0 
+        </y>
+      </position>
+      <decor>
+        yes
+      </decor>
     </application>
-
     <!-- Thunar  -->
     <application class='Thunar' name='thunar' Title='Thunar' type='normal'>
-        <desktop>
-            2 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            false 
-        </maximized>
-        <size>
-            <width>
-                1040
-            </width>
-            <height>
-                1145
-            </height>
-        </size>
-        <position force='yes'>
-            <x>
-                220 
-            </x>
-            <y>
-                0 
-            </y>
-        </position>
-        <decor>
-            yes
-        </decor>
+      <desktop>
+         2 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+        false
+      </maximized>
+      <size>
+        <width>
+          1030
+        </width>
+        <height>
+           1145 
+        </height>
+      </size>
+      <position force='yes'>
+        <x>
+          220
+        </x>
+        <y>
+           0 
+        </y>
+      </position>
+      <decor>
+        yes
+      </decor>
     </application>
-
     <!-- Baobab  -->
     <application class='Baobab' name='baobab'>
-        <desktop>
-            2 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            false 
-        </maximized>
-        <size>
-            <width>
-                1040
-            </width>
-            <height>
-                1145
-            </height>
-        </size>
-        <position force='yes'>
-            <x>
-                248 
-            </x>
-            <y>
-                0 
-            </y>
-        </position>
-        <decor>
-            yes
-        </decor>
+      <desktop>
+         2 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+        vertical
+      </maximized>
+      <size>
+        <width>
+          2100
+        </width>
+        <height>
+           1145 
+        </height>
+      </size>
+      <position force='yes'>
+        <x>
+           248 
+        </x>
+        <y>
+           0 
+        </y>
+      </position>
+      <decor>
+         yes 
+      </decor>
     </application>
-
     <!-- Engrampa  -->
     <application class='Engrampa' name='engrampa' Title='Archive Manager'>
-        <desktop>
-            2 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            false 
-        </maximized>
-        <size>
-            <width>
-                1040
-            </width>
-            <height>
-                1145
-            </height>
-        </size>
-        <position force='yes'>
-            <x>
-                220 
-            </x>
-            <y>
-                0 
-            </y>
-        </position>
-        <decor>
-            yes
-        </decor>
+      <desktop>
+         2 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+        false
+      </maximized>
+      <size>
+        <width>
+          1030
+        </width>
+        <height>
+           1145 
+        </height>
+      </size>
+      <position force='yes'>
+        <x>
+          1260
+        </x>
+        <y>
+           0 
+        </y>
+      </position>
+      <decor>
+        yes
+      </decor>
     </application>
-
     <!-- Firefox  -->
     <application class='Firefox' name='Navigator'>
-        <desktop>
-            1 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         1 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-    #Keepassx2 
+     #Keepassx2 
     <application class='Keepassx2' name='keepassx2'>
-        <desktop>
-            1 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         1 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-
     <!-- Thunderbird  -->
     <application class='Thunderbird' name='Mail'>
-        <desktop>
-            1 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         1 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-
     <!-- Chromium  -->
     <application class='Chromium' name='chromium' type='normal'>
-        <desktop>
-            1 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            yes 
-        </decor>
+      <desktop>
+         1 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         yes 
+      </decor>
     </application>
-
     <!-- Filezilla  -->
     <application class='Filezilla' name='filezilla'>
-        <desktop>
-            1 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         1 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-
     <!-- CodeBlocks  -->
     <application class='Codeblocks' name='codeblocks'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-
     <!-- Gummi  -->
     <application class='Gummi' name='gummi' type='normal'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            yes 
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         yes 
+      </decor>
     </application>
-
     <!-- Okular  -->
     <application class='okular' name='okular' title='Okular'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-
     <!-- Atril  -->
     <application class='Atril' name='atril' title='Atril Document Viewer'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-
     <!-- VirtualBox  -->
     <application class='VirtualBox' name='VirtualBox' type='normal'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-
     <!-- VLC  -->
     <application class='Vlc' name='vlc' role='vlc-main' type='normal'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-
     <!-- Rhytmenbox  -->
     <application class='Rhythmbox' name='rhythmbox'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-
     <!-- libreOffice  -->
     <application Title='LibreOffice' name='libreoffice' class='libreoffice-startcenter'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            yes
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         yes 
+      </decor>
     </application>
-
     <!-- Zathura  -->
     <application class='Zathura' name='zathura'>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            vertical 
-        </maximized>
-        <shade>
-            no 
-        </shade>
-        <decor>
-            yes 
-        </decor>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         vertical 
+      </maximized>
+      <shade>
+         no 
+      </shade>
+      <decor>
+         yes 
+      </decor>
     </application>
-
     <!-- Translater Midori  -->
     <application class='Midori' name='midori4'>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            vertical 
-        </maximized>
-        <size>
-            <width>
-                390 
-            </width>
-        </size>
-        <shade>
-            no 
-        </shade>
-        <decor>
-            no 
-        </decor>
-        <position force='yes'>
-            <x>
-                0 
-            </x>
-            <y>
-                0 
-            </y>
-        </position>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         vertical 
+      </maximized>
+      <size>
+        <width>
+           390 
+        </width>
+      </size>
+      <shade>
+         no 
+      </shade>
+      <decor>
+         no 
+      </decor>
+      <position force='yes'>
+        <x>
+           0 
+        </x>
+        <y>
+           0 
+        </y>
+      </position>
     </application>
-
     <!-- IntelliJ  -->
     <application Title='IntelliJ IDEA 2017.1' class='jetbrains-idea' name='sun-awt-X11-XFramePeer' type='normal'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            yes 
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         yes 
+      </decor>
     </application>
-    #RubyMine 
+     #RubyMine 
     <application Title='RubyMine 2016.1.2' class='jetbrains-rubymine' name='sun-awt-X11-XFramePeer' type='normal'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            yes 
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         yes 
+      </decor>
     </application>
-    #Kodi 
+     #Kodi 
     <application Title='Kodi' class='Kodi' name='Kodi' type='normal'>
-        <desktop>
-            3 
-        </desktop>
-        <layer>
-            normal 
-        </layer>
-        <maximized>
-            true 
-        </maximized>
-        <decor>
-            no 
-        </decor>
+      <desktop>
+         3 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         no 
+      </decor>
     </application>
-</applications>
+  </applications>
 </openbox_config>

@@ -1,6 +1,6 @@
 #!/bin/ruby
 
-def handleDisplays
+class HandleDisplays
     xRandrOutput = %x{xrandr --query}
 
     xRandrOutput = xRandrOutput.split(/\r?\n/) # Split content by lines
@@ -16,13 +16,12 @@ def handleDisplays
         end
     end
 
-    puts "# connected displays"
-    puts displays
+    puts "# connected displays -> #{displays}"
 
     if status
-        exec ('xrandr --output DP1 --auto && xrandr --output eDP1 --off')
+        `xrandr --output DP1 --auto && xrandr --output eDP1 --off`
     else
-        exec ('xrandr --output eDP1 --auto && xrandr --output DP1 --off')
+        `xrandr --output eDP1 --auto && xrandr --output DP1 --off`
     end
 end
 

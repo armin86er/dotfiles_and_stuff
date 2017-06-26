@@ -6,13 +6,15 @@
 
 if [[ -z "$TMUX" ]] ;then
 	# get the id of a deattached session
-	ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" 
+	#ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" 
+	ID="`tmux ls | grep attached | cut -d: -f1`" 
 	# if not available create a new one
 	if [[ -z "$ID" ]] ;then 
         tmuxinator main_sessionL
 		#tmux new-session
 	else
 		# if available attach to it
+		#tmux attach-session -t main_sessionL
 		tmux attach-session -t "$ID" 
 	fi
 fi
