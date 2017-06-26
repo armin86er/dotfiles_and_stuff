@@ -56,10 +56,10 @@ class ScreenConf
     changes = {"applications" => {
         "/application" => {
             "[@class=" => {
-                # "'Xfce4-terminal']" => {"/size/width" => Array.new( smSc_width, bigSc_width ), "/maximized" => ["true", "vertical"]},
-                "'Atom']" => {  "/size/width" => ["true", "vertical"], "/maximized" => ["true", "vertical"], "/decor" => ["no", "yes"] },
-                # "'Thunar']" => {  "/size/width" => [smSc_width, bigSc_width ], "/maximized" => ["true", "vertical"], "/decor" => ["no", "yes"] },
-
+                "'Xfce4-terminal']" => {"/size/width" =>  [ smSc_width, bigSc_width ], "/maximized" => ["true", "vertical"]},
+                "'Atom']" => {  "/size/width" => [ smSc_width, bigSc_width ], "/maximized" => ["true", "vertical"], "/decor" => ["no", "yes"] },
+                "'Thunar']" => {  "/size/width" => [smSc_width, bigSc_width ], "/maximized" => ["true", "vertical"], "/decor" => ["no", "yes"] },
+                "'Thunar']" => {  }
             },
             "@[name=" => {}
         }
@@ -72,7 +72,7 @@ class ScreenConf
                 stringify_values v, string + k.to_s
             else
                 @values.push(string + k.to_s )
-                @keys.push(v.to_s)
+                @keys.push(v.to_a)
             end
         end
     end
@@ -83,7 +83,7 @@ class ScreenConf
         @values.each do |i|
             begin
 				puts i
-                puts @keys[counter][0]
+                puts @keys[counter][@state]
 
                 if not @doc.root.elements[@values[counter]]
                     raise "Error in #{@arr[i]}"

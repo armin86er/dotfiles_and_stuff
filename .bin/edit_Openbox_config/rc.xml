@@ -1454,11 +1454,11 @@
          normal 
       </layer>
       <maximized>
-        &quot;
+        true
       </maximized>
       <size>
         <width>
-          &quot;
+          true
         </width>
         <height>
            672 
@@ -1474,7 +1474,7 @@
         </y>
       </position>
       <decor>
-        &quot;
+        no
       </decor>
     </application>
      #Thunar 
