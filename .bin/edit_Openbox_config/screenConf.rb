@@ -14,7 +14,7 @@ class ScreenConf
     end
 
     b_width = (@x.to_i - 220-240).to_s
-    b_widthHalbe = ((@x.to_i/2 -240-10)).to_s
+    b_widthHalbe = (@x.to_i/2 - 240-10).to_s
     s_width = "889"
     b_posXl = ( 220).to_s
     b_posXr = ( 220 + 10 + b_widthHalbe.to_i).to_s
@@ -38,6 +38,11 @@ class ScreenConf
                             "/size/width" => [s_width, b_widthHalbe ],
                             "/maximized" => ["true", "false"],
                             "/position/x" => [s_posX, b_posXl],
+                            "/decor" => ["no", "yes"] },
+                    "'Anki']" => {
+                            "/size/width" => [s_width, b_widthHalbe ],
+                            "/maximized" => ["true", "false"],
+                            "/position/x" => [s_posX, b_posXr],
                             "/decor" => ["no", "yes"] },
                     "'Engrampa']" => {
                             "/size/width" => [s_width, b_widthHalbe ],
