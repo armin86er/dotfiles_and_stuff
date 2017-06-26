@@ -18,6 +18,7 @@ class ScreenConf
     else
         @state = 0
     end
+    @t = ["first","second","third"]
 
     # offset = (@x.to_i - 500).to_s
     
@@ -72,7 +73,6 @@ class ScreenConf
             else
                 @values.push(string + k.to_s )
                 @keys.push(v.to_s)
-                # return string
             end
         end
     end
@@ -83,7 +83,7 @@ class ScreenConf
         @values.each do |i|
             begin
 				puts i
-                puts @keys[counter][1]
+                puts @keys[counter][0]
 
                 if not @doc.root.elements[@values[counter]]
                     raise "Error in #{@arr[i]}"
@@ -91,7 +91,7 @@ class ScreenConf
 
                 @doc.root.elements[i].text = @keys[counter][@state]
 
-                counter = counter + 1
+                counter += 1
             rescue Exception => e
                 puts "check your data in \n#{i}"
                 puts e.message
