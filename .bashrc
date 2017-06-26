@@ -10,7 +10,7 @@ if [[ -z "$TMUX" ]] ;then
 	ID="`tmux ls | grep attached | cut -d: -f1`" 
 	# if not available create a new one
 	if [[ -z "$ID" ]] ;then 
-        tmuxinator main_sessionL
+        tmuxinator tmux
 		#tmux new-session
 	else
 		# if available attach to it

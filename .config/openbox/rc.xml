@@ -1546,6 +1546,37 @@
         yes
       </decor>
     </application>
+    <!-- Anki -->
+    <application class='Anki'>
+      <desktop>
+         2 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+        false
+      </maximized>
+      <size>
+        <width>
+          1030
+        </width>
+        <height>
+           1145 
+        </height>
+      </size>
+      <position force='yes'>
+        <x>
+          220
+        </x>
+        <y>
+           0 
+        </y>
+      </position>
+      <decor>
+        yes
+      </decor>
+    </application>
     <!-- Baobab  -->
     <application class='Baobab' name='baobab'>
       <desktop>
