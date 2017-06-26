@@ -7,5 +7,8 @@ require_relative 'screenConf'
 HandleDisplays.new
 ScreenConf.new
 
-#`openbox --reconfigure`
-
+`sh ~/.bin/changeWallpaper.sh`
+`pkill conky`
+`setUSKeyboard`
+`openbox --reconfigure`
+# `sh ~/.config/conky/conkyrc.start.sh&`

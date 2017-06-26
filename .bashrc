@@ -51,4 +51,4 @@ man() {
 
 source /etc/profile.d/autojump.bash
 
-exec fish
+exec zsh

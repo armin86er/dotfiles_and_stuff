@@ -1424,11 +1424,11 @@
          normal 
       </layer>
       <maximized>
-         vertical 
+        vertical
       </maximized>
       <size>
         <width>
-           1455 
+          2080
         </width>
       </size>
       <position force='yes'>
@@ -1454,11 +1454,11 @@
          normal 
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          true
+          2080
         </width>
         <height>
            672 
@@ -1474,7 +1474,7 @@
         </y>
       </position>
       <decor>
-        no
+        yes
       </decor>
     </application>
      #Thunar 
@@ -1486,11 +1486,11 @@
          normal 
       </layer>
       <maximized>
-         false 
+        vertical
       </maximized>
       <size>
         <width>
-           864 
+          2080
         </width>
         <height>
            700 
@@ -1499,14 +1499,14 @@
       <!--<shade>yes</shade><focus>no</focus> -->
       <position force='yes'>
         <x>
-           220 
+          240
         </x>
         <y>
            0 
         </y>
       </position>
       <decor>
-         no 
+        yes
       </decor>
     </application>
      #Baobab 
@@ -1518,11 +1518,11 @@
          normal 
       </layer>
       <maximized>
-         false 
+        vertical
       </maximized>
       <size>
         <width>
-           864 
+          2080
         </width>
         <height>
            700 
@@ -1547,11 +1547,11 @@
          normal 
       </layer>
       <maximized>
-         false 
+        vertical
       </maximized>
       <size>
         <width>
-           464 
+          2080
         </width>
         <height>
            700 
@@ -1560,14 +1560,14 @@
       <!--<shade>yes</shade><focus>no</focus> -->
       <position force='yes'>
         <x>
-           220 
+          640
         </x>
         <y>
            0 
         </y>
       </position>
       <decor>
-         yes 
+        yes
       </decor>
     </application>
      #Shotwell 

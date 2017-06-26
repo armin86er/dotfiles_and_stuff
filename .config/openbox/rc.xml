@@ -255,7 +255,7 @@
      cases. -->
   <margins>
     <top>
-       16 
+       15 
     </top>
     <bottom>
        0 
@@ -526,7 +526,7 @@
         </command>
       </action>
     </keybind>
-    <keybind key='C-H-A-k'>
+    <keybind key='C-H-A-s'>
       <action name='Execute'>
         <command>
            systemctl poweroff 
@@ -584,7 +584,7 @@
         </command>
       </action>
     </keybind>
-    <keybind key='C-A-d'>
+    <keybind key='C-A-i'>
       <action name='Execute'>
         <command>
            setxkbmap de 
@@ -598,14 +598,7 @@
         </command>
       </action>
     </keybind>
-    <keybind key='C-A-g'>
-      <action name='Execute'>
-        <command>
-           sh undock.sh 
-        </command>
-      </action>
-    </keybind>
-    <keybind key='C-A-h'>
+    <keybind key='C-A-d'>
       <action name='Execute'>
         <command>
            sh ~/.bin/dock.sh 
@@ -676,7 +669,7 @@
     <keybind key='Hyper-a'>
       <action name='Execute'>
         <command>
-           sh ~/.bin/startTerminal.sh 
+           xfce4-terminal 
         </command>
       </action>
     </keybind>
@@ -781,7 +774,37 @@
     <keybind key='Hyper-m'>
       <action name='Execute'>
         <command>
-           VboxManage startvm ArchLinux 
+           VBoxManage startvm ArchLinuxTesting 
+        </command>
+        <startupnotify>
+          <enabled>
+             yes 
+          </enabled>
+          <name>
+             Arch Virt Machine 
+          </name>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key='Hyper-S-m'>
+      <action name='Execute'>
+        <command>
+           VBoxManage startvm ArchLinuxTrashing 
+        </command>
+        <startupnotify>
+          <enabled>
+             yes 
+          </enabled>
+          <name>
+             Arch Virt Machine 
+          </name>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key='Hyper-C-m'>
+      <action name='Execute'>
+        <command>
+           sh ~/.bin/startWhonix.sh 
         </command>
         <startupnotify>
           <enabled>
@@ -1410,12 +1433,8 @@
     <maximized>true</maximized>
     # 'Horizontal', 'Vertical' or boolean (yes/no)
   </application>
-
-  # end of the example
 -->
-     #eBookReader 
-    <!-- <application class="libprs500" name="calibre-ebook-viewer"><desktop>2</desktop><layer>normal</layer><maximized>vertical</maximized><size><width>826</width></size>[><shade>yes</shade><focus>no</focus> <]<position force="yes"><x>260</x><y>0</y></position></application> -->
-     # Terminal 
+    <!-- Terminal  -->
     <application Title='Terminal' class='Xfce4-terminal' name='xfce4-terminal'>
       <desktop>
          2 
@@ -1424,7 +1443,7 @@
          normal 
       </layer>
       <maximized>
-         vertical 
+        vertical
       </maximized>
       <size>
         <width>
@@ -1443,9 +1462,32 @@
          no 
       </decor>
     </application>
-    <!-- #Medit -->
-    <!-- <application class="medit" name="medit"><desktop>2</desktop><layer>normal</layer><maximized>vertical</maximized><size><width>870</width></size>[><shade>yes</shade><focus>no</focus> <]<position force="yes"><x>248</x><y>0</y></position><decor>yes</decor></application> -->
-     #Atom 
+    <!-- Terminal Sakura  -->
+    <application Title='Sakura' class='Sakura' name='sakura'>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         vertical 
+      </maximized>
+      <size>
+        <width>
+          660
+        </width>
+      </size>
+      <position force='yes'>
+        <x>
+          1900
+        </x>
+        <y>
+           0 
+        </y>
+      </position>
+      <decor>
+        yes
+      </decor>
+    </application>
+    <!-- Atom  -->
     <application class='Atom' name='atom'>
       <desktop>
          2 
@@ -1454,17 +1496,13 @@
          normal 
       </layer>
       <maximized>
-         false 
+        vertical
       </maximized>
       <size>
         <width>
-          1040
+          2100
         </width>
-        <height>
-          1145
-        </height>
       </size>
-      <!--<shade>yes</shade><focus>no</focus> -->
       <position force='yes'>
         <x>
            220 
@@ -1477,8 +1515,8 @@
         yes
       </decor>
     </application>
-     #Thunar 
-    <application class='Thunar' name='thunar' Title='Thunar'>
+    <!-- Thunar  -->
+    <application class='Thunar' name='thunar' Title='Thunar' type='normal'>
       <desktop>
          2 
       </desktop>
@@ -1486,20 +1524,19 @@
          normal 
       </layer>
       <maximized>
-         false 
+        false
       </maximized>
       <size>
         <width>
-          1040
+          1030
         </width>
         <height>
-          1145
+           1145 
         </height>
       </size>
-      <!--<shade>yes</shade><focus>no</focus> -->
       <position force='yes'>
         <x>
-           220 
+          220
         </x>
         <y>
            0 
@@ -1509,7 +1546,7 @@
         yes
       </decor>
     </application>
-     #Baobab 
+    <!-- Baobab  -->
     <application class='Baobab' name='baobab'>
       <desktop>
          2 
@@ -1518,17 +1555,16 @@
          normal 
       </layer>
       <maximized>
-         false 
+        vertical
       </maximized>
       <size>
         <width>
-          1040
+          2100
         </width>
         <height>
-          1145
+           1145 
         </height>
       </size>
-      <!--<shade>yes</shade><focus>no</focus> -->
       <position force='yes'>
         <x>
            248 
@@ -1537,8 +1573,11 @@
            0 
         </y>
       </position>
+      <decor>
+         yes 
+      </decor>
     </application>
-     #Engrampa 
+    <!-- Engrampa  -->
     <application class='Engrampa' name='engrampa' Title='Archive Manager'>
       <desktop>
          2 
@@ -1547,20 +1586,19 @@
          normal 
       </layer>
       <maximized>
-         false 
+        false
       </maximized>
       <size>
         <width>
-          1040
+          1030
         </width>
         <height>
-          1145
+           1145 
         </height>
       </size>
-      <!--<shade>yes</shade><focus>no</focus> -->
       <position force='yes'>
         <x>
-           220 
+          1260
         </x>
         <y>
            0 
@@ -1570,9 +1608,7 @@
         yes
       </decor>
     </application>
-     #Shotwell 
-    <!-- <application class="Shotwell" name="shotwell"><desktop>2</desktop><layer>normal</layer><maximized>false</maximized><size><width>826</width><height>620</height></size>[><shade>yes</shade><focus>no</focus> <]<position force="yes"><x>260</x><y>90</y></position></application> -->
-     #Firefox 
+    <!-- Firefox  -->
     <application class='Firefox' name='Navigator'>
       <desktop>
          1 
@@ -1602,7 +1638,7 @@
          no 
       </decor>
     </application>
-     #Thunderbird 
+    <!-- Thunderbird  -->
     <application class='Thunderbird' name='Mail'>
       <desktop>
          1 
@@ -1617,7 +1653,22 @@
          no 
       </decor>
     </application>
-     #Filezilla 
+    <!-- Chromium  -->
+    <application class='Chromium' name='chromium' type='normal'>
+      <desktop>
+         1 
+      </desktop>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         true 
+      </maximized>
+      <decor>
+         yes 
+      </decor>
+    </application>
+    <!-- Filezilla  -->
     <application class='Filezilla' name='filezilla'>
       <desktop>
          1 
@@ -1632,24 +1683,7 @@
          no 
       </decor>
     </application>
-     #FirefoxSessionManager 
-    <!-- <application class="Firefox" name="SessionManager"><desktop>1</desktop><layer>normal</layer><maximized>false</maximized></application> -->
-     #MateTerminal 
-    <application class='Mate-terminal' name='mate-terminal'>
-      <desktop>
-         3 
-      </desktop>
-      <layer>
-         normal 
-      </layer>
-      <decor>
-         no 
-      </decor>
-      <maximized>
-         true 
-      </maximized>
-    </application>
-     #CodeBlocks 
+    <!-- CodeBlocks  -->
     <application class='Codeblocks' name='codeblocks'>
       <desktop>
          3 
@@ -1664,14 +1698,7 @@
          no 
       </decor>
     </application>
-     #Eclipse 
-    <!-- <application Title="Java - Eclipse" class="Eclipse" name="Eclipse"> -->
-    <!--     <desktop>3</desktop> -->
-    <!--     <layer>normal</layer> -->
-    <!--     <maximized>true</maximized> -->
-    <!--     <decor>no</decor> -->
-    <!-- </application> -->
-     #Gummi 
+    <!-- Gummi  -->
     <application class='Gummi' name='gummi' type='normal'>
       <desktop>
          3 
@@ -1686,9 +1713,7 @@
          yes 
       </decor>
     </application>
-     #MuPDF 
-    <!-- <application class="MuPDF" name="mupdf"><desktop>2</desktop><layer>normal</layer><maximized>true</maximized><decor>no</decor></application> -->
-     #Okular 
+    <!-- Okular  -->
     <application class='okular' name='okular' title='Okular'>
       <desktop>
          3 
@@ -1703,7 +1728,7 @@
          no 
       </decor>
     </application>
-     #Atril 
+    <!-- Atril  -->
     <application class='Atril' name='atril' title='Atril Document Viewer'>
       <desktop>
          3 
@@ -1718,7 +1743,7 @@
          no 
       </decor>
     </application>
-     #VirtualBox 
+    <!-- VirtualBox  -->
     <application class='VirtualBox' name='VirtualBox' type='normal'>
       <desktop>
          3 
@@ -1733,7 +1758,7 @@
          no 
       </decor>
     </application>
-     #VLC 
+    <!-- VLC  -->
     <application class='Vlc' name='vlc' role='vlc-main' type='normal'>
       <desktop>
          3 
@@ -1748,7 +1773,7 @@
          no 
       </decor>
     </application>
-     #Rhytmenbox 
+    <!-- Rhytmenbox  -->
     <application class='Rhythmbox' name='rhythmbox'>
       <desktop>
          3 
@@ -1763,7 +1788,7 @@
          no 
       </decor>
     </application>
-     #libreOffice 
+    <!-- libreOffice  -->
     <application Title='LibreOffice' name='libreoffice' class='libreoffice-startcenter'>
       <desktop>
          3 
@@ -1775,14 +1800,25 @@
          true 
       </maximized>
       <decor>
-        yes
+         yes 
       </decor>
     </application>
-     #JDow 
-    <!-- <application class="JDownloader" name="sun-awt-X11-XFramePeer"><desktop>1</desktop><layer>normal</layer><maximized>true</maximized><decor>no</decor></application> -->
-     #PacMan 
-    <!-- <application Title="normal" class="Pamac-manager" name="pamac-manager"><desktop>2</desktop><layer>normal</layer><size><width>830</width></size><position force="yes"><x>268</x><y>90</y></position></application> -->
-     #Translater Midori 
+    <!-- Zathura  -->
+    <application class='Zathura' name='zathura'>
+      <layer>
+         normal 
+      </layer>
+      <maximized>
+         vertical 
+      </maximized>
+      <shade>
+         no 
+      </shade>
+      <decor>
+         yes 
+      </decor>
+    </application>
+    <!-- Translater Midori  -->
     <application class='Midori' name='midori4'>
       <layer>
          normal 
@@ -1810,7 +1846,7 @@
         </y>
       </position>
     </application>
-     #IntelliJ 
+    <!-- IntelliJ  -->
     <application Title='IntelliJ IDEA 2017.1' class='jetbrains-idea' name='sun-awt-X11-XFramePeer' type='normal'>
       <desktop>
          3 

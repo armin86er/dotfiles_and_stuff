@@ -2,13 +2,7 @@
 require 'rexml/document'
 include REXML
 
-
 class ScreenConf
-    bigSc_width = 1040
-    bigSc_height = "1145"
-    smSc_width = 889
-    smSc_height = "694"
-
 
     @values = []
     @keys = []
@@ -18,52 +12,50 @@ class ScreenConf
     else
         @state = 0
     end
-    @t = ["first","second","third"]
 
-    # offset = (@x.to_i - 500).to_s
-    
-    def self.calc mode
-        # case mode
-        # when "fullSize"
-            # puts 'gotcha'
-        # when "yMax_xCen"
-        # when "yMax_xHalf_small"
-        # when "yMax_xHalf_big"
-        # end
-    end
+    b_width = (@x.to_i - 220-240).to_s
+    b_widthHalbe = ((@x.to_i/2 -240-10)).to_s
+    s_width = "889"
+    b_posXl = ( 220).to_s
+    b_posXr = ( 220 + 10 + b_widthHalbe.to_i).to_s
+    s_posX = 0
 
-    file = File.new("/home/armin/.bin/edit_Openbox_config/rc.xml", "r")
+    file = File.new("/home/armin/.config/openbox/rc.xml", "r")
     @doc = Document.new(file)
 
-    @changes = [
-        ["Xfce4-terminal", "size/width", "2100", smSc_width],
-        ["Atom", "size/width", "2100", smSc_width],
-        ["Atom", "size/width", bigSc_width, smSc_width],
-        ["Atom", "size/height", bigSc_height, smSc_height],
-        ["Atom", "decor", "yes", "no"],
-        ["Thunar", "size/width", bigSc_width, smSc_width],
-        ["Thunar", "size/height", bigSc_height, smSc_height],
-        ["Thunar", "decor", "yes", "no"],
-        ["Engrampa", "size/width", bigSc_width, smSc_width],
-        ["Engrampa", "size/height", bigSc_height, smSc_height],
-        ["Engrampa", "decor", "yes", "no"],
-        ["Baobab", "size/width", bigSc_width, smSc_width],
-        ["Baobab", "size/height", bigSc_height, smSc_height],
-        # ["Baobab", "decor", "yes", "no" ],
-        ["libreoffice-startcenter", "decor", "yes", "no"]
-    ]
-
-    changes = {"applications" => {
-        "/application" => {
-            "[@class=" => {
-                "'Xfce4-terminal']" => {"/size/width" =>  [ smSc_width, bigSc_width ], "/maximized" => ["true", "vertical"]},
-                "'Atom']" => {  "/size/width" => [ smSc_width, bigSc_width ], "/maximized" => ["true", "vertical"], "/decor" => ["no", "yes"] },
-                "'Thunar']" => {  "/size/width" => [smSc_width, bigSc_width ], "/maximized" => ["true", "vertical"], "/decor" => ["no", "yes"] },
-                "'Thunar']" => {  }
-            },
-            "@[name=" => {}
+    changes = {
+        "applications" => {
+            "/application" => {
+                "[@class=" => {
+                    "'Xfce4-terminal']" => {
+                            "/size/width" =>  [ s_width, b_width ], 
+                            "/maximized" => ["true", "vertical"]},
+                    "'Atom']" => { 
+                            "/size/width" => [ s_width, b_width ],
+                            "/maximized" => ["true", "vertical"],
+                            "/decor" => ["no", "yes"] },
+                    "'Thunar']" => { 
+                            "/size/width" => [s_width, b_widthHalbe ],
+                            "/maximized" => ["true", "false"],
+                            "/position/x" => [s_posX, b_posXl],
+                            "/decor" => ["no", "yes"] },
+                    "'Engrampa']" => {
+                            "/size/width" => [s_width, b_widthHalbe ],
+                            "/maximized" => ["true", "false"],
+                            "/position/x" => [s_posX, b_posXr],
+                            "/decor" => ["no", "yes"] },
+                    "'Sakura']" => {
+                            "/size/width" => ["380", "660" ],
+                            "/position/x" => [(@x.to_i - 380).to_s, (@x.to_i - 660).to_s],
+                            "/decor" => ["no", "yes"] },
+                    "'Baobab']" => {
+                            "/size/width" => [s_width, b_width ],
+                            "/maximized" => ["true", "vertical"]}
+                },
+                "@[name=" => {}
+            }
         }
-    }}
+    }
     changes.default = "nil"
 
     def self.stringify_values(obj, string)
@@ -82,7 +74,7 @@ class ScreenConf
         counter = 0
         @values.each do |i|
             begin
-				puts i
+                puts i
                 puts @keys[counter][@state]
 
                 if not @doc.root.elements[@values[counter]]
@@ -101,7 +93,7 @@ class ScreenConf
     end
     applyChanges 
 
-    @doc.write(File.open("/home/armin/.bin/edit_Openbox_config/rc.xml", "w"), 2)
+    @doc.write(File.open("/home/armin/.config/openbox/rc.xml", "w"), 2)
 
     puts "ScreenConf succeded"
 end
