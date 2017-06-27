@@ -1,0 +1,175 @@
+export ZSH=/usr/share/oh-my-zsh
+export EDITOR=vim
+export SUDO_EDITOR=vim
+export VISUAL=vim
+export BROWSER=firefox
+export PATH=$PATH:~/.bin:~/.gem/ruby/2.4.0/bin
+export POWLINE=/usr/lib/python2.7/site-packages/powerline/
+export PAGER=/usr/bin/vimpager && alias less=$PAGER
+export SPROJ=/home/armin/Documents/Studium/Projekt_Software/SoftwareP.git/
+export SNIPS=/usr/share/vim/vimfiles/UltiSnips
+
+# Lines configured by zsh-newuser-install
+    HISTFILE=~/.histfile
+    HISTSIZE=9000
+    SAVEHIST=$HISTSIZE
+    setopt appendhistory autocd extendedglob
+    bindkey -v
+# End of lines added by zsh-newuser-install
+
+# The following lines were added by compinstall
+
+    zstyle ':completion:*' auto-description 'specify: %d'
+    zstyle ':completion:*' completer _expand _complete _ignored _approximate
+    zstyle ':completion:*' format 'Completing %d'
+    zstyle ':completion:*' list-colors ''
+    zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+    zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' '' 'l:|=* r:|=*'
+    zstyle ':completion:*' menu select
+    zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+    zstyle :compinstall filename '/home/armin/.zshrc'
+
+    # autoload -Uz compinit
+    # compinit
+# End of lines added by compinstall
+
+# The following lines were added by user
+########################
+####  User Setting ####
+########################
+
+#For autocompletion of command line switches for aliases
+setopt COMPLETE_ALIASES
+# Recommended
+autoload -U compinstall
+
+# Improve appearance of completion
+	zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+	zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+
+# To enable history search
+	autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+	zle -N up-line-or-beginning-search
+	zle -N down-line-or-beginning-search
+	[[ -n "$key[Up]"   ]] && bindkey -- "$key[Up]"   up-line-or-beginning-search
+	[[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-beginning-search
+
+# Correction
+	setopt correctall
+
+# Ignore known commands in history
+setopt hist_ignore_all_dups 
+setopt hist_ignore_space
+
+autoload -Uz promptinit
+promptinit
+
+
+#may be used to "freeze/unfreeze" the terminal
+    ttyctl -f
+
+#remember DIRSTACK
+	DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+	if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+	  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+	  [[ -d $dirstack[1] ]] && cd $dirstack[1]
+	fi
+	chpwd() {
+	  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+	}
+	DIRSTACKSIZE=20
+	setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
+	## Remove duplicate entries
+	setopt PUSHD_IGNORE_DUPS
+	## This reverts the +/- operators.
+	setopt PUSHD_MINUS	
+
+# Use help instead of run-help
+	autoload -Uz run-help
+	unalias run-help
+	alias help=run-help
+
+### Oh-my-ZSH Config
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Uncomment the following line to enable command auto-correction.
+ ENABLE_CORRECTION="true"
+ 
+# Uncomment the following line to display red dots whilst waiting for completion.
+ COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+ HIST_STAMPS="dd.mm.yyyy"
+
+plugins=(git archlinux common-aliases dirhistory history per-directory-history rails sudo vi-mode web-search catimg zsh-completions cp copyfile extract history-substring-search )
+autoload -Uz compinit && compinit
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+source $ZSH/oh-my-zsh.sh
+
+# Keybindings
+## https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/key-bindings.zsh
+bindkey -s '\el' 'ls\n'
+bindkey '^r' history-incremental-search-backward
+if [[ "${terminfo[kpp]}" != "" ]]; then
+  bindkey "${terminfo[kpp]}" up-line-or-history       # [PageUp] - Up a line of history
+fi
+if [[ "${terminfo[knp]}" != "" ]]; then
+  bindkey "${terminfo[knp]}" down-line-or-history     # [PageDown] - Down a line of history
+fi
+# start typing + [Up-Arrow] - fuzzy find history forward
+if [[ "${terminfo[kcuu1]}" != "" ]]; then
+  autoload -U up-line-or-beginning-search
+  zle -N up-line-or-beginning-search
+  bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+fi
+# start typing + [Down-Arrow] - fuzzy find history backward
+if [[ "${terminfo[kcud1]}" != "" ]]; then
+  autoload -U down-line-or-beginning-search
+  zle -N down-line-or-beginning-search
+  bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+fi
+#bindkey ' ' magic-space # [Space] - do history expansion
+if [[ "${terminfo[kcbt]}" != "" ]]; then
+  bindkey "${terminfo[kcbt]}" reverse-menu-complete   # [Shift-Tab] - move through the completion menu backwards
+fi
+
+# Powerline
+    . /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+
+# zsh-syntax-highlighting
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    
+# zsh-history-substring-search
+    # source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+    # bindkey '^[[A' history-substring-search-up
+	# bindkey '^[[B' history-substring-search-down
+	# HISTORY_SUBSTRING_SEARCH_FUZZY=true
+    #
+
+# autoload predict-on
+# predict-on
+
+## history-substring-search
+#  Key Bindings
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# bind UP and DOWN arrow keys (compatibility fallback
+# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+
+	source /usr/share/doc/pkgfile/command-not-found.zsh
