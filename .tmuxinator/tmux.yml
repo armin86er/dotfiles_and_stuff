@@ -1,0 +1,42 @@
+name: tmux
+root: ~/
+
+windows:
+  - client :
+      layout: 6a46,284x76,0,0{142x76,0,0[142x62,0,0,0,142x13,0,63,14],141x76,143,0[141x62,143,0,3,141x13,143,63,5]}
+      panes:
+        - logs:
+          - clear && screenfetch -c 255,41 -n
+        - stats:
+          - yaourt -Syua
+        - logs:
+          - cd 
+          - 'sh .bin/vimSession.sh'
+        - stats:
+          - journalctl -f
+  - servers :
+      layout: 6a46,284x76,0,0{142x76,0,0[142x62,0,0,0,142x13,0,63,14],141x76,143,0[141x62,143,0,3,141x13,143,63,5]}
+      panes:
+        - logs:
+          - ssh ArchARMv7
+          - clear; and screenfetch -c 255,41 -n
+        - stats:
+          - ssh ArchARMv7
+          - yaourt -Syua
+        - logs:
+          - ssh ArchARMv7
+          - 'sh .bin/vimSession.sh'
+        - stats:
+          - ssh ArchARMv7
+          - journalctl -f
+  - jsIDE :
+      layout: d308,205x69,0,0[205x59,0,0{65x59,0,0,0,139x59,66,0,9},205x9,0,60,8]
+      panes:
+        - logs:
+          - cd $SPROJ/Website
+          - clear
+        - edit:
+          - cd $SPROJ/Website
+          - sh vimStart.sh
+        - server:
+          - cd $SPROJ/Server
