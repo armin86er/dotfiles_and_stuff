@@ -1,3 +1,11 @@
+fpath=( ~/.zfunc "${fpath[@]}" )
+autoload -Uz feH
+autoload -Uz glog
+autoload -Uz p1ng
+autoload -Uz V
+autoload -Uz mdC
+autoload -Uz lL
+
 export ZSH=/usr/share/oh-my-zsh
 export EDITOR=vim
 export SUDO_EDITOR=vim
@@ -43,19 +51,8 @@ setopt COMPLETE_ALIASES
 # Recommended
 autoload -U compinstall
 
-# Improve appearance of completion
-	zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-	zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-
-# To enable history search
-	autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-	zle -N up-line-or-beginning-search
-	zle -N down-line-or-beginning-search
-	[[ -n "$key[Up]"   ]] && bindkey -- "$key[Up]"   up-line-or-beginning-search
-	[[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-beginning-search
-
 # Correction
-	setopt correctall
+setopt correct
 
 # Ignore known commands in history
 setopt hist_ignore_all_dups 
@@ -64,9 +61,8 @@ setopt hist_ignore_space
 autoload -Uz promptinit
 promptinit
 
-
 #may be used to "freeze/unfreeze" the terminal
-    ttyctl -f
+ttyctl -f
 
 #remember DIRSTACK
 	DIRSTACKFILE="$HOME/.cache/zsh/dirs"
@@ -84,16 +80,7 @@ promptinit
 	## This reverts the +/- operators.
 	setopt PUSHD_MINUS	
 
-# Use help instead of run-help
-	autoload -Uz run-help
-	unalias run-help
-	alias help=run-help
-
 ### Oh-my-ZSH Config
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Uncomment the following line to enable command auto-correction.
  ENABLE_CORRECTION="true"
  
@@ -107,9 +94,6 @@ promptinit
 
 plugins=(git archlinux common-aliases dirhistory history per-directory-history rails sudo vi-mode web-search catimg zsh-completions cp copyfile extract history-substring-search )
 autoload -Uz compinit && compinit
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-source $ZSH/oh-my-zsh.sh
 
 # Keybindings
 ## https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/key-bindings.zsh
@@ -138,23 +122,6 @@ if [[ "${terminfo[kcbt]}" != "" ]]; then
   bindkey "${terminfo[kcbt]}" reverse-menu-complete   # [Shift-Tab] - move through the completion menu backwards
 fi
 
-# Powerline
-    . /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-
-
-# zsh-syntax-highlighting
-    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    
-# zsh-history-substring-search
-    # source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-    # bindkey '^[[A' history-substring-search-up
-	# bindkey '^[[B' history-substring-search-down
-	# HISTORY_SUBSTRING_SEARCH_FUZZY=true
-    #
-
-# autoload predict-on
-# predict-on
-
 ## history-substring-search
 #  Key Bindings
 # bind UP and DOWN arrow keys
@@ -162,14 +129,21 @@ zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-# bind UP and DOWN arrow keys (compatibility fallback
-# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-	source /usr/share/doc/pkgfile/command-not-found.zsh
+source $ZSH/oh-my-zsh.sh
+
+# Powerline
+source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+# zsh-syntax-highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    
+# source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# bindkey '^[[1~' '[[D'
+# bindkey '[[4~' '^[[C'
