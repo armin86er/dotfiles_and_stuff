@@ -1,20 +1,18 @@
 #
 # ~/.bashrc
 #
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 if [[ -z "$TMUX" ]] ;then
 	# get the id of a deattached session
-	#ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" 
 	ID="`tmux ls | grep attached | cut -d: -f1`" 
 	# if not available create a new one
 	if [[ -z "$ID" ]] ;then 
         tmuxinator tmux
-		#tmux new-session
 	else
 		# if available attach to it
-		#tmux attach-session -t main_sessionL
 		tmux attach-session -t "$ID" 
 	fi
 fi
@@ -28,9 +26,8 @@ export POWLINE=/usr/lib/python2.7/site-packages/powerline/
 export PAGER=/usr/bin/vimpager
 export SPROJ=/home/armin/Documents/Studium/Projekt_Software/SoftwareP.git/
 export SNIPS=/usr/share/vim/vimfiles/UltiSnips
-# export XDG_CONFIG_HOME=/home/armin/.config/xdg/
 
-. /usr/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+source /usr/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 
 source /etc/profile.d/autojump.bash
 

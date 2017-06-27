@@ -92,7 +92,7 @@ ttyctl -f
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
  HIST_STAMPS="dd.mm.yyyy"
 
-plugins=(git archlinux common-aliases dirhistory history per-directory-history rails sudo vi-mode web-search catimg zsh-completions cp copyfile extract history-substring-search )
+plugins=(git archlinux common-aliases dirhistory history rails sudo vi-mode web-search catimg zsh-completions cp copyfile extract history-substring-search )
 autoload -Uz compinit && compinit
 
 # Keybindings
@@ -121,6 +121,9 @@ fi
 if [[ "${terminfo[kcbt]}" != "" ]]; then
   bindkey "${terminfo[kcbt]}" reverse-menu-complete   # [Shift-Tab] - move through the completion menu backwards
 fi
+# Correct behaviour of home & end
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
 
 ## history-substring-search
 #  Key Bindings
