@@ -8,6 +8,7 @@
 
 colorscheme molokai
 
+set tabpagemax=32
 set scrolloff=3
 set linebreak
 set whichwrap=b,s,<,>,[,]
@@ -198,6 +199,9 @@ map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
 " Vim + Ctags + Ctrlp
 nnoremap <leader>. :CtrlPTag<cr>
+
+" Vim + Ctags + Tagbar
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
 "
 "------------------------------------------------------------
 "
@@ -254,7 +258,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 "------------------------------------------------------------
 "
@@ -271,6 +275,13 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 " These lines setup the environment to show graphics and colors correctly.
 :map <C-S-H> <Esc>:tabp<CR>
 :map <C-S-L> <Esc>:tabn<CR>
+:map <C-S-J> <Esc>:bp<CR>
+:map <C-S-K> <Esc>:bn<CR>
+
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
 
 if &term =~ '256color'
     " Disable Background Color Erase (BCE) so that color schemes
@@ -282,14 +293,14 @@ endif
 "
 " "" Nerdtree
 " NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " open NERDTree with Ctrl+n
-map <C-n> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
 
 " close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "------------------------------------------------------------
 "

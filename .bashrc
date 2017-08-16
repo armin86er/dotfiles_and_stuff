@@ -1,7 +1,3 @@
-#
-# ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -11,12 +7,20 @@ if [[ -z "$TMUX" ]] ;then
 	# if not available create a new one
 	if [[ -z "$ID" ]] ;then 
         tmuxinator tmux
+        declare -i x
+        x="$(ruby ~/.bin/returnScreenRes.rb)"
+        if [ $x -ge 1900 ] ;then
+            tmuxinator tmuxL
+        else
+            tmuxinator tmuxS
+        fi
 	else
 		# if available attach to it
 		tmux attach-session -t "$ID" 
 	fi
 fi
 
+export VBOX_USB=usbfs
 export EDITOR=vim
 export SUDO_EDITOR=vim
 export VISUAL=vim

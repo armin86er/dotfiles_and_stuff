@@ -5,7 +5,10 @@ autoload -Uz p1ng
 autoload -Uz V
 autoload -Uz mdC
 autoload -Uz lL
+autoload -Uz paclsexplicit
+autoload -Uz qr
 
+export VBOX_USB=usbfs
 export ZSH=/usr/share/oh-my-zsh
 export EDITOR=vim
 export SUDO_EDITOR=vim
@@ -14,8 +17,11 @@ export BROWSER=firefox
 export PATH=$PATH:~/.bin:~/.gem/ruby/2.4.0/bin
 export POWLINE=/usr/lib/python2.7/site-packages/powerline/
 export PAGER=/usr/bin/vimpager && alias less=$PAGER
-export SPROJ=/home/armin/Documents/Studium/Projekt_Software/SoftwareP.git/
+export SPROJ=/home/armin/Documents/Studium/Projekt_Software/SoftwareP.git
 export SNIPS=/usr/share/vim/vimfiles/UltiSnips
+export tuts=~/Documents/Tutorials
+export stud=~/Documents/Studium
+export DISABLE_AUTO_TITLE=true
 
 # Lines configured by zsh-newuser-install
     HISTFILE=~/.histfile
@@ -125,6 +131,10 @@ fi
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
+bindkey '^[[1;5C' forward-word                  # [Ctrl-RightArrow] - move forward one word
+bindkey '^[[1;5D' backward-word                 # [Ctrl-LeftArrow] - move backward one word]]]]'
+bindkey "\e[3~" delete-char
+
 ## history-substring-search
 #  Key Bindings
 # bind UP and DOWN arrow keys
@@ -146,7 +156,10 @@ source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 # zsh-syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     
-# source /usr/share/doc/pkgfile/command-not-found.zsh
+# Completion File for tmuxinator
+source /usr/lib/ruby/gems/2.4.0/gems/tmuxinator-0.9.0/completion/tmuxinator.zsh
+#source /usr/share/doc/pkgfile/command-not-found.zsh
+
 
 # bindkey '^[[1~' '[[D'
 # bindkey '[[4~' '^[[C'

@@ -39,11 +39,6 @@ class ScreenConf
                             "/maximized" => ["true", "false"],
                             "/position/x" => [s_posX, b_posXl],
                             "/decor" => ["no", "yes"] },
-                    "'Anki']" => {
-                            "/size/width" => [s_width, b_widthHalbe ],
-                            "/maximized" => ["true", "false"],
-                            "/position/x" => [s_posX, b_posXr],
-                            "/decor" => ["no", "yes"] },
                     "'Engrampa']" => {
                             "/size/width" => [s_width, b_widthHalbe ],
                             "/maximized" => ["true", "false"],
@@ -74,6 +69,9 @@ class ScreenConf
         end
     end
     stringify_values(changes, "")
+    
+    def self.applyChanges 
+    end
 
     def self.applyChanges 
         counter = 0
