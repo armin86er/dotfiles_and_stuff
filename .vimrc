@@ -304,7 +304,7 @@ endif
 
 "------------------------------------------------------------
 "
-" "" CtrlP
+" CtrlP
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$|^bundle$',
@@ -313,7 +313,7 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " Open default in new tabs
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
+" let g:ctrlp_prompt_mappings = {
+    " \ 'AcceptSelection("e")': ['<c-t>'],
+    " \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    " \ }
