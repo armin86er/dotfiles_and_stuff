@@ -1,0 +1,4 @@
+#!/bin/bash
+pkill xfce4-terminal && tmux kill-server
+#pkill vim && sleep 1 && tmux kill-session -t tmux_session && sleep 1 && pkill xfce4-terminal
+

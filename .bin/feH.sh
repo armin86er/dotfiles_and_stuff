@@ -1,0 +1,4 @@
+#!/bin/bash
+file=$(find -type f | shuf -n1) &&
+    feh -ZxF --start-at $file
+

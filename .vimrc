@@ -8,12 +8,12 @@
 
 colorscheme molokai
 
+set tabstop=2 shiftwidth=2 expandtab
 set tabpagemax=32
 set scrolloff=3
 set linebreak
 set whichwrap=b,s,<,>,[,]
 set foldmethod=manual
-set tabstop=4
 "set spell
 
 " " hideComments
@@ -159,9 +159,6 @@ nmap <F7> :TlistToggle<CR>
 
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
-set shiftwidth=4
-set softtabstop=4
-set expandtab
 
 " Indentation settings for using hard tabs for indent. Display tabs as
 " four characters wide.
@@ -317,3 +314,5 @@ let g:ctrlp_custom_ignore = {
     " \ 'AcceptSelection("e")': ['<c-t>'],
     " \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     " \ }
+
+nmap <leader>a <Esc>:Ack!>

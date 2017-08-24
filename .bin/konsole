@@ -1,0 +1,17 @@
+#!/bin/bash
+sakura --hold -e 'tmux'
+
+# if [[ -z "$TMUX" ]] ;then
+#     # get the id of a deattached session
+#     ID="`tmux ls | grep -vm1 attached | cut -d: -f1`"
+#     # if not available create a new one
+#     if [[ -z "$ID" ]] ;then
+#         sakura --hold -e 'tmux'
+#         #tmux new-session
+#     else
+#         # if available attach to it
+#         #tmux attach-session -t main_sessionL
+#         ID="tmux ls |grep -vm1 attached | cut -d: -f1"
+#         sakura -h -x 'tmux attach-session -t "$ID"'
+#     fi
+# fi

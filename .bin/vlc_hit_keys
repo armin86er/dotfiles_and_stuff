@@ -1,0 +1,6 @@
+#!/bin/bash
+vlc &
+while true
+do
+xdotool key VoidSymbol; sleep 115
+done
