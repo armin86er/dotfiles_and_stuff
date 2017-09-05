@@ -255,7 +255,7 @@
      cases. -->
   <margins>
     <top>
-       15 
+       17 
     </top>
     <bottom>
        0 
@@ -601,7 +601,7 @@
     <keybind key='C-A-d'>
       <action name='Execute'>
         <command>
-           sh ~/.bin/dock.sh 
+          ruby ~/.bin/edit_Openbox_config/main.rb
         </command>
       </action>
     </keybind>
@@ -669,14 +669,14 @@
     <keybind key='Hyper-a'>
       <action name='Execute'>
         <command>
-           xfce4-terminal --title='Terminal - localhost'
+           xfce4-terminal --title='Terminal - localhost' 
         </command>
       </action>
     </keybind>
     <keybind key='Hyper-S-a'>
       <action name='Execute'>
         <command>
-           xfce4-terminal --title='Terminal - archvm' -e 'ssh Pictrs'
+           sh ~/.bin/vmScripts/pictrsStartTerminal.sh 
         </command>
       </action>
     </keybind>

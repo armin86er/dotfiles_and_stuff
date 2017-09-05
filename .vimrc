@@ -194,6 +194,11 @@ map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
+" Git fugitive shortcuts
+map <Leader>gs :Gstatus <CR>
+map <Leader>gd :Gdiff <CR>
+
+
 " Vim + Ctags + Ctrlp
 nnoremap <leader>. :CtrlPTag<cr>
 
@@ -315,4 +320,5 @@ let g:ctrlp_custom_ignore = {
     " \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     " \ }
 
-nmap <leader>a <Esc>:Ack!>
+nmap <leader>a <Esc>:Ack! <C-R>
+" nmap <leader>a <Esc>:Ack!>

@@ -69,9 +69,6 @@ class ScreenConf
         end
     end
     stringify_values(changes, "")
-    
-    def self.applyChanges 
-    end
 
     def self.applyChanges 
         counter = 0

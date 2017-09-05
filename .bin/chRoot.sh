@@ -11,3 +11,4 @@ mount -o defaults,nosuid,nodev,relatime,fmask=0022,dmask=0022,codepage=437,iocha
 arch-chroot /mnt/btrfs-active bash
 #vim /etc/mkinitcpio.conf
 #mkinitcpio -p linux
+#echo 'rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /mnt/usb'
