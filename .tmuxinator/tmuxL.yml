@@ -1,0 +1,33 @@
+name: tmuxL
+root: ~/
+
+windows:
+  - main :
+      layout: c971,208x65,0,0[208x50,0,0{104x50,0,0,5,103x50,105,0,10},208x14,0,51{49x14,0,51[49x8,0,51,6,49x5,0,60,9],158x14,50,51,7}]
+      panes:
+        - logs:
+          - sleep 0.1 && clear && screenfetch -c 255,41 -n
+        - vim:
+          - clear && sh /home/armin/.bin/vimSession.sh
+        - stats:
+          - clear && yaourt -Syua
+        - cheat:
+          - ruby ~/.bin/cheatsheet.rb
+        - stats:
+          - journalctl -f -b-0
+            
+  # - ArchARMv7 :
+      # layout: 6a46,284x76,0,0{142x76,0,0[142x62,0,0,0,142x13,0,63,14],141x76,143,0[141x62,143,0,3,141x13,143,63,5]}
+      # panes:
+        # - logs:
+          # - ssh ArchARMv7
+          # - sleep 0.1 && clear && screenfetch -c 255,41 -n
+        # - stats:
+          # - ssh ArchARMv7
+          # - yaourt -Syua
+        # - logs:
+          # - ssh ArchARMv7
+          # - 'sh .bin/vimSession.sh'
+        # - stats:
+          # - ssh ArchARMv7
+          # - journalctl -f

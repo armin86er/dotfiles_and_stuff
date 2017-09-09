@@ -1,5 +1,4 @@
 fpath=( ~/.zfunc "${fpath[@]}" )
-autoload -Uz feH
 autoload -Uz glog
 autoload -Uz p1ng
 autoload -Uz V

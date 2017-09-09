@@ -1,3 +1,5 @@
+# thanks to https://gist.github.com/gutoandreollo/
+
 # Install arch linux in an encrypted btrfs partition with GPT and UEFI support, gummiboot and hibernate/resume support
 # sources:
 # http://hole.tuziwo.info/install-arch-linux-on-uefi-gpt-computer-with-btrfs-support.html 

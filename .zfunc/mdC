@@ -1,0 +1,2 @@
+pandoc -s $argv.md -o $argv.pdf && atril $argv.pdf
+#pandoc --latex-engine=xelatex -s $argv.md -o $argv.pdf && atril $argv.pdf
