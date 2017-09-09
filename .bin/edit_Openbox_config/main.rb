@@ -7,7 +7,8 @@ require_relative 'screenConf'
 HandleDisplays.new
 ScreenConf.new
 
-`sh ~/.bin/changeWallpaper.sh`
+# `sh ~/.bin/changeWallpaper.sh`
+`DISPLAY=:0 feh --bg-scale /home/armin/Pictures/.wallpaper/file652.jpg` #Fuechse
 `pkill conky`
 `setUSKeyboard`
 `openbox --reconfigure`

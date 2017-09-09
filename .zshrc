@@ -17,11 +17,11 @@ export BROWSER=firefox
 export PATH=$PATH:~/.bin:~/.gem/ruby/2.4.0/bin
 export POWLINE=/usr/lib/python2.7/site-packages/powerline/
 export PAGER=/usr/bin/vimpager && alias less=$PAGER
-export SPROJ=/home/armin/Documents/Studium/Projekt_Software/SoftwareP.git
 export SNIPS=/usr/share/vim/vimfiles/UltiSnips
+export DISABLE_AUTO_TITLE=true
 export tuts=~/Documents/Tutorials
 export stud=~/Documents/Studium
-export DISABLE_AUTO_TITLE=true
+export doc=/usr/share/doc/
 
 # Lines configured by zsh-newuser-install
     HISTFILE=~/.histfile
