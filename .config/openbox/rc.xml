@@ -418,7 +418,7 @@
         </to>
       </action>
     </keybind>
-    <keybind key='C-f'>
+    <keybind key='C-k'>
       <action name='ToggleShowDesktop'/>
     </keybind>
     <!-- Keybindings for windows -->
