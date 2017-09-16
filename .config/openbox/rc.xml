@@ -255,7 +255,7 @@
      cases. -->
   <margins>
     <top>
-       17 
+       16 
     </top>
     <bottom>
        0 
@@ -418,9 +418,9 @@
         </to>
       </action>
     </keybind>
-    <keybind key='C-k'>
-      <action name='ToggleShowDesktop'/>
-    </keybind>
+    <!-- <keybind key='C-k'> -->
+    <!-- <action name='ToggleShowDesktop'/> -->
+    <!-- </keybind> -->
     <!-- Keybindings for windows -->
     <keybind key='A-F4'>
       <action name='Close'/>

@@ -7,7 +7,7 @@ class ScreenConf
     @values = []
     @keys = []
     @x, @y = `xrandr`.scan(/current (\d+) x (\d+)/).flatten
-    if @x == '2560' && @y == '1440'
+    if @x >= '2360' && @y >= '1240'
         @state = 1
     else
         @state = 0

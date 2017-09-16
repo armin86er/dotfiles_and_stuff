@@ -31,7 +31,7 @@ class HandleDisplays
     `xrandr --output DP2 --auto & xrandr --output eDP1 --off & xrandr --output DP1 --off`
   else
     # puts '##Case3'
-    `xrandr --output eDP1 --auto`
+    `xrandr --output eDP1 --auto & xrandr --output DP1 --off & xrandr --output DP2 --off`
   end
 end
 

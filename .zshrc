@@ -31,19 +31,28 @@ export doc=/usr/share/doc/
 # End of lines added by zsh-newuser-install
 
 # The following lines were added by compinstall
-
-    zstyle ':completion:*' auto-description 'specify: %d'
-    zstyle ':completion:*' completer _expand _complete _ignored _approximate
-    zstyle ':completion:*' format 'Completing %d'
-    zstyle ':completion:*' list-colors ''
-    zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-    zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' '' 'l:|=* r:|=*'
-    zstyle ':completion:*' menu select
+    zstyle ':completion:*' group-name ''
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+    zstyle ':completion:*' matcher-list ''
+    zstyle ':completion:*' menu select=long
     zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
     zstyle :compinstall filename '/home/armin/.zshrc'
 
-    # autoload -Uz compinit
-    # compinit
+    autoload -Uz compinit
+    compinit
+
+    # zstyle ':completion:*' auto-description 'specify: %d'
+    # zstyle ':completion:*' completer _expand _complete _ignored _approximate
+    # zstyle ':completion:*' format 'Completing %d'
+    # zstyle ':completion:*' list-colors ''
+    # zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+    # zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' '' 'l:|=* r:|=*'
+    # zstyle ':completion:*' menu select
+    # zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+    # zstyle :compinstall filename '/home/armin/.zshrc'
+    #
+    # # autoload -Uz compinit
+    # # compinit
 # End of lines added by compinstall
 
 # The following lines were added by user
@@ -97,7 +106,23 @@ ttyctl -f
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
  HIST_STAMPS="dd.mm.yyyy"
 
-plugins=(git archlinux common-aliases dirhistory history rails sudo vi-mode web-search catimg zsh-completions cp copyfile extract history-substring-search )
+plugins=(
+git 
+archlinux 
+common-aliases 
+#dirhistory 
+history 
+gem 
+rails 
+vi-mode 
+web-search 
+catimg 
+#zsh-completions 
+#cp 
+#copyfile 
+#extract 
+history-substring-search 
+)
 autoload -Uz compinit && compinit
 
 # Keybindings

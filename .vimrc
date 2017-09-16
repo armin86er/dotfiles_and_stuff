@@ -275,10 +275,10 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 
 
 " These lines setup the environment to show graphics and colors correctly.
-:map <C-S-H> <Esc>:tabp<CR>
-:map <C-S-L> <Esc>:tabn<CR>
-:map <C-S-J> <Esc>:bp<CR>
-:map <C-S-K> <Esc>:bn<CR>
+:map <C-S-J> <Esc>:tabp<CR>
+:map <C-S-K> <Esc>:tabn<CR>
+:map <C-S-H> <Esc>:bp<CR>
+:map <C-S-L> <Esc>:bn<CR>
 
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
