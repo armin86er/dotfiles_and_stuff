@@ -8,7 +8,13 @@
 
 colorscheme molokai
 
+" Indentation settings for using 4 spaces instead of tabs.
+" Do not change 'tabstop' from its default value of 8 with this setup.
+
+" Indentation settings for using hard tabs for indent. Display tabs as
+" four characters wide.
 set tabstop=2 shiftwidth=2 expandtab
+
 set tabpagemax=32
 set scrolloff=3
 set linebreak
@@ -17,7 +23,7 @@ set foldmethod=manual
 "set spell
 
 " " hideComments
- " :set fdm=expr
+:set fdm=expr
 " :set fde=getline(v:lnum)=~'^\\s#'?1:getline(prevnonblank(v:lnum))=~'^\\s#'?1:getline(nextnonblank(v:lnum))=~'^\\s*#'?1:0
 "
 
@@ -40,6 +46,7 @@ set nocompatible
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 filetype indent plugin on
+filetype off
 
 " Enable syntax highlighting
 syntax on
@@ -153,18 +160,6 @@ nmap <F8> :TagbarToggle<CR>
 " toggle the Taglist window
 nmap <F7> :TlistToggle<CR>
 
-" Indentation options {{{1
-"
-" Indentation settings according to personal preference.
-
-" Indentation settings for using 4 spaces instead of tabs.
-" Do not change 'tabstop' from its default value of 8 with this setup.
-
-" Indentation settings for using hard tabs for indent. Display tabs as
-" four characters wide.
-"set shiftwidth=4
-"set tabstop=4
-
 
 set wildignore+=/*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 " set wildignore+=*.so,*.swp,*.zip     " MacOSX/Linux
@@ -197,13 +192,16 @@ map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 " Git fugitive shortcuts
 map <Leader>gs :Gstatus <CR>
 map <Leader>gd :Gdiff <CR>
-
+map <Leader>gb :GV --author=Armin <CR>
 
 " Vim + Ctags + Ctrlp
 nnoremap <leader>. :CtrlPTag<cr>
 
 " Vim + Ctags + Tagbar
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
+"
+" Gundo
+nnoremap <F5> :GundoToggle<CR>
 "
 "------------------------------------------------------------
 "
@@ -227,6 +225,14 @@ nnoremap <leader>sc :setlocal spell spelllang=en_us,de_de<cr>
 " nnoremap <leader>s :ToggleWorkspace<CR>
 " let g:workspace_persist_undo_history = 1  " enabled = 1 (default), disabled = 0
 " let g:workspace_undodir='.undodir'"
+" let g:workspace_undodir='.undodir'"
+" let g:workspace_autosave_always = 1
+"
+" " fancy stuff
+" let g:workspace_powerline_separators = 1
+" let g:workspace_tab_icon = "\uf00a"
+" let g:workspace_left_trunc_icon = "\uf0a8"
+" let g:workspace_right_trunc_icon = "\uf0a9"
 
 "------------------------------------------------------------
 " "" NerdCommenter
@@ -322,3 +328,60 @@ let g:ctrlp_custom_ignore = {
 
 nmap <leader>a <Esc>:Ack! <C-R>
 " nmap <leader>a <Esc>:Ack!>
+"------------------------------------------------------------
+"
+" "" vim-dbext
+"------------------------------------------------------------
+:helptags ~/.vim/doc
+
+" "" vim-tabular
+"------------------------------------------------------------
+if exists(":Tabularize")
+	nmap <Leader>a= :Tabularize /=<CR>
+	vmap <Leader>a= :Tabularize /=<CR>
+	nmap <Leader>a: :Tabularize /:\zs<CR>
+	vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+"
+" "" Vundle
+"------------------------------------------------------------
+call vundle#begin()
+  " alternatively, pass a path where Vundle should install plugins
+  "call vundle#begin('~/some/path/here')
+  " Plugin 'sjl/gundo.vim.git'
+  " Plugin 'Yggdroot/indentLine'
+  " Plugin 'airblade/vim-gitgutter'
+  " Plugin 'vim-scripts/dbext'
+
+  Plugin 'junegunn/gv.vim'
+  Plugin 'vim-scripts/loremipsum'
+  Plugin 'simeji/winresizer'
+  Plugin 'mhinz/vim-startify'
+  Plugin 'MattesGroeger/vim-bookmarks'
+  Plugin 'godlygeek/tabular'
+  Plugin 'tpope/vim-repeat'
+  Plugin 'ryanoasis/vim-devicons'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+nmap <leader>g <Esc>:Ack! '
+
+let g:rehash256 = 1
+
+" If you want to start window resize mode by `Ctrl+I`
+let g:winresizer_start_key = '<C-I>'
+
+let g:startify_change_to_dir          = 0
+
