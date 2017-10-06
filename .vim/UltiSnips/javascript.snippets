@@ -1,0 +1,22 @@
+snippet newJS "Create Namespace and object orientated javaScript file"
+/* global HelpcenterNav, scrollToElement, _ */
+var ${1:Class_name} = (function() {
+  var module = {},
+
+      ${2:varName},
+
+      ${4:anonymusFunction} = function(${5:}) {
+      },
+
+      bindEvents = function() {
+        //$goBackBtn.on('click', goBackToSearch);
+      };
+
+
+  module.init = function() {
+    $2  = ${3:"value"};
+
+
+  return module;
+}());
+endsnippet
