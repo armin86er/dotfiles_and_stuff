@@ -6,6 +6,9 @@ autoload -Uz mdC
 autoload -Uz lL
 autoload -Uz paclsexplicit
 autoload -Uz qr
+autoload -Uz CD
+autoload -Uz RM
+autoload -Uz ginit
 
 export VBOX_USB=usbfs
 export ZSH=/usr/share/oh-my-zsh

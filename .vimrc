@@ -17,7 +17,7 @@ set foldmethod=manual
 "set spell
 
 " " hideComments
- :set fdm=expr
+ " :set fdm=expr
 " :set fde=getline(v:lnum)=~'^\\s#'?1:getline(prevnonblank(v:lnum))=~'^\\s#'?1:getline(nextnonblank(v:lnum))=~'^\\s*#'?1:0
 "
 

@@ -587,7 +587,7 @@
     <keybind key='C-A-i'>
       <action name='Execute'>
         <command>
-           setxkbmap de 
+           setDEKeyboard 
         </command>
       </action>
     </keybind>

@@ -16,18 +16,14 @@ windows:
         - stats:
           - journalctl -f -b-0
             
-  # - ArchARMv7 :
-      # layout: 6a46,284x76,0,0{142x76,0,0[142x62,0,0,0,142x13,0,63,14],141x76,143,0[141x62,143,0,3,141x13,143,63,5]}
-      # panes:
-        # - logs:
-          # - ssh ArchARMv7
-          # - sleep 0.1 && clear && screenfetch -c 255,41 -n
-        # - stats:
-          # - ssh ArchARMv7
-          # - yaourt -Syua
-        # - logs:
-          # - ssh ArchARMv7
-          # - 'sh .bin/vimSession.sh'
-        # - stats:
-          # - ssh ArchARMv7
-          # - journalctl -f
+  - snips :
+      layout: ccb2,208x65,0,0[208x32,0,0{104x32,0,0,22,103x32,105,0,24},208x32,0,33{104x32,0,33,23,103x32,105,33,26}]
+      panes:
+        - logs:
+          - vim -o2 $SNIPS/html.snippets ~/.vim/UltiSnips/html.snippets
+        - stats:
+          - vim -o2 $SNIPS/javascript.snippets ~/.vim/UltiSnips/javascript.snippets
+        - logs:
+          - vim -o2 $SNIPS/ruby.snippets ~/.vim/UltiSnips/ruby.snippets
+        - stats:
+          - vim -o2 $SNIPS/rails.snippets ~/.vim/UltiSnips/rails.snippets
