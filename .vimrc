@@ -6,6 +6,8 @@
 "              on this file is still a good idea.
 "------------------------------------------------------------
 
+runtime macros/matchit.vim
+
 colorscheme molokai
 
 " Indentation settings for using 4 spaces instead of tabs.
@@ -164,6 +166,9 @@ nmap <F7> :TlistToggle<CR>
 set wildignore+=/*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 " set wildignore+=*.so,*.swp,*.zip     " MacOSX/Linux
 
+hi Normal   ctermfg=252 ctermbg=none
+hi NonText  ctermfg=252 ctermbg=none
+
 "------------------------------------------------------------
 " Mappings {{{1
 "
@@ -179,7 +184,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 
 
 " Highlight search
- :set hlsearch
+set hlsearch
 
 " set nocompatible              " be iMproved, required
 
@@ -337,7 +342,7 @@ nmap <leader>a <Esc>:Ack! <C-R>
 "
 " "" vim-dbext
 "------------------------------------------------------------
-:helptags ~/.vim/doc
+" :helptags ~/.vim/doc
 
 " "" vim-tabular
 "------------------------------------------------------------
@@ -360,6 +365,20 @@ function! s:align()
   endif
 endfunction
 "
+" "" git-gutter
+"------------------------------------"
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+
+" "" devicons
+"------------------------------------"
+set encoding=utf8
+"  guifont=Inconsolata\ Nerd\ Font\ 19
+
+" "" vim-bookmars
+"------------------------------------"
+let g:bookmark_save_per_working_dir = 1
+
 " "" Vundle
 "------------------------------------------------------------
 call vundle#begin()
@@ -368,9 +387,9 @@ call vundle#begin()
   " Plugin 'sjl/gundo.vim.git'
   " Plugin 'Yggdroot/indentLine'
   " Plugin 'airblade/vim-gitgutter'
-  " Plugin 'vim-scripts/dbext'
+  " Plugin 'vim-scripts/dbext.vim'
 
-  Plugin 'junegunn/gv.vim'
+  Plugin 'junegunn/gv.vim' " Not sure
   Plugin 'vim-scripts/loremipsum'
   Plugin 'simeji/winresizer'
   Plugin 'mhinz/vim-startify'

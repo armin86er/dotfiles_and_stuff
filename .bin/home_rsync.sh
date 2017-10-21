@@ -27,22 +27,23 @@ CURRENT=CurrentVersion
 INCREMENTDIR=`date +%Y-%m-%d`
 
 # options to pass to rsync
-OPTIONS="--numeric-ids -aSzh --info=progress2   \
---force --ignore-errors --delete --delete-excluded \
---exclude="*.swp" --exclude=/Downloads/         \
---exclude=/Music/ --exclude=/Videos/            \
---exclude=/Nextcloud  --exclude=/.gvfs          \
---exclude=/.thumbnails/* --exclude=/.cache/     \
---exclude=/.vm/ --exclude=/.ssh/                \
---exclude=/.mozilla/ --exclude=/.thunderbird/   \
---exclude=/.kodi/ --exclude=/.irssi/            \
---exclude=/.gnupg/ --exclude=/.atom/            \
---exclude=/.local/share/Trash/ --exclude=/.atom/\
---exclude=/tempy/ --exclude=/.RubyMine*         \
---exclude=/.config/chromium --exclude=/.config/systemd  \
---exclude=/Workspace/Angular2/quickstart/node_modules/.bin   \
---exclude=/Documents/Tutorials/vim/docs/        \
---backup --backup-dir=$ARCHIVEROOT/$INCREMENTDIR" 
+OPTIONS="--numeric-ids -aSzh --info=progress2              \ 
+--force --ignore-errors --delete --delete-excluded         \ 
+--exclude="*.swp" --exclude=/Downloads/                    \ 
+--exclude=/Music/ --exclude=/Videos/                       \ 
+--exclude=/Nextcloud  --exclude=/.gvfs                     \ 
+--exclude=/.thumbnails/* --exclude=/.cache/                \ 
+--exclude=/.vm/ --exclude=/.ssh/                           \ 
+--exclude=/.mozilla/ --exclude=/.thunderbird/              \ 
+--exclude=/.kodi/ --exclude=/.irssi/                       \ 
+--exclude=/.gnupg/ --exclude=/.atom/                       \ 
+--exclude=/.local/share/Trash/ --exclude=/.atom/           \ 
+--exclude=/tempy/ --exclude=/.RubyMine*                    \ 
+--exclude=/.config/chromium --exclude=/.config/systemd     \ 
+--exclude=/.AndroidStudio2.3/                              \ 
+--exclude=/Workspace/Angular2/quickstart/node_modules/.bin \ 
+--exclude=/Documents/Tutorials/vim/docs/                   \ 
+--backup --backup-dir=$ARCHIVEROOT/$INCREMENTDIR"
 
 #export PATH=$PATH:/bin:/usr/bin:/usr/local/bin
 
