@@ -5,6 +5,7 @@
 "              If you're a more advanced user, building your own .vimrc based
 "              on this file is still a good idea.
 "------------------------------------------------------------
+let hostname = substitute(system('hostname'), '\n', '', '')
 
 runtime macros/matchit.vim
 
@@ -15,9 +16,13 @@ colorscheme molokai
 
 " Indentation settings for using hard tabs for indent. Display tabs as
 " four characters wide.
-set tabstop=2 shiftwidth=2 expandtab
+if $HOSTNAME == "archspell"
+  set tabstop=4 shiftwidth=4
+elseif $HOSTNAME == "archvm"
+  set tabstop=2 shiftwidth=2 expandtab
+endif
 
-set tabpagemax=32
+set tabpagemax=3
 set scrolloff=3
 set linebreak
 set whichwrap=b,s,<,>,[,]
