@@ -278,6 +278,14 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+if hostname() == "archspell"
+elseif hostname() == "archvm"
+	let g:syntastic_ruby_checkers=['rubocop']
+	let g:syntastic_haml_checkers=['haml_lint']
+	let g:syntastic_javascript_eslint_exec = '~/pictrs/node_modules/.bin/eslint'
+	let g:syntastic_javascript_checkers = ['eslint']
+endif
 "------------------------------------------------------------
 "
 " "" Powerline
