@@ -16,9 +16,9 @@ colorscheme molokai
 
 " Indentation settings for using hard tabs for indent. Display tabs as
 " four characters wide.
-if $HOSTNAME == "archspell"
+if hostname() == "archspell"
   set tabstop=4 shiftwidth=4
-elseif $HOSTNAME == "archvm"
+elseif hostname() == "archvm"
   set tabstop=2 shiftwidth=2 expandtab
 endif
 
