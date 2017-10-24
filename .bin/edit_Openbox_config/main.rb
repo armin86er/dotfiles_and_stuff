@@ -14,3 +14,5 @@ ScreenConf.new
 `openbox --reconfigure`
 
 `sh ~/.config/conky/conkyrc.start.sh > /dev/null 2> /dev/null #start Conky`
+
+asdf

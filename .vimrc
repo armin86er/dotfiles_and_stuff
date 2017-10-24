@@ -5,11 +5,27 @@
 "              If you're a more advanced user, building your own .vimrc based
 "              on this file is still a good idea.
 "------------------------------------------------------------
-let hostname = substitute(system('hostname'), '\n', '', '')
 
 runtime macros/matchit.vim
 
 colorscheme molokai
+
+" ## Persistant Undo
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
+" ## End Persistant Undo
+
 
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
@@ -17,7 +33,7 @@ colorscheme molokai
 " Indentation settings for using hard tabs for indent. Display tabs as
 " four characters wide.
 if hostname() == "archspell"
-  set tabstop=4 shiftwidth=4
+  set tabstop=2 shiftwidth=2
 elseif hostname() == "archvm"
   set tabstop=2 shiftwidth=2 expandtab
 endif
@@ -396,15 +412,15 @@ call vundle#begin()
   " Plugin 'Yggdroot/indentLine'
   " Plugin 'airblade/vim-gitgutter'
   " Plugin 'vim-scripts/dbext.vim'
+  " Plugin 'godlygeek/tabular'
+  " Plugin 'ryanoasis/vim-devicons'
 
   Plugin 'junegunn/gv.vim' " Not sure
   Plugin 'vim-scripts/loremipsum'
   Plugin 'simeji/winresizer'
   Plugin 'mhinz/vim-startify'
   Plugin 'MattesGroeger/vim-bookmarks'
-  Plugin 'godlygeek/tabular'
   Plugin 'tpope/vim-repeat'
-  Plugin 'ryanoasis/vim-devicons'
 call vundle#end()            " required
 filetype plugin indent on    " required
 

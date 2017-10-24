@@ -601,7 +601,7 @@
     <keybind key='C-A-d'>
       <action name='Execute'>
         <command>
-           ruby ~/.bin/edit_Openbox_config/main.rb 
+           sh ~/.bin/edit_Openbox_config/main.sh 
         </command>
       </action>
     </keybind>
@@ -669,7 +669,7 @@
     <keybind key='Hyper-a'>
       <action name='Execute'>
         <command>
-           xfce4-terminal --title='Terminal - localhost' 
+           terminal 
         </command>
       </action>
     </keybind>
