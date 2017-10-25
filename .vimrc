@@ -10,23 +10,6 @@ runtime macros/matchit.vim
 
 colorscheme molokai
 
-" ## Persistant Undo
-" Put plugins and dictionaries in this dir (also on Windows)
-let vimDir = '$HOME/.vim'
-let &runtimepath.=','.vimDir
-
-" Keep undo history across sessions by storing it in a file
-if has('persistent_undo')
-    let myUndoDir = expand(vimDir . '/undodir')
-    " Create dirs
-    call system('mkdir ' . vimDir)
-    call system('mkdir ' . myUndoDir)
-    let &undodir = myUndoDir
-    set undofile
-endif
-" ## End Persistant Undo
-
-
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
 
@@ -246,7 +229,23 @@ set directory=~/.vim/tmp     " Where temporary files will go.
 "------------------------------------------------------------
 nnoremap <leader>sc :setlocal spell spelllang=en_us,de_de<cr>
 "------------------------------------------------------------
-"
+
+" ## Persistant Undo
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
+" ## End Persistant Undo
+
 " "" Workspace
 " nnoremap <leader>s :ToggleWorkspace<CR>
 " let g:workspace_persist_undo_history = 1  " enabled = 1 (default), disabled = 0
