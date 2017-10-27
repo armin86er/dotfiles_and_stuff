@@ -1,0 +1,4 @@
+echo '*' > .gitignore && \
+git init && \ 
+git add -A && \
+git commit -m "Initialize repository"
