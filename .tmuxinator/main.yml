@@ -1,0 +1,31 @@
+name: main
+root: ~/
+
+windows:
+  - main :
+      layout: d926,208x65,0,0[208x57,0,0{108x57,0,0,0,99x57,109,0,1},208x7,0,58{66x7,0,58,2,141x7,67,58,3}]
+      panes:
+        - main:
+          - cd ~ && sleep 0.1 && clear && screenfetch -c 255,41 -n
+        - editor:
+          - cd ~ && clear && sh /home/armin/.bin/vimSession.sh
+        - stdin:
+          - cd ~
+        - logs:
+          - journalctl -f -b-0
+            
+  # - ArchARMv7 :
+      # layout: 6a46,284x76,0,0{142x76,0,0[142x62,0,0,0,142x13,0,63,14],141x76,143,0[141x62,143,0,3,141x13,143,63,5]}
+      # panes:
+        # - logs:
+          # - ssh ArchARMv7
+          # - sleep 0.1 && clear && screenfetch -c 255,41 -n
+        # - stats:
+          # - ssh ArchARMv7
+          # - yaourt -Syua
+        # - logs:
+          # - ssh ArchARMv7
+          # - 'sh .bin/vimSession.sh'
+        # - stats:
+          # - ssh ArchARMv7
+          # - journalctl -f

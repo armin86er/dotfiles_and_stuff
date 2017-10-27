@@ -1,3 +1,4 @@
 #!/bin/bash
-setxkbmap us &&
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+setxkbmap us && 	\
+# xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+setxkbmap -option caps:swapescape

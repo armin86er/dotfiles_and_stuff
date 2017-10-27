@@ -9,6 +9,7 @@ autoload -Uz qr
 autoload -Uz CD
 autoload -Uz RM
 autoload -Uz ginit
+autoload -Uz vimCommit
 
 export VBOX_USB=usbfs
 export ZSH=/usr/share/oh-my-zsh
