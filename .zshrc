@@ -199,18 +199,24 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source $ZSH/oh-my-zsh.sh
+case $HOST in
+    archdicho)
+			source $ZSH/oh-my-zsh.sh
 
-# Powerline
-source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+			# Powerline
+			source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
-# zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+			# zsh-syntax-highlighting
+			source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     
-# Completion File for tmuxinator
-source /usr/lib/ruby/gems/2.4.0/gems/tmuxinator-0.9.0/completion/tmuxinator.zsh
-#source /usr/share/doc/pkgfile/command-not-found.zsh
+			# Completion File for tmuxinator
+			source /usr/lib/ruby/gems/2.4.0/gems/tmuxinator-0.9.0/completion/tmuxinator.zsh
+			#source /usr/share/doc/pkgfile/command-not-found.zsh
 
+        ;;
+    debian)
+        ;;
+esac
 
 # bindkey '^[[1~' '[[D'
 # bindkey '[[4~' '^[[C'
