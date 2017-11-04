@@ -197,10 +197,10 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 case $HOST in
     archdicho)
+			source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 			source $ZSH/oh-my-zsh.sh
 
 			# Powerline
