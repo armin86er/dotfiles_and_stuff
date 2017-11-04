@@ -346,12 +346,14 @@ endif
 "------------------------------------------------------------
 "
 " CtrlP
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|^bundle$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+if hostname() == "archvm"
+	let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+	let g:ctrlp_custom_ignore = {
+		\ 'dir':  '\v[\/]\.(git|hg|svn)$|^bundle$',
+		\ 'file': '\v\.(exe|so|dll)$',
+		\ 'link': 'some_bad_symbolic_links',
+		\ }
+endif
 
 " Open default in new tabs
 " let g:ctrlp_prompt_mappings = {
@@ -418,6 +420,16 @@ call vundle#begin()
   " Plugin 'ryanoasis/vim-devicons'
 	if hostname() == "debian"
 		Plugin 'kien/ctrlp.vim'
+		Plugin 'mileszs/ack.vim'
+		Plugin 'jiangmiao/auto-pairs'
+		Plugin 'airblade/vim-gitgutter'
+		Plugin 'sjl/gundo.vim'
+		Plugin 'Yggdroot/indentLine'
+		Plugin 'scrooloose/nerdcommenter'
+		Plugin 'tpope/vim-surround'
+		Plugin 'vim-syntastic/syntastic'
+		Plugin 'sirver/UltiSnips'
+		Plugin 'rkitover/vimpager'
 	endif
 
   Plugin 'junegunn/gv.vim' " Not sure
