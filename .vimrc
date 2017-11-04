@@ -15,10 +15,10 @@ colorscheme molokai
 
 " Indentation settings for using hard tabs for indent. Display tabs as
 " four characters wide.
-if hostname() == "archspell"
-  set tabstop=2 shiftwidth=2
-elseif hostname() == "archvm"
+if hostname() == "archvm"
   set tabstop=2 shiftwidth=2 expandtab
+else
+  set tabstop=2 shiftwidth=2
 endif
 
 set tabpagemax=3
@@ -294,7 +294,7 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-if hostname() == "archspell"
+if hostname() == "archdicho"
 elseif hostname() == "archvm"
 	let g:syntastic_ruby_checkers=['rubocop']
 	let g:syntastic_haml_checkers=['haml_lint']
@@ -404,6 +404,9 @@ let g:bookmark_save_per_working_dir = 1
 
 " "" Vundle
 "------------------------------------------------------------
+if hostname() == "debian"
+	set rtp+=~/.vim/bundle/Vundle.vim
+endif
 call vundle#begin()
   " alternatively, pass a path where Vundle should install plugins
   "call vundle#begin('~/some/path/here')
@@ -413,6 +416,9 @@ call vundle#begin()
   " Plugin 'vim-scripts/dbext.vim'
   " Plugin 'godlygeek/tabular'
   " Plugin 'ryanoasis/vim-devicons'
+	if hostname() == "debian"
+		Plugin 'kien/ctrlp.vim'
+	endif
 
   Plugin 'junegunn/gv.vim' " Not sure
   Plugin 'vim-scripts/loremipsum'

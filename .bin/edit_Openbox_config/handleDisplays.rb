@@ -23,7 +23,7 @@ class HandleDisplays
     end
   end
 
-	if `hostname`.strip == 'archspell'
+	if `hostname`.strip == 'archdicho'
 		if @DP1
 			# puts '##Case1'
 			`xrandr --output DP1 --auto --primary & xrandr --output eDP1 --off & xrandr --output DP2 --off`

@@ -11,20 +11,28 @@ autoload -Uz RM
 autoload -Uz ginit
 autoload -Uz vimCommit
 
-export VBOX_USB=usbfs
-export ZSH=/usr/share/oh-my-zsh
 export EDITOR=vim
 export SUDO_EDITOR=vim
 export VISUAL=vim
-export BROWSER=firefox
-export PATH=$PATH:~/.bin:~/.gem/ruby/2.4.0/bin
-export POWLINE=/usr/lib/python2.7/site-packages/powerline/
 export PAGER=/usr/bin/vimpager && alias less=$PAGER
-export SNIPS=/usr/share/vim/vimfiles/UltiSnips
-export DISABLE_AUTO_TITLE=true
-export tuts=~/Documents/Tutorials
-export stud=~/Documents/Studium
-export doc=/usr/share/doc/
+case $HOST in
+    archdicho)
+			export VBOX_USB=usbfs
+			export ZSH=/usr/share/oh-my-zsh
+			export BROWSER=firefox
+			export PATH=$PATH:~/.bin:~/.gem/ruby/2.4.0/bin
+			export POWLINE=/usr/lib/python2.7/site-packages/powerline/
+			export SNIPS=/usr/share/vim/vimfiles/UltiSnips
+			export DISABLE_AUTO_TITLE=true
+			export tuts=~/Documents/Tutorials
+			export stud=~/Documents/Studium
+			export doc=/usr/share/doc/
+        ;;
+    debian)
+        ;;
+    *)
+        ;;
+esac
 
 # Lines configured by zsh-newuser-install
     HISTFILE=~/.histfile
@@ -110,23 +118,38 @@ ttyctl -f
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
  HIST_STAMPS="dd.mm.yyyy"
 
-plugins=(
-git 
-archlinux 
-common-aliases 
-#dirhistory 
-history 
-gem 
-rails 
-vi-mode 
-web-search 
-catimg 
-#zsh-completions 
-#cp 
-#copyfile 
-#extract 
-history-substring-search 
-)
+case $HOST in
+    archdicho)
+			plugins=(
+			git 
+			archlinux 
+			common-aliases 
+			#dirhistory 
+			history 
+			gem 
+			rails 
+			vi-mode 
+			web-search 
+			catimg 
+			#zsh-completions 
+			#cp 
+			#copyfile 
+			#extract 
+			history-substring-search 
+			)
+        ;;
+    debian)
+			plugins=(
+			git 
+			common-aliases 
+			history 
+			gem 
+			rails 
+			vi-mode 
+			history-substring-search 
+			)
+        ;;
+esac
 autoload -Uz compinit && compinit
 
 # Keybindings
