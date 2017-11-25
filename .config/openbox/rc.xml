@@ -519,7 +519,23 @@
         </command>
       </action>
     </keybind>
-    <keybind key='C-A-H-l'>
+    <keybind key='C-H-A-m'>
+      <action name='Execute'>
+        <command>
+           ruby /home/armin/Workspace/Ruby/attendance_recorder/main.rb manuel
+          --production 
+        </command>
+      </action>
+    </keybind>
+    <keybind key='C-H-A-p'>
+      <action name='Execute'>
+        <command>
+           ruby /home/armin/Workspace/Ruby/attendance_recorder/main.rb pictrs
+          --production 
+        </command>
+      </action>
+    </keybind>
+    <keybind key='C-H-A-l'>
       <action name='Execute'>
         <command>
            lock.sh 
@@ -1899,7 +1915,7 @@
       </position>
     </application>
     <!-- IntelliJ  -->
-    <application Title='IntelliJ IDEA 2017.1' class='jetbrains-idea' name='sun-awt-X11-XFramePeer' type='normal'>
+    <application name='sun-awt-X11-XFramePeer' type='normal'>
       <desktop>
          3 
       </desktop>
@@ -1910,7 +1926,7 @@
          true 
       </maximized>
       <decor>
-         yes 
+         no 
       </decor>
     </application>
     <!-- RubyMine  -->

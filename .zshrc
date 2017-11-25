@@ -29,6 +29,8 @@ case $HOST in
 			export doc=/usr/share/doc/
         ;;
     debian)
+			export ZSH=~/.oh-my-zsh
+			PROMPT=walters
         ;;
     *)
         ;;
@@ -197,11 +199,11 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+source $ZSH/oh-my-zsh.sh
+
 case $HOST in
     archdicho)
 			source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-			source $ZSH/oh-my-zsh.sh
 
 			# Powerline
 			source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
@@ -210,11 +212,12 @@ case $HOST in
 			source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     
 			# Completion File for tmuxinator
-			source /usr/lib/ruby/gems/2.4.0/gems/tmuxinator-0.9.0/completion/tmuxinator.zsh
+			source /usr/lib/ruby/gems/2.4.0/gems/tmuxinator-0.10.0/completion/tmuxinator.zsh
 			#source /usr/share/doc/pkgfile/command-not-found.zsh
 
         ;;
     debian)
+			source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
         ;;
 esac
 

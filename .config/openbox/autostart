@@ -46,7 +46,7 @@ volumeicon &
 
 #esniper ~/.auctionfile &
 
-sleep 1 && sh ~/.bin/dock.sh
+sleep 2 && sh ~/.bin/dock.sh
 
 #export $XDG_CONFIG_HOME='~/.config' &
 
