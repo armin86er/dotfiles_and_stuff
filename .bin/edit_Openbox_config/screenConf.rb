@@ -27,6 +27,9 @@ class ScreenConf
         "applications" => {
             "/application" => {
                 "[@class=" => {
+                    "'DB Browser for SQLite']" => {
+                            "/size/width" =>  [ s_width, b_width ], 
+                            "/maximized" => ["true", "vertical"]},
                     "'Xfce4-terminal']" => {
                             "/size/width" =>  [ s_width, b_width ], 
                             "/maximized" => ["true", "vertical"]},
@@ -34,11 +37,11 @@ class ScreenConf
                             "/size/width" => [ s_width, b_width ],
                             "/maximized" => ["true", "vertical"],
                             "/decor" => ["no", "yes"] },
-                    "'Thunar']" => { 
-                            "/size/width" => [s_width, b_widthHalbe ],
-                            "/maximized" => ["true", "false"],
-                            "/position/x" => [s_posX, b_posXl],
-                            "/decor" => ["no", "yes"] },
+                    # "'Thunar']" => {
+                            # "/size/width" => [s_width, b_widthHalbe ],
+                            # "/maximized" => ["true", "false"],
+                            # "/position/x" => [s_posX, b_posXl],
+                            # "/decor" => ["no", "yes"] },
                     "'Engrampa']" => {
                             "/size/width" => [s_width, b_widthHalbe ],
                             "/maximized" => ["true", "false"],

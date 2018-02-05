@@ -10,7 +10,7 @@ windows:
         - editor:
           - cd ~ && clear && sh /home/armin/.bin/vimSession.sh
         - stdin:
-          - cd ~
+          - cd ~ && clear
         - logs:
           - journalctl -f -b-0
             

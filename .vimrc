@@ -246,7 +246,7 @@ if has('persistent_undo')
 endif
 " ## End Persistant Undo
 
-" "" Workspace
+" Workspace
 " nnoremap <leader>s :ToggleWorkspace<CR>
 " let g:workspace_persist_undo_history = 1  " enabled = 1 (default), disabled = 0
 " let g:workspace_undodir='.undodir'"
@@ -260,7 +260,7 @@ endif
 " let g:workspace_right_trunc_icon = "\uf0a9"
 
 "------------------------------------------------------------
-" "" NerdCommenter
+" NerdCommenter
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -283,7 +283,7 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 "------------------------------------------------------------
 "
-" "" Syntastic
+" Syntastic
 " Plugin 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -303,7 +303,7 @@ elseif hostname() == "archvm"
 endif
 "------------------------------------------------------------
 "
-" "" Powerline
+" Powerline
 " Powerline Features
 set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim
 " You may find the following vim settings useful when using the Powerline statusline:
@@ -332,7 +332,7 @@ endif
 
 "------------------------------------------------------------
 "
-" "" Nerdtree
+" Nerdtree
 " NERDTree automatically when vim starts up on opening a directory
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -355,21 +355,17 @@ if hostname() == "archvm"
 		\ }
 endif
 
-" Open default in new tabs
-" let g:ctrlp_prompt_mappings = {
-    " \ 'AcceptSelection("e")': ['<c-t>'],
-    " \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    " \ }
-
-nmap <leader>a <Esc>:Ack! <C-R>
-" nmap <leader>a <Esc>:Ack!>
+" vim-ack
+"------------------------------------------------------------
+nmap <leader>a :tab split<CR>:Ack ""<Left>
+nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 "------------------------------------------------------------
 "
-" "" vim-dbext
+" vim-dbext
 "------------------------------------------------------------
 " :helptags ~/.vim/doc
 
-" "" vim-tabular
+" vim-tabular
 "------------------------------------------------------------
 if exists(":Tabularize")
 	nmap <Leader>a= :Tabularize /=<CR>
@@ -390,21 +386,25 @@ function! s:align()
   endif
 endfunction
 "
-" "" git-gutter
+" git-gutter
 "------------------------------------"
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 
-" "" devicons
+" devicons
 "------------------------------------"
 set encoding=utf8
 "  guifont=Inconsolata\ Nerd\ Font\ 19
+"
+" vim-latex
+"------------------------------------"
+let g:Tex_DefaultTargetFormat = 'pdf'
 
-" "" vim-bookmars
+" vim-bookmars
 "------------------------------------"
 let g:bookmark_save_per_working_dir = 1
 
-" "" Vundle
+" Vundle
 "------------------------------------------------------------
 if hostname() == "debian"
 	set rtp+=~/.vim/bundle/Vundle.vim
@@ -432,6 +432,7 @@ call vundle#begin()
 		Plugin 'rkitover/vimpager'
 	endif
 
+	" Plugin 'vim-latex/vim-latex'
   Plugin 'junegunn/gv.vim' " Not sure
   Plugin 'vim-scripts/loremipsum'
   Plugin 'simeji/winresizer'
@@ -440,8 +441,6 @@ call vundle#begin()
   Plugin 'tpope/vim-repeat'
 call vundle#end()            " required
 filetype plugin indent on    " required
-
-nmap <leader>g <Esc>:Ack! '
 
 let g:rehash256 = 1
 

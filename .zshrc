@@ -17,10 +17,11 @@ export VISUAL=vim
 export PAGER=/usr/bin/vimpager && alias less=$PAGER
 case $HOST in
     archdicho)
+			export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 			export VBOX_USB=usbfs
 			export ZSH=/usr/share/oh-my-zsh
 			export BROWSER=firefox
-			export PATH=$PATH:~/.bin:~/.gem/ruby/2.4.0/bin
+			export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
 			export POWLINE=/usr/lib/python2.7/site-packages/powerline/
 			export SNIPS=/usr/share/vim/vimfiles/UltiSnips
 			export DISABLE_AUTO_TITLE=true
@@ -223,3 +224,27 @@ esac
 
 # bindkey '^[[1~' '[[D'
 # bindkey '[[4~' '^[[C'
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+function githubCount { 
+	DEST=/tmp/temp-linecount-repo
+	git clone --depth 1 "$1" $DEST &&
+	# cd $DEST &&
+	# git ls-files -z | xargs -0 wc -l &&
+  cloc $DEST
+  rm -rf temp-linecount-repo
+}
+
+function ytAudio() {
+	OLD=$PWD
+	DEST=~/.nextcloud/Music/YouTube/
+	cd $DEST
+	mkdir $1
+	cd $1
+	youtube-dl -f m4a $2
+	cd $OLD
+}
+
+function wave2mp3 {
+	ffmpeg -i $1 -vn -ar 44100 -ac 2 -ab 192k -f mp3 $1.mp3
+}

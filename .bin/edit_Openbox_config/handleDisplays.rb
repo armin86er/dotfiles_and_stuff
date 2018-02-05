@@ -26,13 +26,13 @@ class HandleDisplays
 	if `hostname`.strip == 'archdicho'
 		if @DP1
 			# puts '##Case1'
-			`xrandr --output DP1 --primary & xrandr --output eDP1 --off & xrandr --output DP2 --off`
+			`xrandr --output DP1 --auto --primary & xrandr --output eDP1 --off & xrandr --output DP2 --off`
 		elsif @DP2 && !@DP1
 			# puts '##Case2'
-			`xrandr --output DP2 --primary & xrandr --output eDP1 --off & xrandr --output DP1 --off`
+			`xrandr --output DP2 --auto --primary & xrandr --output eDP1 --off & xrandr --output DP1 --off`
 		else
 			# puts '##Case3'
-			`xrandr --output eDP1 --primary & xrandr --output DP1 --off & xrandr --output DP2 --off`
+			`xrandr --output eDP1 --auto --primary & xrandr --output DP1 --off & xrandr --output DP2 --off`
 		end
 	else
 	end
