@@ -23,11 +23,13 @@ case $HOST in
 			export BROWSER=firefox
 			export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
 			export POWLINE=/usr/lib/python2.7/site-packages/powerline/
-			export SNIPS=/usr/share/vim/vimfiles/UltiSnips
+			export g_snips=/usr/share/vim/vimfiles/UltiSnips
+			export l_snips=~/.vim/UltiSnips
 			export DISABLE_AUTO_TITLE=true
 			export tuts=~/Documents/Tutorials
 			export stud=~/Documents/Studium
 			export doc=/usr/share/doc/
+      export gems=$(ruby -e 'print Gem.user_dir')/gems
         ;;
     debian)
 			export ZSH=~/.oh-my-zsh

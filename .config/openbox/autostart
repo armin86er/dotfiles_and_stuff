@@ -28,7 +28,7 @@ tint2 .config/tint2/tint2rc2 &
 # redshift -l 52.5:13.4 -t 6500:6500 &
 redshift &
 
-unclutter -idle 3 &
+unclutter -idle 2 &
 
 #Calender
 orage &

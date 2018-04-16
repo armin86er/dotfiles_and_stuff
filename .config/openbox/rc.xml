@@ -1495,11 +1495,11 @@
          normal 
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          889
+          2100
         </width>
       </size>
       <position force='yes'>
@@ -1524,19 +1524,19 @@
       </maximized>
       <size>
         <width>
-          380
+          660
         </width>
       </size>
       <position force='yes'>
         <x>
-          986
+          1900
         </x>
         <y>
            0 
         </y>
       </position>
       <decor>
-        no
+        yes
       </decor>
     </application>
     <!-- Atom  -->
@@ -1548,11 +1548,11 @@
          normal 
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          889
+          2100
         </width>
       </size>
       <position force='yes'>
@@ -1564,7 +1564,7 @@
         </y>
       </position>
       <decor>
-        no
+        yes
       </decor>
     </application>
     <!-- SQLite Browser  -->
@@ -1576,11 +1576,11 @@
          normal 
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          889
+          2100
         </width>
       </size>
       <position force='yes'>
@@ -1681,11 +1681,11 @@
          normal 
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          889
+          2100
         </width>
         <height>
            1145 
@@ -1743,11 +1743,11 @@
          normal 
       </layer>
       <maximized>
-        true
+        false
       </maximized>
       <size>
         <width>
-          889
+          1030
         </width>
         <height>
            1145 
@@ -1755,14 +1755,14 @@
       </size>
       <position force='yes'>
         <x>
-          0
+          1260
         </x>
         <y>
            0 
         </y>
       </position>
       <decor>
-        no
+        yes
       </decor>
     </application>
     <!-- Firefox  -->
@@ -1901,7 +1901,7 @@
       </decor>
     </application>
     <!-- VirtualBox  -->
-    <application class='VirtualBox Machine' name='VirtualBox Machine' type='normal'>
+    <application class='VirtualBox' name='VirtualBox' type='normal'>
       <desktop>
          3 
       </desktop>
@@ -1916,7 +1916,7 @@
       </decor>
     </application>
     <!-- VLC  -->
-    <application class='Vlc' name='vlc' role='vlc-main' type='normal'>
+    <application class='vlc' name='vlc' role='vlc-main' type='normal'>
       <desktop>
          3 
       </desktop>

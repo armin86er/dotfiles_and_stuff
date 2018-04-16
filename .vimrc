@@ -18,7 +18,7 @@ colorscheme molokai
 if hostname() == "archvm"
   set tabstop=2 shiftwidth=2 expandtab
 else
-  set tabstop=2 shiftwidth=2
+  set tabstop=2 shiftwidth=2 expandtab
 endif
 
 set tabpagemax=3
@@ -346,14 +346,14 @@ endif
 "------------------------------------------------------------
 "
 " CtrlP
-if hostname() == "archvm"
 	let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 	let g:ctrlp_custom_ignore = {
 		\ 'dir':  '\v[\/]\.(git|hg|svn)$|^bundle$',
 		\ 'file': '\v\.(exe|so|dll)$',
 		\ 'link': 'some_bad_symbolic_links',
 		\ }
-endif
+  let g:ctrlp_working_path_mode = 'ra'
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']  " Ignore files in .gitignore
 
 " vim-ack
 "------------------------------------------------------------
@@ -404,6 +404,23 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 "------------------------------------"
 let g:bookmark_save_per_working_dir = 1
 
+" vim-javascript
+"------------------------------------"
+" let g:javascript_conceal_function             = 'ƒ'
+" let g:javascript_conceal_null                 = 'ø'
+" " let g:javascript_conceal_this                 = '@'
+" " let g:javascript_conceal_return               = '⇚'
+" " let g:javascript_conceal_undefined            = '¿'
+" " let g:javascript_conceal_NaN                  = 'ℕ'
+" " let g:javascript_conceal_prototype            = '¶'
+" " let g:javascript_conceal_static               = '•'
+" " let g:javascript_conceal_super                = 'Ω'
+" let g:javascript_conceal_arrow_function       = '⇒'
+" let g:javascript_conceal_noarg_arrow_function = '🞅'
+" let g:javascript_conceal_underscore_arrow_function = '🞅'
+" set conceallevel=0
+" let g:javascript_plugin_jsdoc = 1
+
 " Vundle
 "------------------------------------------------------------
 if hostname() == "debian"
@@ -417,7 +434,7 @@ call vundle#begin()
   " Plugin 'airblade/vim-gitgutter'
   " Plugin 'vim-scripts/dbext.vim'
   " Plugin 'godlygeek/tabular'
-  " Plugin 'ryanoasis/vim-devicons'
+  Plugin 'ryanoasis/vim-devicons'
 	if hostname() == "debian"
 		Plugin 'kien/ctrlp.vim'
 		Plugin 'mileszs/ack.vim'
@@ -432,13 +449,17 @@ call vundle#begin()
 		Plugin 'rkitover/vimpager'
 	endif
 
-	" Plugin 'vim-latex/vim-latex'
+	Plugin 'vim-latex/vim-latex'
   Plugin 'junegunn/gv.vim' " Not sure
   Plugin 'vim-scripts/loremipsum'
   Plugin 'simeji/winresizer'
   Plugin 'mhinz/vim-startify'
   Plugin 'MattesGroeger/vim-bookmarks'
   Plugin 'tpope/vim-repeat'
+	" Plugin 'pangloss/vim-javascript'
+  " Plugin 'mxw/vim-jsx'
+  Plugin 'chemzqm/vim-jsx-improve'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
