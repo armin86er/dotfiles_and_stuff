@@ -615,7 +615,7 @@
     <keybind key='C-A-d'>
       <action name='Execute'>
         <command>
-           sh ~/.bin/edit_Openbox_config/main.sh 
+          sh ~/Workspace/Ruby/openbox_display_switch/main.sh 
         </command>
       </action>
     </keybind>

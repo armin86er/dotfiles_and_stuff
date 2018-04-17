@@ -43,7 +43,7 @@ def startApp select
     elsif @file[:pdf][select.to_i] == true
         system("clear")
         # puts "Cheatseet " + @file[:name][select.to_i] + " is running"
-        system("atril #{@file[:dir][select.to_i]}.pdf > /dev/null 2> /dev/null")
+        system("zathura #{@file[:dir][select.to_i]}.pdf > /dev/null 2> /dev/null")
     else
         puts "dirty Input"
         sleep 2
