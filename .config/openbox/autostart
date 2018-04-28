@@ -25,10 +25,10 @@ tint2 .config/tint2/tint2rc &
 tint2 .config/tint2/tint2rc2 &
 
 #Start redshift
-#redshift -l 52.5:13.4 -t 6500:3200 &
-redshift -l 52.5:13.4 -t 6500:6500 &
+# redshift -l 52.5:13.4 -t 6500:6500 &
+redshift &
 
-unclutter -idle 3 &
+unclutter -idle 2 &
 
 #Calender
 orage &
@@ -36,7 +36,7 @@ orage &
 clipit &
 
 #Disable touchpad while striking keys
-# syndaemon -i 1 -K -d &
+syndaemon -i 1 -K -d &
 
 # xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
 
@@ -47,7 +47,3 @@ volumeicon &
 #esniper ~/.auctionfile &
 
 sleep 1 && sh ~/.bin/dock.sh
-
-#export $XDG_CONFIG_HOME='~/.config' &
-
-#sleep 2 && sh ~/.config/conky/conkyrc.start.sh 

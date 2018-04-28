@@ -8,7 +8,7 @@
 notify-send 'rSync home starting...' 'new backup is running' --icon=dialog-information
 
 MAILADDR=mail@arminfroehlich.de
-HOSTNAME=archspell
+HOSTNAME=archdicho
 
 ###################################
 # directory to backup

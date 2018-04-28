@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ruby ~/.bin/edit_Openbox_config/main.rb 
+sh ~/Workspace/Ruby/openbox_display_switch/main.sh

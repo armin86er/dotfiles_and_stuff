@@ -10,21 +10,37 @@ autoload -Uz CD
 autoload -Uz RM
 autoload -Uz ginit
 autoload -Uz vimCommit
+autoload -Uz gcom
 
-export VBOX_USB=usbfs
-export ZSH=/usr/share/oh-my-zsh
 export EDITOR=vim
 export SUDO_EDITOR=vim
 export VISUAL=vim
-export BROWSER=firefox
-export PATH=$PATH:~/.bin:~/.gem/ruby/2.4.0/bin
-export POWLINE=/usr/lib/python2.7/site-packages/powerline/
 export PAGER=/usr/bin/vimpager && alias less=$PAGER
-export SNIPS=/usr/share/vim/vimfiles/UltiSnips
-export DISABLE_AUTO_TITLE=true
-export tuts=~/Documents/Tutorials
-export stud=~/Documents/Studium
-export doc=/usr/share/doc/
+case $HOST in
+    archdicho)
+			export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+			export VBOX_USB=usbfs
+			export ZSH=/usr/share/oh-my-zsh
+			export BROWSER=firefox
+			export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
+			export POWLINE=/usr/lib/python2.7/site-packages/powerline/
+			export g_snips=/usr/share/vim/vimfiles/UltiSnips
+			export l_snips=~/.vim/UltiSnips
+			export DISABLE_AUTO_TITLE=true
+			export tuts=~/Documents/Tutorials
+			export stud=~/Documents/Studium
+			export doc=/usr/share/doc/
+      export gems=$(ruby -e 'print Gem.user_dir')/gems
+      export INIT_WALLPAPER=~/Pictures/.wallpaper/file652.jpg
+      export CONKY_STARTSCRIPT=~/.config/conky/conkyrc.start.sh
+        ;;
+    debian)
+			export ZSH=~/.oh-my-zsh
+			PROMPT=walters
+        ;;
+    *)
+        ;;
+esac
 
 # Lines configured by zsh-newuser-install
     HISTFILE=~/.histfile
@@ -35,7 +51,7 @@ export doc=/usr/share/doc/
 # End of lines added by zsh-newuser-install
 
 # The following lines were added by compinstall
-    zstyle ':completion:*' group-name ''
+    # zstyle ':completion:*' group-name ''
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
     zstyle ':completion:*' matcher-list ''
     zstyle ':completion:*' menu select=long
@@ -73,7 +89,7 @@ autoload -U compinstall
 setopt correct
 
 # Ignore known commands in history
-setopt hist_ignore_all_dups 
+setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
 autoload -Uz promptinit
@@ -96,12 +112,12 @@ ttyctl -f
 	## Remove duplicate entries
 	setopt PUSHD_IGNORE_DUPS
 	## This reverts the +/- operators.
-	setopt PUSHD_MINUS	
+	setopt PUSHD_MINUS
 
 ### Oh-my-ZSH Config
 # Uncomment the following line to enable command auto-correction.
  ENABLE_CORRECTION="true"
- 
+
 # Uncomment the following line to display red dots whilst waiting for completion.
  COMPLETION_WAITING_DOTS="true"
 
@@ -110,23 +126,39 @@ ttyctl -f
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
  HIST_STAMPS="dd.mm.yyyy"
 
-plugins=(
-git 
-archlinux 
-common-aliases 
-#dirhistory 
-history 
-gem 
-rails 
-vi-mode 
-web-search 
-catimg 
-#zsh-completions 
-#cp 
-#copyfile 
-#extract 
-history-substring-search 
-)
+case $HOST in
+    archdicho)
+			plugins=(
+			git
+			archlinux
+      systemd
+			common-aliases
+			#dirhistory
+			history
+			gem
+			rails
+			vi-mode
+			web-search
+			catimg
+			#zsh-completions
+			#cp
+			#copyfile
+			#extract
+			history-substring-search
+			)
+        ;;
+    debian)
+			plugins=(
+			git
+			common-aliases
+			history
+			gem
+			rails
+			vi-mode
+			history-substring-search
+			)
+        ;;
+esac
 autoload -Uz compinit && compinit
 
 # Keybindings
@@ -174,20 +206,51 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 source $ZSH/oh-my-zsh.sh
 
-# Powerline
-source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+case $HOST in
+    archdicho)
+			source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    
-# Completion File for tmuxinator
-source /usr/lib/ruby/gems/2.4.0/gems/tmuxinator-0.9.0/completion/tmuxinator.zsh
-#source /usr/share/doc/pkgfile/command-not-found.zsh
+			# Powerline
+			source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
+			# zsh-syntax-highlighting
+			source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+			# Completion File for tmuxinator
+      source /usr/lib/ruby/gems/2.5.0/gems/tmuxinator-$(tmuxinator -v | awk '{print $2}')/completion/tmuxinator.zsh
+			#source /usr/share/doc/pkgfile/command-not-found.zsh
+
+        ;;
+    debian)
+			source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+        ;;
+esac
 
 # bindkey '^[[1~' '[[D'
 # bindkey '[[4~' '^[[C'
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+function githubCount {
+	DEST=/tmp/temp-linecount-repo
+	git clone --depth 1 "$1" $DEST &&
+	# cd $DEST &&
+	# git ls-files -z | xargs -0 wc -l &&
+  cloc $DEST
+  rm -rf temp-linecount-repo
+}
+
+function ytAudio() {
+	OLD=$PWD
+	DEST=~/.nextcloud/Music/YouTube/
+	cd $DEST
+	mkdir $1
+	cd $1
+	youtube-dl -f m4a $2
+	cd $OLD
+}
+
+function wave2mp3 {
+	ffmpeg -i $1 -vn -ar 44100 -ac 2 -ab 192k -f mp3 $1.mp3
+}

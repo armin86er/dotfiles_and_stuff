@@ -1,0 +1,1 @@
+git commit -m "$(git branch | awk '/^\*/ { print $2   }'), $argv"
