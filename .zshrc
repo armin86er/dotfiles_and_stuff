@@ -10,6 +10,7 @@ autoload -Uz CD
 autoload -Uz RM
 autoload -Uz ginit
 autoload -Uz vimCommit
+autoload -Uz gcom
 
 export EDITOR=vim
 export SUDO_EDITOR=vim
