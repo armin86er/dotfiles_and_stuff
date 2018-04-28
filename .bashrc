@@ -20,17 +20,6 @@
 #     fi
 # fi
 
-# export VBOX_USB=usbfs
-# export EDITOR=vim
-# export SUDO_EDITOR=vim
-# export VISUAL=vim
-# export BROWSER=firefox
-# export PATH=$PATH:~/.bin:~/.gem/ruby/2.4.0/bin
-# export POWLINE=/usr/lib/python2.7/site-packages/powerline/
-# export PAGER=/usr/bin/vimpager
-# export SPROJ=/home/armin/Documents/Studium/Projekt_Software/SoftwareP.git/
-# export SNIPS=/usr/share/vim/vimfiles/UltiSnips
-
 source /usr/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 
 source /etc/profile.d/autojump.bash

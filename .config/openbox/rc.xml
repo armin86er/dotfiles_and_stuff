@@ -615,7 +615,7 @@
     <keybind key='C-A-d'>
       <action name='Execute'>
         <command>
-          sh ~/Workspace/Ruby/openbox_display_switch/main.sh 
+           sh ~/Workspace/Ruby/openbox_display_switch/main.sh 
         </command>
       </action>
     </keybind>
@@ -1499,20 +1499,18 @@
       </maximized>
       <size>
         <width>
-          2100
+          2110
         </width>
       </size>
       <position force='yes'>
         <x>
-           220 
+          202.5
         </x>
         <y>
            0 
         </y>
       </position>
-      <decor>
-         no 
-      </decor>
+      <decor/>
     </application>
     <!-- Terminal Sakura  -->
     <application Title='Sakura' class='Sakura' name='sakura'>
@@ -1536,7 +1534,7 @@
         </y>
       </position>
       <decor>
-        yes
+         yes 
       </decor>
     </application>
     <!-- Atom  -->
@@ -1552,7 +1550,7 @@
       </maximized>
       <size>
         <width>
-          2100
+          2110
         </width>
       </size>
       <position force='yes'>
@@ -1564,7 +1562,7 @@
         </y>
       </position>
       <decor>
-        yes
+         no
       </decor>
     </application>
     <!-- SQLite Browser  -->
@@ -1580,7 +1578,7 @@
       </maximized>
       <size>
         <width>
-          2100
+          2110
         </width>
       </size>
       <position force='yes'>
@@ -1591,9 +1589,7 @@
            0 
         </y>
       </position>
-      <decor>
-         no 
-      </decor>
+      <decor/>
     </application>
     <!-- Pidgin Buddy List  -->
     <application class='Pidgin' name='Pidgin' type='normal' role='buddy_list'>
@@ -1650,11 +1646,11 @@
          normal 
       </layer>
       <maximized>
-         false 
+        vertical
       </maximized>
       <size>
         <width>
-           1030 
+          1055
         </width>
         <height>
            1145 
@@ -1662,14 +1658,14 @@
       </size>
       <position force='yes'>
         <x>
-           220 
+          202.5
         </x>
         <y>
            0 
         </y>
       </position>
       <decor>
-         yes 
+         no
       </decor>
     </application>
     <!-- Baobab  -->
@@ -1685,7 +1681,7 @@
       </maximized>
       <size>
         <width>
-          2100
+          1055
         </width>
         <height>
            1145 
@@ -1693,14 +1689,14 @@
       </size>
       <position force='yes'>
         <x>
-           248 
+          202.5
         </x>
         <y>
            0 
         </y>
       </position>
       <decor>
-         yes 
+         no
       </decor>
     </application>
     <!-- Nextcloud client  -->
@@ -1743,11 +1739,11 @@
          normal 
       </layer>
       <maximized>
-        false
+        vertical
       </maximized>
       <size>
         <width>
-          1030
+          1055
         </width>
         <height>
            1145 
@@ -1755,14 +1751,14 @@
       </size>
       <position force='yes'>
         <x>
-          1260
+          1257.5
         </x>
         <y>
            0 
         </y>
       </position>
       <decor>
-        yes
+         no
       </decor>
     </application>
     <!-- Firefox  -->

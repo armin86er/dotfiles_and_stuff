@@ -30,6 +30,8 @@ case $HOST in
 			export stud=~/Documents/Studium
 			export doc=/usr/share/doc/
       export gems=$(ruby -e 'print Gem.user_dir')/gems
+      export INIT_WALLPAPER=~/Pictures/.wallpaper/file652.jpg
+      export CONKY_STARTSCRIPT=~/.config/conky/conkyrc.start.sh
         ;;
     debian)
 			export ZSH=~/.oh-my-zsh
@@ -48,7 +50,7 @@ esac
 # End of lines added by zsh-newuser-install
 
 # The following lines were added by compinstall
-    zstyle ':completion:*' group-name ''
+    # zstyle ':completion:*' group-name ''
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
     zstyle ':completion:*' matcher-list ''
     zstyle ':completion:*' menu select=long
@@ -86,7 +88,7 @@ autoload -U compinstall
 setopt correct
 
 # Ignore known commands in history
-setopt hist_ignore_all_dups 
+setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
 autoload -Uz promptinit
@@ -109,12 +111,12 @@ ttyctl -f
 	## Remove duplicate entries
 	setopt PUSHD_IGNORE_DUPS
 	## This reverts the +/- operators.
-	setopt PUSHD_MINUS	
+	setopt PUSHD_MINUS
 
 ### Oh-my-ZSH Config
 # Uncomment the following line to enable command auto-correction.
  ENABLE_CORRECTION="true"
- 
+
 # Uncomment the following line to display red dots whilst waiting for completion.
  COMPLETION_WAITING_DOTS="true"
 
@@ -126,32 +128,33 @@ ttyctl -f
 case $HOST in
     archdicho)
 			plugins=(
-			git 
-			archlinux 
-			common-aliases 
-			#dirhistory 
-			history 
-			gem 
-			rails 
-			vi-mode 
-			web-search 
-			catimg 
-			#zsh-completions 
-			#cp 
-			#copyfile 
-			#extract 
-			history-substring-search 
+			git
+			archlinux
+      systemd
+			common-aliases
+			#dirhistory
+			history
+			gem
+			rails
+			vi-mode
+			web-search
+			catimg
+			#zsh-completions
+			#cp
+			#copyfile
+			#extract
+			history-substring-search
 			)
         ;;
     debian)
 			plugins=(
-			git 
-			common-aliases 
-			history 
-			gem 
-			rails 
-			vi-mode 
-			history-substring-search 
+			git
+			common-aliases
+			history
+			gem
+			rails
+			vi-mode
+			history-substring-search
 			)
         ;;
 esac
@@ -213,9 +216,9 @@ case $HOST in
 
 			# zsh-syntax-highlighting
 			source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    
+
 			# Completion File for tmuxinator
-			source /usr/lib/ruby/gems/2.4.0/gems/tmuxinator-0.10.0/completion/tmuxinator.zsh
+      source /usr/lib/ruby/gems/2.5.0/gems/tmuxinator-$(tmuxinator -v | awk '{print $2}')/completion/tmuxinator.zsh
 			#source /usr/share/doc/pkgfile/command-not-found.zsh
 
         ;;
@@ -228,7 +231,7 @@ esac
 # bindkey '[[4~' '^[[C'
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
-function githubCount { 
+function githubCount {
 	DEST=/tmp/temp-linecount-repo
 	git clone --depth 1 "$1" $DEST &&
 	# cd $DEST &&

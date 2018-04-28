@@ -46,4 +46,4 @@ volumeicon &
 
 #esniper ~/.auctionfile &
 
-sleep 2 && sh ~/.bin/dock.sh
+sleep 1 && sh ~/.bin/dock.sh
