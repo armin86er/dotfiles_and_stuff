@@ -216,7 +216,7 @@ call vundle#begin()
   Plugin 'tpope/vim-repeat'
   Plugin 'chemzqm/vim-jsx-improve'
   Plugin 'w0rp/ale'
-  Plugin '907th/vim-auto-save'
+  " Plugin '907th/vim-auto-save'
 	" Plugin 'pangloss/vim-javascript'
   " Plugin 'mxw/vim-jsx'
   " Plugin 'prettier/vim-prettier'
@@ -319,12 +319,6 @@ let g:ale_sign_error = '●' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '.'
 let g:ale_set_highlights = 0
 
-" vim-autosave
-"------------------------------------------------------------
-let g:auto_save_events = ["InsertLeave", "TextChanged"]
-let g:auto_save_write_all_buffers = 1 " write all open buffers as if you would use :wa "
-let g:auto_save = 1                   " enable AutoSave on Vim startup                 "
-
 " Nerdtree
 "------------------------------------------------------------
 " open a NERDTree automatically when open a dir
@@ -417,4 +411,10 @@ map <leader>nb :Bookmark<CR>
 " let g:javascript_conceal_underscore_arrow_function = '🞅'
 " set conceallevel=0
 " let g:javascript_plugin_jsdoc = 1
+
+" vim-autosave
+"------------------------------------------------------------
+" let g:auto_save_events = ["InsertLeave", "TextChanged"]
+" let g:auto_save_write_all_buffers = 1 " write all open buffers as if you would use :wa "
+" let g:auto_save = 1                   " enable AutoSave on Vim startup                 "
 
