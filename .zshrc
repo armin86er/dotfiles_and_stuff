@@ -33,6 +33,7 @@ case $HOST in
       export gems=$(ruby -e 'print Gem.user_dir')/gems
       export INIT_WALLPAPER=~/Pictures/.wallpaper/file652.jpg
       export CONKY_STARTSCRIPT=~/.config/conky/conkyrc.start.sh
+      export CHEATSHEETS=~/Documents/Cheatsheets
         ;;
     debian)
 			export ZSH=~/.oh-my-zsh
