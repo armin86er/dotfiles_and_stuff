@@ -517,19 +517,10 @@
         </command>
       </action>
     </keybind>
-    <keybind key='C-H-A-m'>
-      <action name='Execute'>
-        <command>
-           ruby /home/armin/Workspace/Ruby/attendance_recorder/main.rb -b manuel
-          --production 
-        </command>
-      </action>
-    </keybind>
     <keybind key='C-H-A-p'>
       <action name='Execute'>
         <command>
-           ruby /home/armin/Workspace/Ruby/attendance_recorder/main.rb -b pictrs
-          --production 
+           sh ~/.bin/temp_booking_pictrs.sh 
         </command>
       </action>
     </keybind>
@@ -1495,16 +1486,16 @@
          normal 
       </layer>
       <maximized>
-        vertical
+        true
       </maximized>
       <size>
         <width>
-          2110
+          1366
         </width>
       </size>
       <position force='yes'>
         <x>
-          202.5
+          0
         </x>
         <y>
            0 
@@ -1522,12 +1513,12 @@
       </maximized>
       <size>
         <width>
-          660
+          380
         </width>
       </size>
       <position force='yes'>
         <x>
-          1900
+          986
         </x>
         <y>
            0 
@@ -1546,11 +1537,11 @@
          normal 
       </layer>
       <maximized>
-        vertical
+        true
       </maximized>
       <size>
         <width>
-          2110
+          1366
         </width>
       </size>
       <position force='yes'>
@@ -1562,7 +1553,7 @@
         </y>
       </position>
       <decor>
-         no
+        yes
       </decor>
     </application>
     <!-- SQLite Browser  -->
@@ -1574,11 +1565,11 @@
          normal 
       </layer>
       <maximized>
-        vertical
+        true
       </maximized>
       <size>
         <width>
-          2110
+          1366
         </width>
       </size>
       <position force='yes'>
@@ -1646,11 +1637,11 @@
          normal 
       </layer>
       <maximized>
-        vertical
+        true
       </maximized>
       <size>
         <width>
-          1055
+          853.75
         </width>
         <height>
            1145 
@@ -1658,14 +1649,14 @@
       </size>
       <position force='yes'>
         <x>
-          202.5
+          0
         </x>
         <y>
            0 
         </y>
       </position>
       <decor>
-         no
+        yes
       </decor>
     </application>
     <!-- Baobab  -->
@@ -1677,11 +1668,11 @@
          normal 
       </layer>
       <maximized>
-        vertical
+        true
       </maximized>
       <size>
         <width>
-          1055
+          853.75
         </width>
         <height>
            1145 
@@ -1689,14 +1680,14 @@
       </size>
       <position force='yes'>
         <x>
-          202.5
+          0
         </x>
         <y>
            0 
         </y>
       </position>
       <decor>
-         no
+        yes
       </decor>
     </application>
     <!-- Nextcloud client  -->
@@ -1739,11 +1730,11 @@
          normal 
       </layer>
       <maximized>
-        vertical
+        true
       </maximized>
       <size>
         <width>
-          1055
+          853.75
         </width>
         <height>
            1145 
@@ -1751,14 +1742,14 @@
       </size>
       <position force='yes'>
         <x>
-          1257.5
+          0
         </x>
         <y>
            0 
         </y>
       </position>
       <decor>
-         no
+        yes
       </decor>
     </application>
     <!-- Firefox  -->

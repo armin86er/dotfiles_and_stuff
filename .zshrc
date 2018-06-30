@@ -11,6 +11,8 @@ autoload -Uz RM
 autoload -Uz ginit
 autoload -Uz vimCommit
 autoload -Uz gcom
+autoload -Uz pcurl
+autoload -Uz gcurl
 
 export EDITOR=vim
 export SUDO_EDITOR=vim
@@ -31,9 +33,12 @@ case $HOST in
 			export stud=~/Documents/Studium
 			export doc=/usr/share/doc/
       export gems=$(ruby -e 'print Gem.user_dir')/gems
+      export GEM_PATH=$(ruby -e 'print Gem.user_dir')
       export INIT_WALLPAPER=~/Pictures/.wallpaper/file652.jpg
       export CONKY_STARTSCRIPT=~/.config/conky/conkyrc.start.sh
       export CHEATSHEETS=~/Documents/Cheatsheets
+      export XSECURELOCK_AUTH=auth_pam_x11
+      export XSECURELOCK_SAVER=saver_blank
         ;;
     debian)
 			export ZSH=~/.oh-my-zsh

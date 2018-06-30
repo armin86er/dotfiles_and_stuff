@@ -1,0 +1,2 @@
+# usage like pcurl localhost:8080 'param1=value1&param2=value2'
+curl -i -X POST --data $2 $1

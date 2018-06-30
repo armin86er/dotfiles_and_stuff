@@ -9,6 +9,6 @@ vim								\
 ~/.tmux.conf					\
 ~/.config/openbox/autostart		\
 ~/.bin/home_rsync.sh			\
-~/.config/conky/main_conkyrc.r	\
+~/.config/conky/main_conkyrc	\
 ~/.tmuxinator/main.yml
 
