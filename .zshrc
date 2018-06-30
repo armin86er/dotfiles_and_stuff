@@ -11,19 +11,25 @@ autoload -Uz RM
 autoload -Uz ginit
 autoload -Uz vimCommit
 autoload -Uz gcom
+autoload -Uz pcurl
+autoload -Uz gcurl
 
+alias xterm=xterm -fa "Inconsolata:size=14"
 export EDITOR=vim
 export SUDO_EDITOR=vim
 export VISUAL=vim
 export PAGER=/usr/bin/vimpager && alias less=$PAGER
+export XDG_CONFIG_HOME=~/.config/xdg
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
 case $HOST in
-    archdicho)
+    archdich)
 			export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 			export VBOX_USB=usbfs
 			export ZSH=/usr/share/oh-my-zsh
 			export BROWSER=firefox
 			export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
-			export POWLINE=/usr/lib/python2.7/site-packages/powerline/
+			export POWLINE=/usr/lib/python3.6/site-packages/powerline/
 			export g_snips=/usr/share/vim/vimfiles/UltiSnips
 			export l_snips=~/.vim/UltiSnips
 			export DISABLE_AUTO_TITLE=true
@@ -31,9 +37,12 @@ case $HOST in
 			export stud=~/Documents/Studium
 			export doc=/usr/share/doc/
       export gems=$(ruby -e 'print Gem.user_dir')/gems
+      export GEM_PATH=$(ruby -e 'print Gem.user_dir')
       export INIT_WALLPAPER=~/Pictures/.wallpaper/file652.jpg
       export CONKY_STARTSCRIPT=~/.config/conky/conkyrc.start.sh
       export CHEATSHEETS=~/Documents/Cheatsheets
+      export XSECURELOCK_AUTH=auth_pam_x11
+      export XSECURELOCK_SAVER=saver_blank
         ;;
     debian)
 			export ZSH=~/.oh-my-zsh
@@ -128,7 +137,7 @@ ttyctl -f
  HIST_STAMPS="dd.mm.yyyy"
 
 case $HOST in
-    archdicho)
+    archdich)
 			plugins=(
 			git
 			archlinux
@@ -210,11 +219,14 @@ bindkey -M vicmd 'j' history-substring-search-down
 source $ZSH/oh-my-zsh.sh
 
 case $HOST in
-    archdicho)
+    archdich)
 			source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 			# Powerline
-			source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+			# source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+			powerline-daemon -q
+			. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 
 			# zsh-syntax-highlighting
 			source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

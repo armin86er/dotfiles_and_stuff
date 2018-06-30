@@ -33,17 +33,18 @@ unclutter -idle 2 &
 #Calender
 orage &
 
-clipit &
+# clipit &
 
 #Disable touchpad while striking keys
-syndaemon -i 1 -K -d &
+# syndaemon -i 1 -K -d &
 
 # xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
 
-nm-applet &
+# nm-applet &
 
 volumeicon &
 
 #esniper ~/.auctionfile &
 
-sleep 1 && sh ~/.bin/dock.sh
+# sleep 1 &&
+sh ~/.bin/dock.sh

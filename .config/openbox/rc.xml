@@ -517,19 +517,10 @@
         </command>
       </action>
     </keybind>
-    <keybind key='C-H-A-m'>
-      <action name='Execute'>
-        <command>
-           ruby /home/armin/Workspace/Ruby/attendance_recorder/main.rb -b manuel
-          --production 
-        </command>
-      </action>
-    </keybind>
     <keybind key='C-H-A-p'>
       <action name='Execute'>
         <command>
-           ruby /home/armin/Workspace/Ruby/attendance_recorder/main.rb -b pictrs
-          --production 
+           sh ~/.bin/temp_booking_pictrs.sh 
         </command>
       </action>
     </keybind>
@@ -1509,8 +1500,10 @@
         <y>
            0 
         </y>
+        <decor>
+           yes 
+        </decor>
       </position>
-      <decor/>
     </application>
     <!-- Terminal Sakura  -->
     <application Title='Sakura' class='Sakura' name='sakura'>
