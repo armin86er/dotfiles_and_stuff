@@ -18,22 +18,23 @@ export EDITOR=vim
 export SUDO_EDITOR=vim
 export VISUAL=vim
 export PAGER=/usr/bin/vimpager && alias less=$PAGER
+export ZSH=/usr/share/oh-my-zsh/
+export POWLINE=/usr/lib/python2.7/site-packages/powerline/
+export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
+export gems=$(ruby -e 'print Gem.user_dir')/gems
+export GEM_PATH=$(ruby -e 'print Gem.user_dir')
 case $HOST in
     archdicho)
 			export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 			export VBOX_USB=usbfs
-			export ZSH=/usr/share/oh-my-zsh
 			export BROWSER=firefox
 			export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
-			export POWLINE=/usr/lib/python2.7/site-packages/powerline/
 			export g_snips=/usr/share/vim/vimfiles/UltiSnips
 			export l_snips=~/.vim/UltiSnips
 			export DISABLE_AUTO_TITLE=true
 			export tuts=~/Documents/Tutorials
 			export stud=~/Documents/Studium
 			export doc=/usr/share/doc/
-      export gems=$(ruby -e 'print Gem.user_dir')/gems
-      export GEM_PATH=$(ruby -e 'print Gem.user_dir')
       export INIT_WALLPAPER=~/Pictures/.wallpaper/file652.jpg
       export CONKY_STARTSCRIPT=~/.config/conky/conkyrc.start.sh
       export CHEATSHEETS=~/Documents/Cheatsheets
@@ -132,8 +133,6 @@ ttyctl -f
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
  HIST_STAMPS="dd.mm.yyyy"
 
-case $HOST in
-    archdicho)
 			plugins=(
 			git
 			archlinux
@@ -152,19 +151,6 @@ case $HOST in
 			#extract
 			history-substring-search
 			)
-        ;;
-    debian)
-			plugins=(
-			git
-			common-aliases
-			history
-			gem
-			rails
-			vi-mode
-			history-substring-search
-			)
-        ;;
-esac
 autoload -Uz compinit && compinit
 
 # Keybindings
@@ -214,25 +200,19 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 source $ZSH/oh-my-zsh.sh
 
-case $HOST in
-    archdicho)
+source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 			source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-			# Powerline
-			source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+      # Powerline
+      source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
-			# zsh-syntax-highlighting
-			source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+      # zsh-syntax-highlighting
+      source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-			# Completion File for tmuxinator
-      source /usr/lib/ruby/gems/2.5.0/gems/tmuxinator-$(tmuxinator -v | awk '{print $2}')/completion/tmuxinator.zsh
-			#source /usr/share/doc/pkgfile/command-not-found.zsh
+      # Completion File for tmuxinator
+      source /usr/lib/ruby/gems/2.3.0/gems/tmuxinator-$(tmuxinator -v | awk '{print $2}')/completion/tmuxinator.zsh
+      #source /usr/share/doc/pkgfile/command-not-found.zsh
 
-        ;;
-    debian)
-			source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-        ;;
-esac
 
 # bindkey '^[[1~' '[[D'
 # bindkey '[[4~' '^[[C'
