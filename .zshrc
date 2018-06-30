@@ -22,22 +22,23 @@ export PAGER=/usr/bin/vimpager && alias less=$PAGER
 export XDG_CONFIG_HOME=~/.config/xdg
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+export ZSH=/usr/share/oh-my-zsh/
+export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
+export gems=$(ruby -e 'print Gem.user_dir')/gems
+export GEM_PATH=$(ruby -e 'print Gem.user_dir')
+export POWLINE=/usr/lib/python3.6/site-packages/powerline/
 case $HOST in
     archdich)
 			export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 			export VBOX_USB=usbfs
-			export ZSH=/usr/share/oh-my-zsh
 			export BROWSER=firefox
 			export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
-			export POWLINE=/usr/lib/python3.6/site-packages/powerline/
 			export g_snips=/usr/share/vim/vimfiles/UltiSnips
 			export l_snips=~/.vim/UltiSnips
 			export DISABLE_AUTO_TITLE=true
 			export tuts=~/Documents/Tutorials
 			export stud=~/Documents/Studium
 			export doc=/usr/share/doc/
-      export gems=$(ruby -e 'print Gem.user_dir')/gems
-      export GEM_PATH=$(ruby -e 'print Gem.user_dir')
       export INIT_WALLPAPER=~/Pictures/.wallpaper/file652.jpg
       export CONKY_STARTSCRIPT=~/.config/conky/conkyrc.start.sh
       export CHEATSHEETS=~/Documents/Cheatsheets
@@ -156,19 +157,7 @@ case $HOST in
 			#extract
 			history-substring-search
 			)
-        ;;
-    debian)
-			plugins=(
-			git
-			common-aliases
-			history
-			gem
-			rails
-			vi-mode
-			history-substring-search
-			)
-        ;;
-esac
+  esac
 autoload -Uz compinit && compinit
 
 # Keybindings
@@ -228,18 +217,14 @@ case $HOST in
 			powerline-daemon -q
 			. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 
-			# zsh-syntax-highlighting
-			source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+      # zsh-syntax-highlighting
+      source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-			# Completion File for tmuxinator
-      source /usr/lib/ruby/gems/2.5.0/gems/tmuxinator-$(tmuxinator -v | awk '{print $2}')/completion/tmuxinator.zsh
-			#source /usr/share/doc/pkgfile/command-not-found.zsh
+      # Completion File for tmuxinator
+      source /usr/lib/ruby/gems/2.3.0/gems/tmuxinator-$(tmuxinator -v | awk '{print $2}')/completion/tmuxinator.zsh
+      #source /usr/share/doc/pkgfile/command-not-found.zsh
+    esac
 
-        ;;
-    debian)
-			source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-        ;;
-esac
 
 # bindkey '^[[1~' '[[D'
 # bindkey '[[4~' '^[[C'

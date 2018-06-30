@@ -309,11 +309,11 @@ let g:startify_change_to_dir = 0
 
 "Ale Linter
 "------------------------------------"
-let g:ale_linters = {
-      \   'ruby': ['rubocop'],
-      \   'haml': ['haml_lint'],
-      \   'scss': ['stylelint'],
-      \}
+" let g:ale_linters = {
+      " \   'ruby': ['rubocop'],
+      " \   'haml': ['haml_lint'],
+      " \   'scss': ['stylelint'],
+      " \}
 " let g:ale_scss_stylelint_executable = '~/pictrs/node_modules/.bin/stylelint'
 
 " let g:ale_fix_on_save = 1
