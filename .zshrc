@@ -14,7 +14,7 @@ autoload -Uz gcom
 autoload -Uz pcurl
 autoload -Uz gcurl
 
-alias xterm=xterm -fa "Inconsolata:size=14"
+alias xterm=xfce4-terminal
 export EDITOR=vim
 export SUDO_EDITOR=vim
 export VISUAL=vim
@@ -221,7 +221,7 @@ case $HOST in
       source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
       # Completion File for tmuxinator
-      source /usr/lib/ruby/gems/2.3.0/gems/tmuxinator-$(tmuxinator -v | awk '{print $2}')/completion/tmuxinator.zsh
+      source /usr/lib/ruby/gems/2.5.0/gems/tmuxinator-$(tmuxinator -v | awk '{print $2}')/completion/tmuxinator.zsh
       #source /usr/share/doc/pkgfile/command-not-found.zsh
     esac
 
