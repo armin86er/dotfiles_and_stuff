@@ -1,4 +1,7 @@
 #!/bin/bash
 setxkbmap us && 	\
 # xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-setxkbmap -option caps:swapescape
+# setxkbmap -layout us -variant altgr-intl -option nodeadkeys
+setxkbmap -option caps:swapescape && \
+
+notify-send 'US Keyboard' --icon=dialog-information

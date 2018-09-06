@@ -1,3 +1,4 @@
 #!/bin/bash
+notify-send 'Handle Displays' --icon=dialog-information
 
 sh ~/Workspace/Ruby/openbox_display_switch/main.sh

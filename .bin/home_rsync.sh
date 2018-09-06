@@ -27,23 +27,23 @@ CURRENT=CurrentVersion
 INCREMENTDIR=`date +%Y-%m-%d`
 
 # options to pass to rsync
-OPTIONS="--numeric-ids -aSzh --info=progress2              \ 
---force --ignore-errors --delete --delete-excluded         \ 
---exclude="*.swp" --exclude=/Downloads/                    \ 
---exclude=/Music/ --exclude=/Videos/                       \ 
---exclude=/Nextcloud  --exclude=/.gvfs                     \ 
---exclude=/.thumbnails/* --exclude=/.cache/                \ 
---exclude=/.vm/ --exclude=/.ssh/                           \ 
---exclude=/.mozilla/ --exclude=/.thunderbird/              \ 
---exclude=/.kodi/ --exclude=/.irssi/                       \ 
---exclude=/.gnupg/ --exclude=/.atom/                       \ 
---exclude=/.local/share/Trash/ --exclude=/.atom/           \ 
---exclude=/tempy/ --exclude=/.RubyMine*                    \ 
---exclude=/.config/chromium --exclude=/.config/systemd     \ 
---exclude=/.AndroidStudio2.3/                              \ 
---exclude=/Workspace/Angular2/quickstart/node_modules/.bin \ 
---exclude=/Documents/Tutorials/vim/docs/                   \ 
---backup --backup-dir=$ARCHIVEROOT/$INCREMENTDIR"
+OPTIONS="--numeric-ids -aSzh --info=progress2              \
+  --force --ignore-errors --delete --delete-excluded         \
+  --exclude="*.swp" --exclude=/Downloads/                    \
+  --exclude=/Music/ --exclude=/Videos/                       \
+  --exclude=/Nextcloud  --exclude=/.gvfs                     \
+  --exclude=/.thumbnails/* --exclude=/.cache/                \
+  --exclude=/.vm/ --exclude=/.ssh/                           \
+  --exclude=/.mozilla/ --exclude=/.thunderbird/              \
+  --exclude=/.kodi/ --exclude=/.irssi/                       \
+  --exclude=/.gnupg/ --exclude=/.atom/                       \
+  --exclude=/.local/share/Trash/ --exclude=/.atom/           \
+  --exclude=/tempy/ --exclude=/.RubyMine*                    \
+  --exclude=/.config/chromium --exclude=/.config/systemd     \
+  --exclude=/.AndroidStudio2.3/                              \
+  --exclude=/Workspace/Angular2/quickstart/node_modules/.bin \
+  --exclude=/Documents/Tutorials/vim/docs/                   \
+  --backup --backup-dir=$ARCHIVEROOT/$INCREMENTDIR"
 
 #export PATH=$PATH:/bin:/usr/bin:/usr/local/bin
 
@@ -53,32 +53,32 @@ install -d $ARCHIVEROOT/$CURRENT
 # our actual rsyncing function
 do_rsync()
 {
-   rsync $OPTIONS $BACKUPDIR $ARCHIVEROOT/$CURRENT
+  rsync $OPTIONS $BACKUPDIR $ARCHIVEROOT/$CURRENT
 }
 
 # our post rsync accounting function
 do_accounting()
 {
-   echo "Backup Accounting for Day $INCREMENTDIR on $HOSTNAME:">/tmp/rsync_script_tmpfile
-   echo >> /tmp/rsync_script_tmpfile
-   echo "################################################">>/tmp/rsync_script_tmpfile
-   du -s $ARCHIVEROOT/* >> /tmp/rsync_script_tmpfile
-   #echo "Mail $MAILADDR -s $HOSTNAME Backup Report < /tmp/rsync_script_tmpfile"
-   #Mail $MAILADDR -s $HOSTNAME Backup Report < /tmp/rsync_script_tmpfile
-   #echo "rm /tmp/rsync_script_tmpfile"
-   cat /tmp/rsync_script_tmpfile
-   rm /tmp/rsync_script_tmpfile
-   notify-send 'rSync home finished...' 'all done' --icon=dialog-information
+  echo "Backup Accounting for Day $INCREMENTDIR on $HOSTNAME:">/tmp/rsync_script_tmpfile
+  echo >> /tmp/rsync_script_tmpfile
+  echo "################################################">>/tmp/rsync_script_tmpfile
+  du -s $ARCHIVEROOT/* >> /tmp/rsync_script_tmpfile
+  #echo "Mail $MAILADDR -s $HOSTNAME Backup Report < /tmp/rsync_script_tmpfile"
+  #Mail $MAILADDR -s $HOSTNAME Backup Report < /tmp/rsync_script_tmpfile
+  #echo "rm /tmp/rsync_script_tmpfile"
+  cat /tmp/rsync_script_tmpfile
+  rm /tmp/rsync_script_tmpfile
+  notify-send 'rSync home finished...' 'all done' --icon=dialog-information
 }
 
 # some error handling and/or run our backup and accounting
 if [ -f $EXCLUDES ]; then
-	if [ -d $BACKUPDIR ]; then
-		# now the actual transfer
-		do_rsync && do_accounting
-	else
-		echo "cant find $BACKUPDIR"; exit
-	fi
-	else
-		echo "cant find $EXCLUDES"; exit
+  if [ -d $BACKUPDIR ]; then
+    # now the actual transfer
+    do_rsync && do_accounting
+  else
+    echo "cant find $BACKUPDIR"; exit
+  fi
+else
+  echo "cant find $EXCLUDES"; exit
 fi

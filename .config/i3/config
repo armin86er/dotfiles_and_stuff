@@ -1,0 +1,248 @@
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod mod4
+set $alt mod1
+set $con control
+
+font pango:inconsolata nerd 11
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec termite --config=$XDG_CONFIG_HOME/termite/config
+# bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+bindsym $alt+F4 kill
+
+# start dmenu (a program launcher)
+bindsym $mod+j exec i3-dmenu-desktop --dmenu="dmenu -i -nb '#191919' -nf '#35BF5C' -sb '#BEBEBE' -fn 'Inconsolata-12'"
+
+# change focus
+bindsym $alt+h focus left
+bindsym $alt+j focus down
+bindsym $alt+k focus up
+bindsym $alt+l focus right
+bindsym $alt+Tab focus left
+bindsym $alt+Shift+Tab focus right
+
+# ove window
+bindsym $mod+Left move left
+bindsym $mod+Down move down
+bindsym $mod+Up move up
+bindsym $mod+Right move right
+
+# split in horizontal orientation
+bindsym $mod+v split h
+# split in vertical orientation
+bindsym $mod+h split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+space fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+i layout stacking
+bindsym $mod+o layout tabbed
+bindsym $mod+p layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+# bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+l focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $alt+z exec ruby ~/.bin/i3/switch_workspace_1.rb
+bindsym $alt+x exec ruby ~/.bin/i3/switch_workspace_2.rb
+bindsym $alt+c exec ruby ~/.bin/i3/switch_workspace_3.rb
+bindsym $alt+Shift+z workspace $ws1
+bindsym $alt+Shift+x workspace $ws4
+bindsym $alt+Shift+c workspace $ws7
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+# kesize window (you can also use the mouse for that)
+mode "resize" {
+# These bindings trigger as soon as you enter the resize mode
+
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+  bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
+
+# same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+# back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Caps_Lock mode "default"
+    bindsym $mod+r mode "default"
+}
+# bindcode $mod+27 mode "resize"
+
+# Resizing windows in i3 using keyboard only
+# https://unix.stackexchange.com/q/255344/150597
+
+# Resizing by 1
+bindsym $mod+Ctrl+Right resize shrink width 1 px or 1 ppt
+bindsym $mod+Ctrl+Up resize grow height 1 px or 1 ppt
+bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+Left resize grow width 1 px or 1 ppt
+
+# Resizing by 10
+bindsym $mod+Ctrl+Shift+Right resize shrink width 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Up resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Down resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+
+bar {
+  status_command i3status
+}
+# bar {
+#       # font pango:DejaVu Sans Mono, FontAwesome 12
+#       # set font material:MaterialIcons Regular
+#       font pango:inconsolata 14
+#       # status_command i3status
+#       status_command /usr/bin/i3status-rs ~/.config/i3/status.toml
+#       colors {
+#             separator #666666
+#             background #222222
+#             statusline #35BF5C
+#             focused_workspace #0088CC #0088CC #ffffff
+#             active_workspace #333333 #333333 #ffffff
+#             inactive_workspace #333333 #333333 #888888
+#             urgent_workspace #2f343a #900000 #ffffff
+#       }
+# }
+
+# Custom
+# Config
+focus_follows_mouse no
+default_border pixel 2
+hide_edge_borders none
+
+# Autostart
+exec syndaemon -i 1 -K -d
+exec redshift
+exec unclutter -idle 2
+exec sh ~/.bin/dock.sh
+exec orage
+exec gpaste-client start
+
+exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/armin/.config/i3/workspace-1.json'"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/armin/.config/i3/workspace-2.3.json'"
+# exec termite --name=Journal -e "bash -c 'journalctl -f -b-0; exec /bin/bash'"
+# exec termite --name=Vim -e "bash -c 'sh ~/.bin/vimSession.sh; exec /bin/bash'"
+# exec termite --name=Shell -e "bash -c 'cd ~ && clear && screenfetch -c 255,41 -n ; exec /bin/bash'"
+exec sh ~/.bin/starti3Applications.sh
+
+# Keyboard Bindings
+bindsym $mod+q exec gpaste-client ui
+bindsym $mod+w exec firefox
+bindsym $mod+e exec thunderbird
+bindsym $mod+r exec chromium --args --profile-directory=Default
+bindsym $mod+shift+r exec chromium --args --profile-directory=Pictrs
+bindsym $mod+t exec telegram-desktop
+bindsym $mod+y exec keepassx2
+bindsym $mod+a exec termite
+bindsym $mod+d exec thunar
+bindsym $mod+z exec rhythmbox
+bindsym $mod+x exec vlc
+bindsym $mod+c exec virtualbox
+bindsym $mod+n exec sqlitebrowser
+# bindsym $mod+v exec libreoffice
+bindsym $mod+m exec VBoxManage startvm ArchLinuxTesting
+
+bindsym $con+$alt+d exec ~/.bin/dock.sh
+bindsym $con+$alt+$mod+p exec ~/.bin/temp_booking_pictrs.sh
+bindsym $con+$alt+$mod+s exec systemctl poweroff
+bindsym $con+$alt+$mod+l exec ~/.bin/lock.sh
+
+bindsym $con+$alt+y exec ~/.bin/setDEKeyboard
+bindsym $con+$alt+u exec ~/.bin/setUSKeyboard
+
+bindsym $mod+Print exec --no-startup-id xfce4-screenshooter -r -s ~/Pictures/Screenshots/
+bindsym --release $con+Print exec xfce4-screenshooter -f -s ~/Pictures/Screenshots/
+bindsym Print exec xfce4-screenshooter -w -s ~/Pictures/Screenshots/
+
+bindsym --release $con+$alt+m exec xset dpms force off
+
+bindsym XF86AudioRaiseVolume exec amixer set Master 7%+ unmute
+bindsym XF86AudioLowerVolume exec amixer set Master 8%- unmute
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86MonBrightnessDown exec xbacklight -dec 15
+bindsym XF86MonBrightnessUp exec xbacklight -inc 15
+
+# Window-Workspace Bindings
+# assign [class="Firefox"] 1
+# assign [class="Thunderbird"] 1
+# assign [class="Keepassx2"] 1
+# assign [class="Chromium"] 1
+
+# assign [class="Thunar"] 2
+# assign [class="DB Browser for SQLite"] 2
+
+# assign [class="LibreOffice"] 3
+assign [class="Rhythmbox"] 3
+assign [class="VirtualBox Manager"] 3
+assign [class="VirtualBox"] 10
+assign [class="vlc"] 3

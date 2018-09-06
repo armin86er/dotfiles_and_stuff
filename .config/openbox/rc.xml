@@ -1,61 +1,61 @@
-<?xml version='1.0' encoding='UTF-8'?> 
+<?xml version='1.0' encoding='UTF-8'?>
 <openbox_config xmlns='http://openbox.org/3.4/rc' xmlns:xi='http://www.w3.org/2001/XInclude'>
   <resistance>
     <strength>
-       10 
+       10
     </strength>
     <screen_edge_strength>
-       20 
+       20
     </screen_edge_strength>
   </resistance>
   <focus>
     <focusNew>
-       yes 
+       yes
     </focusNew>
     <!-- always try to focus new windows when they appear. other rules do
        apply -->
     <followMouse>
-       no 
+       no
     </followMouse>
     <!-- move focus to a window when you move the mouse into it -->
     <focusLast>
-       yes 
+       yes
     </focusLast>
     <!-- focus the last used window when changing desktops, instead of the one
        under the mouse pointer. when followMouse is enabled -->
     <underMouse>
-       no 
+       no
     </underMouse>
     <!-- move focus under the mouse, even when the mouse is not moving -->
     <focusDelay>
-       200 
+       200
     </focusDelay>
     <!-- when followMouse is enabled, the mouse must be inside the window for
        this many milliseconds (1000 = 1 sec) before moving focus to it -->
     <raiseOnFocus>
-       no 
+       no
     </raiseOnFocus>
     <!-- when followMouse is enabled, and a window is given focus by moving the
        mouse into it, also raise the window -->
   </focus>
   <placement>
     <policy>
-       Smart 
+       Smart
     </policy>
     <!-- 'Smart' or 'UnderMouse' -->
     <center>
-       yes 
+       yes
     </center>
     <!-- whether to place windows in the center of the free area found or
        the top left corner -->
     <monitor>
-       Primary 
+       Primary
     </monitor>
     <!-- with Smart placement on a multi-monitor system, try to place new windows
        on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where
        the active window is, 'Primary' - only on the primary monitor -->
     <primaryMonitor>
-       1 
+       1
     </primaryMonitor>
     <!-- The monitor where Openbox should place popup dialogs such as the
        focus cycling popup, or the desktop switch popup.  It can be an index
@@ -65,10 +65,10 @@
   </placement>
   <theme>
     <name>
-       Mire_v2_lime 
+       Mire_v2_lime
     </name>
     <titleLayout>
-       NLIMC 
+       NLIMC
     </titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -81,110 +81,110 @@
       D: omnipresent (on all desktops).
   -->
     <keepBorder>
-       yes 
+       yes
     </keepBorder>
     <animateIconify>
-       yes 
+       yes
     </animateIconify>
     <font place='ActiveWindow'>
       <name>
-         Inconsolata 
+         Inconsolata
       </name>
       <size>
-         8 
+         8
       </size>
       <!-- font size in points -->
       <weight>
-         Normal 
+         Normal
       </weight>
       <!-- 'bold' or 'normal' -->
       <slant>
-         Normal 
+         Normal
       </slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place='InactiveWindow'>
       <name>
-         Inconsolata 
+         Inconsolata
       </name>
       <size>
-         8 
+         8
       </size>
       <!-- font size in points -->
       <weight>
-         Normal 
+         Normal
       </weight>
       <!-- 'bold' or 'normal' -->
       <slant>
-         Normal 
+         Normal
       </slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place='MenuHeader'>
       <name>
-         Inconsolata 
+         Inconsolata
       </name>
       <size>
-         9 
+         9
       </size>
       <!-- font size in points -->
       <weight>
-         Normal 
+         Normal
       </weight>
       <!-- 'bold' or 'normal' -->
       <slant>
-         Normal 
+         Normal
       </slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place='MenuItem'>
       <name>
-         Inconsolata 
+         Inconsolata
       </name>
       <size>
-         9 
+         9
       </size>
       <!-- font size in points -->
       <weight>
-         Normal 
+         Normal
       </weight>
       <!-- 'bold' or 'normal' -->
       <slant>
-         Normal 
+         Normal
       </slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place='ActiveOnScreenDisplay'>
       <name>
-         Inconsolata 
+         Inconsolata
       </name>
       <size>
-         9 
+         9
       </size>
       <!-- font size in points -->
       <weight>
-         Normal 
+         Normal
       </weight>
       <!-- 'bold' or 'normal' -->
       <slant>
-         Normal 
+         Normal
       </slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place='InactiveOnScreenDisplay'>
       <name>
-         Inconsolata 
+         Inconsolata
       </name>
       <size>
-         9 
+         9
       </size>
       <!-- font size in points -->
       <weight>
-         Normal 
+         Normal
       </weight>
       <!-- 'bold' or 'normal' -->
       <slant>
-         Normal 
+         Normal
       </slant>
       <!-- 'italic' or 'normal' -->
     </font>
@@ -199,49 +199,49 @@
        use obconf if you want to change these without having to log out
        and back in -->
     <number>
-       3 
+       3
     </number>
     <firstdesk>
-       1 
+       1
     </firstdesk>
     <names>
       <name>
-         Network 
+         Network
       </name>
       <name>
-         Admin 
+         Admin
       </name>
       <name>
-         Work 
+         Work
       </name>
     </names>
     <popupTime>
-       875 
+       875
     </popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
   <resize>
     <drawContents>
-       yes 
+       yes
     </drawContents>
     <popupShow>
-       Nonpixel 
+       Nonpixel
     </popupShow>
     <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
     <popupPosition>
-       Center 
+       Center
     </popupPosition>
     <!-- 'Center', 'Top', or 'Fixed' -->
     <popupFixedPosition>
       <!-- these are used if popupPosition is set to 'Fixed' -->
       <x>
-         10 
+         10
       </x>
       <!-- positive number for distance from left edge, negative number for
          distance from right edge, or 'Center' -->
       <y>
-         10 
+         10
       </y>
       <!-- positive number for distance from top edge, negative number for
          distance from bottom edge, or 'Center' -->
@@ -253,166 +253,166 @@
      cases. -->
   <margins>
     <top>
-       18 
+       18
     </top>
     <bottom>
-       0 
+       0
     </bottom>
     <left>
-       0 
+       0
     </left>
     <right>
-       0 
+       0
     </right>
   </margins>
   <dock>
     <position>
-       TopLeft 
+       TopLeft
     </position>
     <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
     <floatingX>
-       0 
+       0
     </floatingX>
     <floatingY>
-       0 
+       0
     </floatingY>
     <noStrut>
-       no 
+       no
     </noStrut>
     <stacking>
-       Above 
+       Above
     </stacking>
     <!-- 'Above', 'Normal', or 'Below' -->
     <direction>
-       Vertical 
+       Vertical
     </direction>
     <!-- 'Vertical' or 'Horizontal' -->
     <autoHide>
-       no 
+       no
     </autoHide>
     <hideDelay>
-       300 
+       300
     </hideDelay>
     <!-- in milliseconds (1000 = 1 second) -->
     <showDelay>
-       300 
+       300
     </showDelay>
     <!-- in milliseconds (1000 = 1 second) -->
     <moveButton>
-       Middle 
+       Middle
     </moveButton>
     <!-- 'Left', 'Middle', 'Right' -->
   </dock>
   <keyboard>
     <chainQuitKey>
-       C-g 
+       C-g
     </chainQuitKey>
     <!-- Keybindings for desktop switching -->
     <keybind key='C-A-Left'>
       <action name='GoToDesktop'>
         <to>
-           left 
+           left
         </to>
         <wrap>
-           no 
+           no
         </wrap>
       </action>
     </keybind>
     <keybind key='C-A-Right'>
       <action name='GoToDesktop'>
         <to>
-           right 
+           right
         </to>
         <wrap>
-           no 
+           no
         </wrap>
       </action>
     </keybind>
     <keybind key='C-A-Up'>
       <action name='GoToDesktop'>
         <to>
-           up 
+           up
         </to>
         <wrap>
-           no 
+           no
         </wrap>
       </action>
     </keybind>
     <keybind key='C-A-Down'>
       <action name='GoToDesktop'>
         <to>
-           down 
+           down
         </to>
         <wrap>
-           no 
+           no
         </wrap>
       </action>
     </keybind>
     <keybind key='S-A-Left'>
       <action name='SendToDesktop'>
         <to>
-           left 
+           left
         </to>
         <wrap>
-           no 
+           no
         </wrap>
       </action>
     </keybind>
     <keybind key='S-A-Right'>
       <action name='SendToDesktop'>
         <to>
-           right 
+           right
         </to>
         <wrap>
-           no 
+           no
         </wrap>
       </action>
     </keybind>
     <keybind key='S-A-Up'>
       <action name='SendToDesktop'>
         <to>
-           up 
+           up
         </to>
         <wrap>
-           no 
+           no
         </wrap>
       </action>
     </keybind>
     <keybind key='S-A-Down'>
       <action name='SendToDesktop'>
         <to>
-           down 
+           down
         </to>
         <wrap>
-           no 
+           no
         </wrap>
       </action>
     </keybind>
     <keybind key='A-z'>
       <action name='GoToDesktop'>
         <to>
-           1 
+           1
         </to>
       </action>
     </keybind>
     <keybind key='A-x'>
       <action name='GoToDesktop'>
         <to>
-           2 
+           2
         </to>
       </action>
     </keybind>
     <keybind key='A-c'>
       <action name='GoToDesktop'>
         <to>
-           3 
+           3
         </to>
       </action>
     </keybind>
     <keybind key='A-v'>
       <action name='GoToDesktop'>
         <to>
-           4 
+           4
         </to>
       </action>
     </keybind>
@@ -431,7 +431,7 @@
     <keybind key='A-space'>
       <action name='ShowMenu'>
         <menu>
-           client-menu 
+           client-menu
         </menu>
       </action>
     </keybind>
@@ -457,10 +457,10 @@
     <keybind key='C-A-Tab'>
       <action name='NextWindow'>
         <panels>
-           yes 
+           yes
         </panels>
         <desktop>
-           yes 
+           yes
         </desktop>
         <finalactions>
           <action name='Focus'/>
@@ -473,28 +473,28 @@
     <keybind key='W-S-Right'>
       <action name='DirectionalCycleWindows'>
         <direction>
-           right 
+           right
         </direction>
       </action>
     </keybind>
     <keybind key='W-S-Left'>
       <action name='DirectionalCycleWindows'>
         <direction>
-           left 
+           left
         </direction>
       </action>
     </keybind>
     <keybind key='W-S-Up'>
       <action name='DirectionalCycleWindows'>
         <direction>
-           up 
+           up
         </direction>
       </action>
     </keybind>
     <keybind key='W-S-Down'>
       <action name='DirectionalCycleWindows'>
         <direction>
-           down 
+           down
         </direction>
       </action>
     </keybind>
@@ -506,56 +506,56 @@
     <keybind key='W-space'>
       <action name='ShowMenu'>
         <menu>
-           root-menu 
+           root-menu
         </menu>
       </action>
     </keybind>
     <keybind key='A-Print'>
       <action name='Execute'>
         <command>
-           xfce4-screenshooter -r -s ~/Pictures/Screenshots/ 
+           xfce4-screenshooter -r -s ~/Pictures/Screenshots/
         </command>
       </action>
     </keybind>
     <keybind key='C-H-A-p'>
       <action name='Execute'>
         <command>
-           sh ~/.bin/temp_booking_pictrs.sh 
+           sh ~/.bin/temp_booking_pictrs.sh
         </command>
       </action>
     </keybind>
     <keybind key='C-H-A-l'>
       <action name='Execute'>
         <command>
-           lock.sh 
+           lock.sh
         </command>
       </action>
     </keybind>
     <keybind key='C-H-A-s'>
       <action name='Execute'>
         <command>
-           systemctl poweroff 
+           systemctl poweroff
         </command>
       </action>
     </keybind>
     <keybind key='Print'>
       <action name='Execute'>
         <command>
-           xfce4-screenshooter -w -s ~/Pictures/Screenshots/ 
+           xfce4-screenshooter -w -s ~/Pictures/Screenshots/
         </command>
       </action>
     </keybind>
     <keybind key='C-Print'>
       <action name='Execute'>
         <command>
-           xfce4-screenshooter -f -s ~/Pictures/Screenshots/ 
+           xfce4-screenshooter -f -s ~/Pictures/Screenshots/
         </command>
       </action>
     </keybind>
     <keybind key='C-A-m'>
       <action name='Execute'>
         <command>
-           dpms_off 
+           dpms_off
         </command>
       </action>
     </keybind>
@@ -563,87 +563,50 @@
       <action name='Execute'>
         <command>
            dmenu_run -i -nb '#191919' -nf '#35BF5C' -sb '#BEBEBE' -fn
-          'Inconsolata-10' 
+          'Inconsolata-10'
         </command>
       </action>
     </keybind>
     <keybind key='Hyper-d'>
       <action name='Execute'>
         <command>
-           thunar 
+           thunar
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             Thunar 
+             Thunar
           </name>
         </startupnotify>
-      </action>
-    </keybind>
-    <keybind key='C-A-o'>
-      <action name='Execute'>
-        <command>
-           sh /home/armin/.conky/ActiveSet/RSS/netzpolitik/copyScript.sh 
-        </command>
       </action>
     </keybind>
     <keybind key='C-A-y'>
       <action name='Execute'>
         <command>
-           setDEKeyboard 
+           setDEKeyboard
         </command>
       </action>
     </keybind>
     <keybind key='C-A-u'>
       <action name='Execute'>
         <command>
-           setUSKeyboard 
+           setUSKeyboard
         </command>
       </action>
     </keybind>
     <keybind key='C-A-d'>
       <action name='Execute'>
         <command>
-           sh ~/Workspace/Ruby/openbox_display_switch/main.sh 
+           sh ~/Workspace/Ruby/openbox_display_switch/main.sh
         </command>
       </action>
     </keybind>
-    <keybind key='Hyper-t'>
-      <action name='Execute'>
-        <command>
-           midori 
-        </command>
-        <startupnotify>
-          <enabled>
-             yes 
-          </enabled>
-          <name>
-             Browser 
-          </name>
-        </startupnotify>
-      </action>
-    </keybind>
-    <!-- Section Desktop1 -->
-    <keybind key='Hyper-w'>
-      <action name='Execute'>
-        <command>
-           firefox 
-        </command>
-      </action>
-    </keybind>
-    <keybind key='Hyper-e'>
-      <action name='Execute'>
-        <command>
-           thunderbird 
-        </command>
-      </action>
-    </keybind>
-    <!-- <keybind key='Hyper-r'> -->
+    <!-- <keybind key='Hyper-t'> -->
     <!-- <action name='Execute'> -->
     <!-- <command> -->
-    <!-- jdownloader  -->
+    <!-- midori  -->
     <!-- </command> -->
     <!-- <startupnotify> -->
     <!-- <enabled> -->
@@ -655,17 +618,46 @@
     <!-- </startupnotify> -->
     <!-- </action> -->
     <!-- </keybind> -->
+    <!-- Section Desktop1 -->
+    <keybind key='Hyper-q'>
+      <action name='Execute'>
+        <command>
+           gpaste-client ui
+        </command>
+      </action>
+    </keybind>
+    <keybind key='Hyper-w'>
+      <action name='Execute'>
+        <command>
+           firefox
+        </command>
+      </action>
+    </keybind>
+    <keybind key='Hyper-e'>
+      <action name='Execute'>
+        <command>
+           thunderbird
+        </command>
+      </action>
+    </keybind>
+    <keybind key='Hyper-t'>
+      <action name='Execute'>
+        <command>
+           transmission-gtk
+        </command>
+      </action>
+    </keybind>
     <keybind key='Hyper-y'>
       <action name='Execute'>
         <command>
-           keepassx2 
+           keepassx2
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             keepassx2 
+             keepassx2
           </name>
         </startupnotify>
       </action>
@@ -674,35 +666,35 @@
     <keybind key='Hyper-a'>
       <action name='Execute'>
         <command>
-           terminal 
+           terminal
         </command>
       </action>
     </keybind>
     <keybind key='Hyper-S-a'>
       <action name='Execute'>
         <command>
-           sh ~/.bin/vmScripts/pictrsStartTerminal.sh 
+           sh ~/.bin/vmScripts/pictrsStartTerminal.sh
         </command>
       </action>
     </keybind>
     <keybind key='Hyper-s'>
       <action name='Execute'>
         <command>
-           atom 
+           atom
         </command>
       </action>
     </keybind>
     <keybind key='Hyper-f'>
       <action name='Execute'>
         <command>
-           pamac-manager 
+           pamac-manager
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             Pamac-Manager 
+             Pamac-Manager
           </name>
         </startupnotify>
       </action>
@@ -711,14 +703,14 @@
     <keybind key='Hyper-z'>
       <action name='Execute'>
         <command>
-           rhythmbox 
+           rhythmbox
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             rhythmbox 
+             rhythmbox
           </name>
         </startupnotify>
       </action>
@@ -726,14 +718,14 @@
     <keybind key='Hyper-x'>
       <action name='Execute'>
         <command>
-           vlc_hit_keys 
+           vlc_hit_keys
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             vlc 
+             vlc
           </name>
         </startupnotify>
       </action>
@@ -741,29 +733,21 @@
     <keybind key='Hyper-c'>
       <action name='Execute'>
         <command>
-           devdocs-desktop 
+           virtualbox
         </command>
-        <startupnotify>
-          <enabled>
-             yes 
-          </enabled>
-          <name>
-             codeblocks 
-          </name>
-        </startupnotify>
       </action>
     </keybind>
     <keybind key='Hyper-b'>
       <action name='Execute'>
         <command>
-           jetbrains-rubymine 
+           jetbrains-rubymine
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             codeblocks 
+             codeblocks
           </name>
         </startupnotify>
       </action>
@@ -771,29 +755,36 @@
     <keybind key='Hyper-v'>
       <action name='Execute'>
         <command>
-           libreoffice 
+           libreoffice
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             libreoffice 
+             libreoffice
           </name>
         </startupnotify>
+      </action>
+    </keybind>
+    <keybind key='Hyper-n'>
+      <action name='Execute'>
+        <command>
+           sqlitebrowser
+        </command>
       </action>
     </keybind>
     <keybind key='Hyper-r'>
       <action name='Execute'>
         <command>
-           chromium --args --profile-directory=Default 
+           chromium --args --profile-directory=Default
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             chromium 
+             chromium
           </name>
         </startupnotify>
       </action>
@@ -801,14 +792,14 @@
     <keybind key='Hyper-S-r'>
       <action name='Execute'>
         <command>
-           chromium --args --profile-directory=Pictrs 
+           chromium --args --profile-directory=Pictrs
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             chromium 
+             chromium
           </name>
         </startupnotify>
       </action>
@@ -816,14 +807,14 @@
     <keybind key='Hyper-m'>
       <action name='Execute'>
         <command>
-           VBoxManage startvm ArchLinuxTesting 
+           VBoxManage startvm ArchLinuxTesting
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             Arch Virt Machine 
+             Arch Virt Machine
           </name>
         </startupnotify>
       </action>
@@ -831,14 +822,14 @@
     <keybind key='Hyper-S-m'>
       <action name='Execute'>
         <command>
-           VBoxManage startvm ArchLinuxT 
+           VBoxManage startvm ArchLinuxT
         </command>
         <startupnotify>
           <enabled>
-             yes 
+             yes
           </enabled>
           <name>
-             Arch Virt Machine 
+             Arch Virt Machine
           </name>
         </startupnotify>
       </action>
@@ -878,7 +869,7 @@
       <action name='MaximizeVert'/>
       <action name='MoveResizeTo'>
         <width>
-           50% 
+           50%
         </width>
       </action>
       <action name='MoveToEdge'/>
@@ -888,7 +879,7 @@
       <action name='MaximizeVert'/>
       <action name='MoveResizeTo'>
         <width>
-           50% 
+           50%
         </width>
       </action>
       <action name='MoveToEdge'/>
@@ -902,63 +893,56 @@
     <keybind key='XF86AudioRaiseVolume'>
       <action name='Execute'>
         <command>
-           amixer set Master 7%+ unmute 
+           amixer set Master 7%+ unmute
         </command>
       </action>
     </keybind>
     <keybind key='XF86AudioLowerVolume'>
       <action name='Execute'>
         <command>
-           amixer set Master 8%- unmute 
+           amixer set Master 8%- unmute
         </command>
       </action>
     </keybind>
     <keybind key='XF86AudioMute'>
       <action name='Execute'>
         <command>
-           amixer set Master toggle 
-        </command>
-      </action>
-    </keybind>
-    <keybind key='XF86AudioRaiseVolume'>
-      <action name='Execute'>
-        <command>
-           amixer set Master 3%+ unmute 
+           amixer set Master toggle
         </command>
       </action>
     </keybind>
     <keybind key='XF86MonBrightnessDown'>
       <action name='Execute'>
         <command>
-           xbacklight -dec 15 
+           xbacklight -dec 15
         </command>
       </action>
     </keybind>
     <keybind key='XF86MonBrightnessUp'>
       <action name='Execute'>
         <command>
-           xbacklight -inc 15 
+           xbacklight -inc 15
         </command>
       </action>
     </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>
-       1 
+       1
     </dragThreshold>
     <!-- number of pixels the mouse must move before a drag begins -->
     <doubleClickTime>
-       500 
+       500
     </doubleClickTime>
     <!-- in milliseconds (1000 = 1 second) -->
     <screenEdgeWarpTime>
-       400 
+       400
     </screenEdgeWarpTime>
     <!-- Time before changing desktops when the pointer touches the edge of the
        screen while moving a window, in milliseconds (1000 = 1 second).
        Set this to 0 to disable warping -->
     <screenEdgeWarpMouse>
-       false 
+       false
     </screenEdgeWarpMouse>
     <!-- Set this to TRUE to move the mouse pointer across the desktop when
        switching due to hitting the edge of the screen -->
@@ -989,42 +973,42 @@
       <mousebind button='A-Up' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             previous 
+             previous
           </to>
         </action>
       </mousebind>
       <mousebind button='A-Down' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             next 
+             next
           </to>
         </action>
       </mousebind>
       <mousebind button='C-A-Up' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             previous 
+             previous
           </to>
         </action>
       </mousebind>
       <mousebind button='C-A-Down' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             next 
+             next
           </to>
         </action>
       </mousebind>
       <mousebind button='A-S-Up' action='Click'>
         <action name='SendToDesktop'>
           <to>
-             previous 
+             previous
           </to>
         </action>
       </mousebind>
       <mousebind button='A-S-Down' action='Click'>
         <action name='SendToDesktop'>
           <to>
-             next 
+             next
           </to>
         </action>
       </mousebind>
@@ -1039,7 +1023,7 @@
       <mousebind button='Up' action='Click'>
         <action name='if'>
           <shaded>
-             no 
+             no
           </shaded>
           <then>
             <action name='Shade'/>
@@ -1052,7 +1036,7 @@
       <mousebind button='Down' action='Click'>
         <action name='if'>
           <shaded>
-             yes 
+             yes
           </shaded>
           <then>
             <action name='Unshade'/>
@@ -1077,7 +1061,7 @@
         <action name='Raise'/>
         <action name='ShowMenu'>
           <menu>
-             client-menu 
+             client-menu
           </menu>
         </action>
       </mousebind>
@@ -1086,7 +1070,7 @@
       <mousebind button='Left' action='Drag'>
         <action name='Resize'>
           <edge>
-             top 
+             top
           </edge>
         </action>
       </mousebind>
@@ -1095,7 +1079,7 @@
       <mousebind button='Left' action='Drag'>
         <action name='Resize'>
           <edge>
-             left 
+             left
           </edge>
         </action>
       </mousebind>
@@ -1104,7 +1088,7 @@
       <mousebind button='Left' action='Drag'>
         <action name='Resize'>
           <edge>
-             right 
+             right
           </edge>
         </action>
       </mousebind>
@@ -1113,7 +1097,7 @@
       <mousebind button='Left' action='Drag'>
         <action name='Resize'>
           <edge>
-             bottom 
+             bottom
           </edge>
         </action>
       </mousebind>
@@ -1122,7 +1106,7 @@
         <action name='Raise'/>
         <action name='ShowMenu'>
           <menu>
-             client-menu 
+             client-menu
           </menu>
         </action>
       </mousebind>
@@ -1158,7 +1142,7 @@
         <action name='Unshade'/>
         <action name='ShowMenu'>
           <menu>
-             client-menu 
+             client-menu
           </menu>
         </action>
       </mousebind>
@@ -1167,7 +1151,7 @@
         <action name='Raise'/>
         <action name='ShowMenu'>
           <menu>
-             client-menu 
+             client-menu
           </menu>
         </action>
       </mousebind>
@@ -1222,14 +1206,14 @@
       <mousebind button='Middle' action='Click'>
         <action name='ToggleMaximize'>
           <direction>
-             vertical 
+             vertical
           </direction>
         </action>
       </mousebind>
       <mousebind button='Right' action='Click'>
         <action name='ToggleMaximize'>
           <direction>
-             horizontal 
+             horizontal
           </direction>
         </action>
       </mousebind>
@@ -1248,42 +1232,42 @@
       <mousebind button='Up' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             previous 
+             previous
           </to>
         </action>
       </mousebind>
       <mousebind button='Down' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             next 
+             next
           </to>
         </action>
       </mousebind>
       <mousebind button='A-Up' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             previous 
+             previous
           </to>
         </action>
       </mousebind>
       <mousebind button='A-Down' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             next 
+             next
           </to>
         </action>
       </mousebind>
       <mousebind button='C-A-Up' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             previous 
+             previous
           </to>
         </action>
       </mousebind>
       <mousebind button='C-A-Down' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             next 
+             next
           </to>
         </action>
       </mousebind>
@@ -1301,14 +1285,14 @@
       <mousebind button='Middle' action='Press'>
         <action name='ShowMenu'>
           <menu>
-             client-list-combined-menu 
+             client-list-combined-menu
           </menu>
         </action>
       </mousebind>
       <mousebind button='Right' action='Press'>
         <action name='ShowMenu'>
           <menu>
-             root-menu 
+             root-menu
           </menu>
         </action>
       </mousebind>
@@ -1317,28 +1301,28 @@
       <mousebind button='Up' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             previous 
+             previous
           </to>
         </action>
       </mousebind>
       <mousebind button='Down' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             next 
+             next
           </to>
         </action>
       </mousebind>
       <mousebind button='A-Up' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             previous 
+             previous
           </to>
         </action>
       </mousebind>
       <mousebind button='A-Down' action='Click'>
         <action name='GoToDesktop'>
           <to>
-             next 
+             next
           </to>
         </action>
       </mousebind>
@@ -1349,37 +1333,37 @@
        just don't make menu ids clash or, well, it'll be kind of pointless -->
     <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
     <file>
-       menu.xml 
+       menu.xml
     </file>
     <hideDelay>
-       200 
+       200
     </hideDelay>
     <!-- if a press-release lasts longer than this setting (in milliseconds), the
        menu is hidden again -->
     <middle>
-       no 
+       no
     </middle>
     <!-- center submenus vertically about the parent entry -->
     <submenuShowDelay>
-       100 
+       100
     </submenuShowDelay>
     <!-- time to delay before showing a submenu after hovering over the parent
        entry.
        if this is a negative value, then the delay is infinite and the
        submenu will not be shown until it is clicked on -->
     <submenuHideDelay>
-       400 
+       400
     </submenuHideDelay>
     <!-- time to delay before hiding a submenu when selecting another
        entry in parent menu
        if this is a negative value, then the delay is infinite and the
        submenu will not be hidden until a different submenu is opened -->
     <showIcons>
-       yes 
+       yes
     </showIcons>
     <!-- controls if icons appear in the client-list-(combined-)menu -->
     <manageDesktops>
-       yes 
+       yes
     </manageDesktops>
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
@@ -1478,108 +1462,108 @@
 -->
     <!-- Terminal  -->
     <application Title='Terminal' class='Xfce4-terminal' name='xfce4-terminal'>
-       vertical 
+       vertical
       <desktop>
-         2 
+         2
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          1366
+          2110
         </width>
       </size>
       <position force='yes'>
         <x>
-          0
+          202.5
         </x>
         <y>
-           0 
+           0
         </y>
         <decor>
-           yes 
+           yes
         </decor>
       </position>
     </application>
     <!-- Terminal Sakura  -->
     <application Title='Sakura' class='Sakura' name='sakura'>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         vertical 
+         vertical
       </maximized>
       <size>
         <width>
-          380
+          660
         </width>
       </size>
       <position force='yes'>
         <x>
-          986
+          1900
         </x>
         <y>
-           0 
+           0
         </y>
       </position>
       <decor>
-         yes 
+         yes
       </decor>
     </application>
     <!-- Atom  -->
     <application class='Atom' name='atom'>
       <desktop>
-         2 
+         2
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          1366
+          2110
         </width>
       </size>
       <position force='yes'>
         <x>
-           220 
+           220
         </x>
         <y>
-           0 
+           0
         </y>
       </position>
       <decor>
-        yes
+         no
       </decor>
     </application>
     <!-- SQLite Browser  -->
     <application class='DB Browser for SQLite' name='sqlitebrowser' Title='DB Browser for SQLite' type='normal'>
       <desktop>
-         2 
+         2
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          1366
+          2110
         </width>
       </size>
       <position force='yes'>
         <x>
-           220 
+           220
         </x>
         <y>
-           0 
+           0
         </y>
       </position>
       <decor/>
@@ -1587,469 +1571,484 @@
     <!-- Pidgin Buddy List  -->
     <application class='Pidgin' name='Pidgin' type='normal' role='buddy_list'>
       <desktop>
-         2 
+         2
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         false 
+         false
       </maximized>
       <position force='yes'>
         <x>
-           0 
+           0
         </x>
         <y>
-           0 
+           0
         </y>
       </position>
       <decor>
-         yes 
+         yes
       </decor>
     </application>
     <!-- Pidgin  Chat -->
     <application class='Pidgin' name='Pidgin' type='normal' role='conversation'>
       <desktop>
-         2 
+         2
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         false 
+         false
       </maximized>
       <position force='yes'>
         <x>
-           0 
+           0
         </x>
         <y>
-           0 
+           0
         </y>
       </position>
       <decor>
-         yes 
+         yes
       </decor>
     </application>
     <!-- Thunar  -->
     <application class='Thunar' name='thunar' Title='Thunar' type='normal'>
       <desktop>
-         2 
+         2
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          853.75
+          1055
         </width>
         <height>
-           1145 
+           1145
         </height>
       </size>
       <position force='yes'>
         <x>
-          0
+          202.5
         </x>
         <y>
-           0 
+           0
         </y>
       </position>
       <decor>
-        yes
+         no
       </decor>
     </application>
     <!-- Baobab  -->
     <application class='Baobab' name='baobab'>
       <desktop>
-         2 
+         2
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          853.75
+          1055
         </width>
         <height>
-           1145 
+           1145
         </height>
       </size>
       <position force='yes'>
         <x>
-          0
+          202.5
         </x>
         <y>
-           0 
+           0
         </y>
       </position>
       <decor>
-        yes
+         no
       </decor>
     </application>
     <!-- Nextcloud client  -->
     <application class='Nextcloud' name='nextcloud' Title='Nextcloud'>
       <desktop>
-         2 
+         2
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         false 
+         false
       </maximized>
       <size>
         <width>
-           1030 
+           1030
         </width>
         <height>
-           1145 
+           1145
         </height>
       </size>
       <position force='yes'>
         <x>
-           1260 
+           1260
         </x>
         <y>
-           0 
+           0
         </y>
       </position>
       <decor>
-         yes 
+         yes
       </decor>
     </application>
     <!-- Engrampa  -->
     <application class='Engrampa' name='engrampa' Title='Archive Manager'>
       <desktop>
-         2 
+         2
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-        true
+        vertical
       </maximized>
       <size>
         <width>
-          853.75
+          1055
         </width>
         <height>
-           1145 
+           1145
         </height>
       </size>
       <position force='yes'>
         <x>
-          0
+          1257.5
         </x>
         <y>
-           0 
+           0
         </y>
       </position>
       <decor>
-        yes
+         no
       </decor>
     </application>
     <!-- Firefox  -->
     <application class='Firefox' name='Navigator'>
       <desktop>
-         1 
+         1
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
-     #Keepassx2 
+     #Keepassx2
     <application class='Keepassx2' name='keepassx2'>
       <desktop>
-         1 
+         1
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
     <!-- Thunderbird  -->
     <application class='Thunderbird' name='Mail'>
       <desktop>
-         1 
+         1
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
     <!-- Chromium  -->
     <application class='Chromium' name='chromium' type='normal'>
       <desktop>
-         1 
+         1
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         yes 
+         yes
       </decor>
     </application>
     <!-- Filezilla  -->
     <application class='Filezilla' name='filezilla'>
       <desktop>
-         1 
+         1
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
     <!-- CodeBlocks  -->
     <application class='Codeblocks' name='codeblocks'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
     <!-- Gummi  -->
     <application class='Gummi' name='gummi' type='normal'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         yes 
+         yes
       </decor>
     </application>
     <!-- Okular  -->
     <application class='okular' name='okular' title='Okular'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
     <!-- Atril  -->
     <application class='Atril' name='atril' title='Atril Document Viewer'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
+      </decor>
+    </application>
+    <!-- VirtualBox Manager  -->
+    <application class='VirtualBox Manager' name='VirtualBox Manager' type='normal'>
+      <desktop>
+         3
+      </desktop>
+      <layer>
+         normal
+      </layer>
+      <maximized>
+         true
+      </maximized>
+      <decor>
+         no
       </decor>
     </application>
     <!-- VirtualBox  -->
     <application class='VirtualBox' name='VirtualBox' type='normal'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
     <!-- VLC  -->
     <application class='vlc' name='vlc' role='vlc-main' type='normal'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
     <!-- Rhytmenbox  -->
     <application class='Rhythmbox' name='rhythmbox'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
     <!-- devdocs -->
     <application Title='DevDocs' name='devdocs-desktop' class='Devdocs-desktop'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
     <!-- libreOffice  -->
     <application Title='LibreOffice' name='libreoffice' class='libreoffice-startcenter'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         yes 
+         yes
       </decor>
     </application>
     <!-- Zathura  -->
     <application class='Zathura' name='zathura'>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         vertical 
+         vertical
       </maximized>
       <shade>
-         no 
+         no
       </shade>
       <decor>
-         yes 
+         yes
       </decor>
     </application>
     <!-- Translater Midori  -->
     <application class='Midori' name='midori4'>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         vertical 
+         vertical
       </maximized>
       <size>
         <width>
-           390 
+           390
         </width>
       </size>
       <shade>
-         no 
+         no
       </shade>
       <decor>
-         no 
+         no
       </decor>
       <position force='yes'>
         <x>
-           0 
+           0
         </x>
         <y>
-           0 
+           0
         </y>
       </position>
     </application>
     <!-- IntelliJ  -->
     <application name='sun-awt-X11-XFramePeer' type='normal'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
     <!-- RubyMine  -->
     <application Title='RubyMine 2016.1.2' class='jetbrains-rubymine' name='sun-awt-X11-XFramePeer' type='normal'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         yes 
+         yes
       </decor>
     </application>
     <!-- Kodi  -->
     <application Title='Kodi' class='Kodi' name='Kodi' type='normal'>
       <desktop>
-         3 
+         3
       </desktop>
       <layer>
-         normal 
+         normal
       </layer>
       <maximized>
-         true 
+         true
       </maximized>
       <decor>
-         no 
+         no
       </decor>
     </application>
   </applications>
