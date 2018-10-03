@@ -1,0 +1,82 @@
+icons = "material"
+
+[theme]
+name = "solarized-dark"
+
+[[block]]
+block = "focused_window"
+max_width = 21
+
+[[block]]
+block = "weather"
+format = "{weather} {temp}°"
+service = { name = "openweathermap", api_key = "655c31ba152dfb46909ed7bf2df76b91", city_id = "2879139", units = "metric" }
+
+[[block]]
+block = "xrandr"
+icons = true
+interval = 2
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "music"
+player = "rhythmbox"
+marquee = false
+max_width = 10
+buttons = ["play", "next"]
+
+[[block]]
+block = "pacman"
+interval = 10
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 10
+format = "{min}°..{max}°, ~{average}°"
+
+[[block]]
+block = "net"
+device = "wlp4s0"
+ssid = true
+speed_up = false
+interval = 5
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = ""
+info_type = "free"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+format_mem = "{Mug} GB"
+display_type = "memory"
+clickable = false
+interval = 5
+warning_mem = 80
+critical_mem = 95
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m} {5m}"
+
+
+[[block]]
+block = "uptime"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"

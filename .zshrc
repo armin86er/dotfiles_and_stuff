@@ -25,6 +25,7 @@ export EDITOR=nvim
 export SUDO_EDITOR=nvim
 export VISUAL=nvim
 export PAGER=/usr/bin/nvimpager && alias less=$PAGER
+export PDF_VIEWER=zathura
 export XDG_CONFIG_HOME=~/.config/xdg
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8

@@ -126,6 +126,9 @@ set directory=~/.vim/tmp     " Where temporary files will go.
 " delete all trailing white spaces - WATCH OUT
 autocmd BufWritePre * %s/\s\+$//e
 
+" Search for visually selected text with //
+vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
+
 " These lines setup the environment to show graphics and colors correctly.
 :map <C-S-J> <Esc>:tabp<CR>
 :map <C-S-K> <Esc>:tabn<CR>
@@ -232,7 +235,7 @@ Plug 'vim-scripts/Align'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-
+Plug '907th/vim-auto-save'
 Plug 'godlygeek/tabular'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -243,7 +246,6 @@ Plug 'mxw/vim-jsx'
 " Plug 'vim-scripts/dbext.vim'
 " Plug 'MattesGroeger/vim-bookmarks'
 " Plug 'jsfaint/gen_tags.vim'
-" Plug '907th/vim-auto-save'
 " Plug 'chemzqm/vim-jsx-improve'
 " Plug 'elzr/vim-json'
 " Plug 'prettier/vim-prettier'
@@ -510,28 +512,36 @@ let g:indent_guides_auto_colors = 0
 
 " vim-autosave
 "------------------------------------------------------------
-" let g:auto_save_events = ["InsertLeave", "TextChanged"]
-" let g:auto_save_write_all_buffers = 1 " write all open buffers as if you would use :wa "
-" let g:auto_save = 1                   " enable AutoSave on Vim startup                 "
+" :AutoSaveToggle
+let g:auto_save_events = ["FocusLost"]
+let g:auto_save_write_all_buffers = 1 " write all open buffers as if you would use :wa
+let g:auto_save = 1                   " enable AutoSave on Vim startup
+let g:auto_save_silent = 1  " do not display the auto-save notification
 
 " vim-emoji
 "------------------------------------------------------------
 " set completefunc=emoji#complete
 
-" show ruby coverage, ref: https://gist.github.com/mislav/5346548
-highlight SignColumn NONE
-sign define covpos text=• texthl=String
-sign define covneg linehl=Error text=𐄂 texthl=HelpDebug
+" " show ruby coverage, ref: https://gist.github.com/mislav/5346548
+" highlight SignColumn NONE
+" sign define covpos text=• texthl=String
+" sign define covneg linehl=Error text=𐄂 texthl=HelpDebug
 
-function! s:SignCoverage(file)
-  let output = system('grep "'.a:file.'" coverage/raw')
-  let lines = split(output, '\n')
-  exec 'sign unplace * buffer='.bufnr('%')
-  for line in lines
-    let [ type, lnum, fname ] = split(line, ' ')
-    let name = type == '+' ? 'covpos' : 'covneg'
-    exec 'sign place '.lnum.' line='.lnum.' name='.name.' buffer='.bufnr('%')
-  endfor
-endfunction
+" function! s:SignCoverage(file)
+"   let output = system('grep "'.a:file.'" coverage/raw')
+"   let lines = split(output, '\n')
+"   exec 'sign unplace * buffer='.bufnr('%')
+"   for line in lines
+"     let [ type, lnum, fname ] = split(line, ' ')
+"     let name = type == '+' ? 'covpos' : 'covneg'
+"     exec 'sign place '.lnum.' line='.lnum.' name='.name.' buffer='.bufnr('%')
+"   endfor
+" endfunction
 
-map H :call <SID>SignCoverage(expand('%:p'))<cr>
+" map H :call <SID>SignCoverage(expand('%:p'))<cr>
+
+" Do we have local vimrc?
+if filereadable('.vimrc.local')
+  " If so, go ahead and load it.
+  source .vimrc.local
+endif
