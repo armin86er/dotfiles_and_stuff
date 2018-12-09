@@ -154,25 +154,25 @@ bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-# bar {
-  # status_command i3status
-# }
 bar {
-      # font pango:DejaVu Sans Mono, FontAwesome 12
-      # set font material:MaterialIcons Regular
-      font pango:inconsolata 14
-      # status_command i3status
-      status_command /usr/bin/i3status-rs ~/.config/i3/status.toml
-      colors {
-            separator #666666
-            background #222222
-            statusline #35BF5C
-            focused_workspace #0088CC #0088CC #ffffff
-            active_workspace #333333 #333333 #ffffff
-            inactive_workspace #333333 #333333 #888888
-            urgent_workspace #2f343a #900000 #ffffff
-      }
+  status_command i3status
 }
+# bar {
+#       # font pango:DejaVu Sans Mono, FontAwesome 12
+#       # set font material:MaterialIcons Regular
+#       font pango:inconsolata 14
+#       # status_command i3status
+#       status_command /usr/bin/i3status-rs ~/.config/i3/status.toml
+#       colors {
+#             separator #666666
+#             background #222222
+#             statusline #35BF5C
+#             focused_workspace #0088CC #0088CC #ffffff
+#             active_workspace #333333 #333333 #ffffff
+#             inactive_workspace #333333 #333333 #888888
+#             urgent_workspace #2f343a #900000 #ffffff
+#       }
+# }
 
 # Custom
 # Config
@@ -183,7 +183,7 @@ hide_edge_borders none
 # Autostart
 exec syndaemon -i 1 -K -d
 exec redshift
-exec unclutter -idle 2
+exec unclutter -idle 2 -noevents
 exec sh ~/.bin/dock.sh
 exec orage
 exec gpaste-client start
@@ -243,6 +243,5 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 15
 
 # assign [class="LibreOffice"] 3
 assign [class="Rhythmbox"] 3
-assign [class="VirtualBox Manager"] 3
 assign [class="VirtualBox"] 10
 assign [class="vlc"] 3

@@ -30,7 +30,7 @@ export XDG_CONFIG_HOME=~/.config/xdg
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export ZSH=/usr/share/oh-my-zsh/
-export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin:$DOCKER_PICTRS_DIR/helper
+export PATH=~/.bin/path:$PATH:$(ruby -e 'print Gem.user_dir')/bin:$DOCKER_PICTRS_DIR/helper
 export gems=$(ruby -e 'print Gem.user_dir')/gems
 export GEM_PATH=$(ruby -e 'print Gem.user_dir')
 # export POWLINE=/usr/lib/python3.6/site-packages/powerline/
@@ -154,12 +154,12 @@ case $HOST in
     systemd
     common-aliases
     #dirhistory
-    history
-    gem
-    rails
+    # history
+    # gem
+    # rails
     vi-mode
-    web-search
-    catimg
+    # web-search
+    # catimg
     #zsh-completions
     #cp
     #copyfile

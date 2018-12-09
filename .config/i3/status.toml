@@ -4,10 +4,6 @@ icons = "material"
 name = "solarized-dark"
 
 [[block]]
-block = "focused_window"
-max_width = 21
-
-[[block]]
 block = "weather"
 format = "{weather} {temp}°"
 service = { name = "openweathermap", api_key = "655c31ba152dfb46909ed7bf2df76b91", city_id = "2879139", units = "metric" }
@@ -19,23 +15,6 @@ interval = 2
 
 [[block]]
 block = "sound"
-
-[[block]]
-block = "music"
-player = "rhythmbox"
-marquee = false
-max_width = 10
-buttons = ["play", "next"]
-
-[[block]]
-block = "pacman"
-interval = 10
-
-[[block]]
-block = "temperature"
-collapsed = false
-interval = 10
-format = "{min}°..{max}°, ~{average}°"
 
 [[block]]
 block = "net"

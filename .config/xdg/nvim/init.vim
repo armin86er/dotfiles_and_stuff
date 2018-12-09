@@ -3,6 +3,14 @@
 " Description: A minimal, but feature rich, example .vimrc.
 "------------------------------------------------------------
 
+
+" :termial
+:tnoremap <leader><Esc> <C-\><C-n>
+au FocusLost,TabLeave * call feedkeys("\<C-\>\<C-n>")
+
+" no need for ex mode
+nnoremap Q <nop>
+
 " Indent pasted block
 " nnoremap <leader>p p`[v`]=
 
@@ -27,7 +35,11 @@ set tabpagemax=3
 set scrolloff=3
 set linebreak
 set whichwrap=b,s,<,>,[,]
+
 set foldmethod=manual
+nnoremap <Space> za
+vnoremap <Space> za
+
 "set spell
 
 " hideComments
@@ -129,7 +141,29 @@ autocmd BufWritePre * %s/\s\+$//e
 " Search for visually selected text with //
 vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
 
-" These lines setup the environment to show graphics and colors correctly.
+:map <C-U> :History<CR>
+" :map c<C-U> :History:<CR>
+" :map s<C-U> :History/<CR>
+
+:map <C-P> :GFiles<CR>
+:map <C-S> <Esc>:Lines<CR>
+:map <C-D> <Esc>:Commits<CR>
+:map <C-X> <Esc>:Tags<CR>
+" :map g<C-P> :Files<CR>
+" :map b<C-S> <Esc>:BLines<CR>
+" :map b<C-D> <Esc>:BCommits<CR>
+" :map b<C-X> <Esc>:BTags<CR>
+
+:map <C-N> <Esc>:Buffers<CR>
+:map <C-M> <Esc>:GFiles?<CR>
+:map <C-O> :Commands<CR>
+:map <C-A> <Esc>:Ag<CR>
+:map <leader>h <Esc>:Helptags<CR>
+
+" fzf
+" let g:_
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
 :map <C-S-J> <Esc>:tabp<CR>
 :map <C-S-K> <Esc>:tabn<CR>
 :map <C-S-H> <Esc>:bp<CR>
@@ -157,6 +191,12 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+
+" Moving
+noremap H ^
+noremap L g_
+noremap J 6j
+noremap K 6k
 
 if &term =~ '256color'
   " Disable Background Color Erase (BCE) so that color schemes
@@ -196,33 +236,23 @@ endif
 " Plug PluginManager
 "------------------------------------------------------------
 call plug#begin()
-if hostname() == "debian"
-  Plug 'kien/ctrlp.vim'
-  Plug 'mileszs/ack.vim'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'Yggdroot/indentLine'
-  Plug 'scrooloose/nerdcommenter'
-  Plug 'tpope/vim-surround'
-  Plug 'sirver/UltiSnips'
-  Plug 'rkitover/vimpager'
-endif
-
 Plug 'vim-scripts/loremipsum'
 Plug 'simeji/winresizer'
 Plug 'mhinz/vim-startify'
 Plug 'w0rp/ale'
-Plug 'ryanoasis/vim-devicons'
 
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
       \ }
-Plug 'junegunn/fzf' " general-purpose command-line fuzzy finder TODO
+
+" Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim' " general-purpose command-line fuzzy finder TODO
+Plug 'ggreer/the_silver_searcher'
 Plug 'sjl/gundo.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  } " asynchronous completion framework
-Plug 'Shougo/denite.nvim' " generic fuzzy finder TODO
 Plug 'fszymanski/deoplete-emoji'
+" Plug 'Shougo/denite.nvim' " generic fuzzy finder TODO
 Plug 'Shougo/neco-vim' " completions for Vim commands
 Plug 'Shougo/neosnippet' " For func argument completion
 Plug 'Shougo/neosnippet-snippets'
@@ -230,7 +260,6 @@ Plug 'brooth/far.vim' " Find And Replace Vim plugin
 Plug 'donRaphaco/neotex', { 'for': 'tex' } " Latex wysiwyg
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/gv.vim'
-Plug 'trusktr/seti.vim'
 Plug 'vim-scripts/Align'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tpope/vim-fugitive'
@@ -240,9 +269,11 @@ Plug 'godlygeek/tabular'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
+Plug 'vim-latex/vim-latex'
+" Plug 'trusktr/seti.vim' " colorscheme
+" Plug 'ryanoasis/vim-devicons'
 " Plug 'skywind3000/asyncrun.vim'
 " Plug 'junegunn/vim-emoji'
-" Plug 'vim-latex/vim-latex'
 " Plug 'vim-scripts/dbext.vim'
 " Plug 'MattesGroeger/vim-bookmarks'
 " Plug 'jsfaint/gen_tags.vim'
@@ -273,6 +304,11 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 "------------------------------------"
 let g:deoplete#enable_at_startup = 1
 " call deoplete#custom#option('smart_case', v:true)
+" call deoplete#custom#option('omni_patterns', v:false)
+" call deoplete#custom#option('refresh_always', v:false)
+" call deoplete#custom#option('smart_case', v:false)
+call deoplete#custom#option('num_processes', 0)
+" call deoplete#custom#option('auto_complete_delay', 10)
 
 " use tab to forward cycle
 inoremap <silent><expr> <TAB>
@@ -297,9 +333,9 @@ let g:LanguageClient_serverCommands = {
 
 nnoremap <F6> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Git fugitive
 "------------------------------------"
@@ -332,21 +368,24 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 0
 
-" CtrlP
-"------------------------------------"
-nnoremap <leader>. :CtrlPTag<cr>
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn)$|^bundle$',
-      \ 'file': '\v\.(exe|so|dll)$',
-      \ 'link': 'some_bad_symbolic_links',
-      \ }
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']  " Ignore files in .gitignore
+" " CtrlP
+" "------------------------------------"
+" nnoremap <leader>. :CtrlPTag<cr>
+" let g:ctrlp_custom_ignore = {
+"       \ 'dir':  '\v[\/]\.(git|hg|svn)$|^bundle$',
+"       \ 'file': '\v\.(exe|so|dll)$',
+"       \ 'link': 'some_bad_symbolic_links',
+"       \ }
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']  " Ignore files in .gitignore
 
 " vim-session
 "------------------------------------------------------------
 " Don't save hidden and unloaded buffers in sessions.
 set sessionoptions-=buffers
+
+:let g:session_autosave = 'no'
+:let g:session_autoload = 'no'
 
 " Buffer Explorer
 "------------------------------------"
@@ -359,13 +398,13 @@ let g:miniBufExplModSelTarget = 1
 
 " denite
 "------------------------------------"
-nmap <leader>db :Denite buffer<CR>
-nmap <leader>ds :Denite neosnippet<CR>
-nmap <leader>df :Denite file/rec<CR>
-nmap <leader>dg :Denite grep<CR>
-nmap <leader>dh :Denite help<CR>
-nmap <leader>dr :Denite register<CR>
-nmap <leader>dt :Denite tag<CR>
+" nmap <leader>db :Denite buffer<CR>
+" nmap <leader>ds :Denite neosnippet<CR>
+" nmap <leader>df :Denite file/rec<CR>
+" nmap <leader>dg :Denite grep<CR>
+" nmap <leader>dh :Denite help<CR>
+" nmap <leader>dr :Denite register<CR>
+" nmap <leader>dt :Denite tag<CR>
 
 " vim-ack
 "------------------------------------"
@@ -405,26 +444,28 @@ let g:ale_fixers = {
       \   'javascript': ['eslint'],
       \   'ruby': ['rubocop']
       \}
+let g:ale_fix_on_save = 1
 
 nmap [e <Plug>(ale_previous_wrap)
 nmap ]e <Plug>(ale_next_wrap)
 
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '°'
 let g:ale_set_highlights = 0
+let g:ale_max_signs = 128
+
+" markers
+let g:ale_sign_error = '⭍' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '⮞'  " '⇶'
+let g:ale_sign_info = '●'
+let g:ale_sign_style_error = '⭐'
+let g:ale_sign_style_warning = '⭑'
 
 " Nerdtree
 "------------------------------------------------------------
-" open a NERDTree automatically when open a dir
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
 " close vim when NERDTree is the only left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <leader>nt :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<CR>
+map <C-A-N> :NERDTreeFind<CR>
 map <leader>nb :Bookmark<CR>
 
 " Airline
@@ -457,20 +498,20 @@ if exists(":Tabularize")
   nmap <Leader>t= :Tabularize /=<CR>
   vmap <Leader>t= :Tabularize /=<CR>
   nmap <Leader>t: :Tabularize /:\zs<CR>
-  vmap <Leader>t: :Tabularize /:\zs<CR>
+  vmap <Leader>t: :Tab /:\zs<CR>
 endif
 
-inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
+" inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
+" function! s:align()
+  " let p = '^\s*|\s.*\s|\s*$'
+  " if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    " let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    " let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    " Tabularize/|/l1
+    " normal! 0
+    " call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  " endif
+" endfunction
 
 " inoremap <silent> = =<Esc>:call <SID>ealign()<CR>a
 " function! s:ealign()
