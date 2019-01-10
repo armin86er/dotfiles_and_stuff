@@ -17,6 +17,8 @@ autoload -Uz gcurl
 autoload -Uz save_workspace
 autoload -Uz make_world_readable
 
+alias ge='git edit'
+
 export DOCKER_PICTRS_DIR=~/Workspace/Docker/ftp-server
 # export ATTENDANCE_RECORDER_DIR=~/Workspace/Ruby/attendance_recorder
 export DATAGRIP_JDK=/usr/lib/jvm/java-8-openjdk
@@ -33,6 +35,7 @@ export ZSH=/usr/share/oh-my-zsh/
 export PATH=~/.bin/path:$PATH:$(ruby -e 'print Gem.user_dir')/bin:$DOCKER_PICTRS_DIR/helper
 export gems=$(ruby -e 'print Gem.user_dir')/gems
 export GEM_PATH=$(ruby -e 'print Gem.user_dir')
+export docs=/usr/share/doc
 # export POWLINE=/usr/lib/python3.6/site-packages/powerline/
 case $HOST in
   archdich)

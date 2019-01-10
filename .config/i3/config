@@ -155,7 +155,7 @@ bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
 # finds out, if available)
 
 bar {
-  status_command i3status
+  status_command ~/.bin/memoryi3Status.sh
 }
 # bar {
 #       # font pango:DejaVu Sans Mono, FontAwesome 12

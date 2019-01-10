@@ -1,0 +1,66 @@
+general {
+	colors = true
+	interval = 5
+}
+
+order += "disk /"
+/* order += "run_watch DHCP" */
+order += "path_exists VPN"
+order += "wireless wlp4s0"
+order += "ethernet eth0"
+order += "battery 0"
+/* order += "cpu_temperature 0" */
+order += "load"
+order += "tztime local"
+
+wireless wlp4s0 {
+	/* format_up = "W: (%quality at %essid, %bitrate) %ip" */
+	format_up = "W: (%quality at %bitrate) %ip"
+		format_down = "W: down"
+
+}
+
+ethernet eth0 {
+# if you use %speed, i3status requires the cap_net_admin capability
+	format_up = "E: %ip (%speed)"
+	format_down = "E: down"
+}
+
+battery 0 {
+	format = "%status %percentage %remaining"
+	/* format = "%status %percentage %remaining %emptytime" */
+		format_down = "No battery"
+		status_chr = "⚡"
+		status_bat = "🔋"
+		status_unk = "?"
+		status_full = "☻"
+		path = "/sys/class/power_supply/BAT1/uevent"
+		low_threshold = 10
+}
+
+/* volume master { */
+        /* format = "♪: %volume" */
+        /* format_muted = "♪: muted (%volume)" */
+        /* device = "pulse:alsa_output.pci-0000_00_1f.3.analog-stereo" */
+/* } */
+
+path_exists VPN {
+	path = "/proc/sys/net/ipv4/conf/tun0"
+}
+
+tztime local {
+	format = "%Y-%m-%d %H:%M:%S"
+}
+
+load {
+	format = "%5min"
+}
+
+# cpu_temperature 0 {
+	# format = "T: %degrees °C"
+		# path = "/sys/devices/platform/coretemp.0/temp1_input"
+# }
+
+disk "/" {
+	format = "%free"
+}
