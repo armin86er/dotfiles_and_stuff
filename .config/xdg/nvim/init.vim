@@ -230,17 +230,33 @@ syntax on
 " PLUGINS
 " Plug PluginManager
 "------------------------------------------------------------
+let docker_env = substitute(system('echo $DOCKER_ENV'), '\n', '', '') == 'true'
+" echo docker_env
+let hostname = substitute(system('hostname'), '\n', '', '')
 call plug#begin()
-	Plug 'vim-scripts/loremipsum'
-	Plug 'simeji/winresizer'
-	Plug 'mhinz/vim-startify'
-	Plug 'w0rp/ale'
+  if hostname != $HOSTNAME
+    " https://www.vim.org/scripts/script.php?script_id=273 missing
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'tpope/vim-surround'
+    Plug 'majutsushi/tagbar'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'xolox/vim-misc'
+    Plug 'tomasr/molokai'
+    Plug 'tpope/vim-rails'
+    Plug 'xolox/vim-session'
+  endif
 
 	Plug 'autozimu/LanguageClient-neovim', {
 				\ 'branch': 'next',
 				\ 'do': 'bash install.sh',
 				\ }
-
+	Plug 'vim-scripts/loremipsum'
+	Plug 'simeji/winresizer'
+	Plug 'mhinz/vim-startify'
+	Plug 'w0rp/ale'
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  } " asynchronous completion framework
 	Plug 'junegunn/fzf.vim' " general-purpose command-line fuzzy finder TODO
 	Plug 'ggreer/the_silver_searcher'
@@ -261,12 +277,9 @@ call plug#begin()
 	Plug 'godlygeek/tabular'
 	Plug 'pangloss/vim-javascript'
 	Plug 'mxw/vim-jsx'
-	" Plug 'sheerun/vim-polyglot' " collection of language packs
-	" Plug 'mhinz/vim-signify'
 	Plug 'joshdick/onedark.vim' " colorscheme
 	Plug 'kassio/neoterm' "  terminal helper, repl
   " Plug 'mhinz/vim-signify' " git/vcs signs
-
 	" Plug 'vim-latex/vim-latex'
 	" Plug 'trusktr/seti.vim' " colorscheme
 	" Plug 'ryanoasis/vim-devicons'
