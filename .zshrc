@@ -14,6 +14,8 @@ fpath=( ~/.zfunc "${fpath[@]}" )
 for i in $(ls ~/.zfunc); do autoload -Uz $i; done
 
 alias ge='git edit'
+alias create_ctags='ctags -R -f .git/tags $PWD'
+alias update_vim='nvim +PlugUpgrade +PlugClean +PlugUpdate +PlugInstall +UpdateRemotePlugins +qa'
 
 export TERMINAL=termite
 export EDITOR=nvim

@@ -184,8 +184,8 @@ syntax on
     noremap K 8k
 
     " no need for ex mode
-    nnoremap Q <nop>
-    nmap <CR> <nop>
+    " nnoremap Q <nop>
+    " nmap <CR> <nop>
 
     " :termial
     " maps leader esc to command mode
