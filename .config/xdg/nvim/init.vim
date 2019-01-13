@@ -234,7 +234,7 @@ let docker_env = substitute(system('echo $DOCKER_ENV'), '\n', '', '') == 'true'
 " echo docker_env
 let hostname = substitute(system('hostname'), '\n', '', '')
 call plug#begin()
-  if hostname != $HOSTNAME
+  if hostname != $DESKTOP_HOST
     " https://www.vim.org/scripts/script.php?script_id=273 missing
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-surround'
@@ -245,7 +245,7 @@ call plug#begin()
     Plug 'airblade/vim-gitgutter'
     Plug 'xolox/vim-misc'
     Plug 'tomasr/molokai'
-    Plug 'tpope/vim-rails'
+    Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby']}
     Plug 'xolox/vim-session'
   endif
 
@@ -258,7 +258,7 @@ call plug#begin()
 	Plug 'mhinz/vim-startify'
 	Plug 'w0rp/ale'
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  } " asynchronous completion framework
-	Plug 'junegunn/fzf.vim' " general-purpose command-line fuzzy finder TODO
+	Plug 'junegunn/fzf.vim' " general-purpose command-line fuzzy finder
 	Plug 'ggreer/the_silver_searcher'
 	Plug 'sjl/gundo.vim'
 	Plug 'fszymanski/deoplete-emoji'
@@ -275,10 +275,10 @@ call plug#begin()
 	Plug 'tpope/vim-repeat'
 	Plug '907th/vim-auto-save'
 	Plug 'godlygeek/tabular'
-	Plug 'pangloss/vim-javascript'
-	Plug 'mxw/vim-jsx'
+	Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx']}
+	Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx']}
 	Plug 'joshdick/onedark.vim' " colorscheme
-	Plug 'kassio/neoterm' "  terminal helper, repl
+	Plug 'kassio/neoterm' "  terminal helper, repl to code execution
   " Plug 'mhinz/vim-signify' " git/vcs signs
 	" Plug 'vim-latex/vim-latex'
 	" Plug 'trusktr/seti.vim' " colorscheme

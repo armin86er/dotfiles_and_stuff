@@ -1,3 +1,7 @@
+if [ -f ~/.zshrc_private ]; then
+  source ~/.zshrc_private
+fi
+
 # The following lines were added by compinstall
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list ''
@@ -22,10 +26,6 @@ export ZSH=/usr/share/oh-my-zsh/
 export PATH=~/.bin/path:$PATH:$(ruby -e 'print Gem.user_dir')/bin
 export GEM_PATH=$(ruby -e 'print Gem.user_dir')
 export HOSTNAME=$(cat /etc/hostname)
-
-if [[ ! -a ~/.zshrc_private ]]; then
-  source ~/.zshrc_privat
-fi
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -150,14 +150,14 @@ bindkey -M vicmd 'j' history-substring-search-down
 source $ZSH/oh-my-zsh.sh
 
 case $HOST in
-  $HOSTNAME)
+  $DESKTOP_HOST)
     source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
   # Powerline
   # source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
   powerline-daemon -q
-  . /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
+  . $PYTHON_POWERLINE/bindings/zsh/powerline.zsh
 
   # zsh-syntax-highlighting
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
