@@ -1,0 +1,21 @@
+#!/bin/bash
+
+on() {
+  sudo systemctl stop dnscrypt-proxy.socket && \
+    sudo systemctl stop dnscrypt-proxy.service && \
+    sudo systemctl start dhcpcd.service
+}
+
+off() {
+  sudo systemctl stop dhcpcd.service && \
+    sudo systemctl start dnscrypt-proxy.socket && \
+    sudo systemctl start dnscrypt-proxy.service
+}
+
+if [[ "$1" == "on" ]]
+then
+  on
+elif [[ "$1" == "off" ]]
+then
+  off
+fi

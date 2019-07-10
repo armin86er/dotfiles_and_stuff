@@ -1,0 +1,167 @@
+// vim:ts=4:sw=4:et
+{
+    // tabbed split container with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": 1,
+    "type": "con",
+    "nodes": [
+        {
+            // tabbed split container with 1 children
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "tabbed",
+            "percent": 1,
+            "type": "con",
+            "nodes": [
+                {
+                    // splitv split container with 2 children
+                    "border": "pixel",
+                    "floating": "auto_off",
+                    "layout": "splitv",
+                    "percent": 1,
+                    "type": "con",
+                    "nodes": [
+                        {
+                            // splith split container with 2 children
+                            "border": "pixel",
+                            "floating": "auto_off",
+                            "layout": "splith",
+                            "percent": 0.871037463976945,
+                            "type": "con",
+                            "nodes": [
+                                {
+                                    // splitv split container with 1 children
+                                    "border": "pixel",
+                                    "floating": "auto_off",
+                                    "layout": "splitv",
+                                    "percent": 0.57,
+                                    "type": "con",
+                                    "nodes": [
+                                        {
+                                            "border": "pixel",
+                                            "current_border_width": 2,
+                                            "floating": "auto_off",
+                                            "geometry": {
+                                               "height": 458,
+                                               "width": 734,
+                                               "x": 0,
+                                               "y": 0
+                                            },
+                                            "name": "Shell",
+                                            "percent": 1,
+                                            "swallows": [
+                                               {
+                                               "class": "^Termite$",
+                                               "title": "^Shell$",
+                                               "transient_for": "^$"
+                                               }
+                                            ],
+                                            "type": "con"
+                                        }
+                                    ]
+                                },
+                                {
+                                    // stacked split container with 3 children
+                                    "border": "pixel",
+                                    "floating": "auto_off",
+                                    "layout": "stacked",
+                                    "percent": 0.43,
+                                    "type": "con",
+                                    "nodes": [
+                                        {
+                                            "border": "pixel",
+                                            "current_border_width": 2,
+                                            "floating": "auto_off",
+                                            "geometry": {
+                                               "height": 362,
+                                               "width": 574,
+                                               "x": 0,
+                                               "y": 0
+                                            },
+                                            "name": "Vim",
+                                            "percent": 0.333333333333333,
+                                            "swallows": [
+                                               {
+                                               "class": "^Termite$",
+                                               "title": "^bash -c '~/.bin/vim_session && /bin/bash'$",
+                                               "transient_for": "^$"
+                                               }
+                                            ],
+                                            "type": "con"
+                                        },
+                                        {
+                                            "border": "pixel",
+                                            "current_border_width": 2,
+                                            "floating": "auto_off",
+                                            "geometry": {
+                                               "height": 1192,
+                                               "width": 994,
+                                               "x": 0,
+                                               "y": 0
+                                            },
+                                            "name": "File Manager",
+                                            "percent": 0.333333333333333,
+                                            "swallows": [
+                                               {
+                                               "class": "^Thunar$",
+                                               "instance": "^thunar$",
+                                               "transient_for": "^$"
+                                               }
+                                            ],
+                                            "type": "con"
+                                        },
+                                        {
+                                            "border": "pixel",
+                                            "current_border_width": 2,
+                                            "floating": "auto_off",
+                                            "geometry": {
+                                               "height": 400,
+                                               "width": 1456,
+                                               "x": 2,
+                                               "y": 832
+                                            },
+                                            "name": "Telegram",
+                                            "percent": 0.333333333333333,
+                                            "swallows": [
+                                               {
+                                               "class": "^TelegramDesktop$",
+                                               "instance": "^telegram\\-desktop$",
+                                               "transient_for": "^$"
+                                               }
+                                            ],
+                                            "type": "con"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "border": "pixel",
+                            "current_border_width": 2,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 362,
+                               "width": 574,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "name": "Journal",
+                            "percent": 0.128962536023055,
+                            "swallows": [
+                               {
+                               "class": "^Termite$",
+                               "title": "^journal$",
+                               "transient_for": "^$"
+                               }
+                            ],
+                            "type": "con"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

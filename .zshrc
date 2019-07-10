@@ -16,6 +16,12 @@ for i in $(ls ~/.zfunc); do autoload -Uz $i; done
 alias ge='git edit'
 alias create_ctags='ctags -R -f .git/tags $PWD'
 alias update_vim='nvim +PlugUpgrade +PlugClean +PlugUpdate +PlugInstall +UpdateRemotePlugins +qa'
+alias feh='feh -ZxF'
+alias docker_clean=' \
+  docker container prune -f ; \
+  docker image prune -f ; \
+  docker network prune -f ; \
+  docker volume prune -f '
 
 export TERMINAL=termite
 export EDITOR=nvim
@@ -25,8 +31,8 @@ export PAGER=/usr/bin/nvimpager && alias less=$PAGER
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export ZSH=/usr/share/oh-my-zsh/
-export PATH=~/.bin/path:$PATH:$(ruby -e 'print Gem.user_dir')/bin
 export GEM_PATH=$(ruby -e 'print Gem.user_dir')
+export PATH=~/.bin:$PATH:$GEM_PATH/bin
 export HOSTNAME=$(cat /etc/hostname)
 
 # Lines configured by zsh-newuser-install
@@ -186,7 +192,7 @@ function githubCount {
 
   function ytAudio() {
     OLD=$PWD
-    DEST=~/.nextcloud/Music/YouTube/
+    DEST=$YT_AUDIO_DEST
     cd $DEST
     mkdir $1
     cd $1
@@ -197,3 +203,11 @@ function githubCount {
   function wave2mp3 {
     ffmpeg -i $1 -vn -ar 44100 -ac 2 -ab 192k -f mp3 $1.mp3
   }
+
+function installed_compiler {
+  # Parse pacman output and determine compiler
+  for I in `pacman -Q | awk '{ print $1 }'`; do
+    IS_COMPILER=`pacman -Qi $I | egrep -i "compil"`
+    if [ ! "${IS_COMPILER}" = "" ]; then echo $I; fi
+  done
+}

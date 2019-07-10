@@ -16,8 +16,8 @@ filetype plugin indent on
 syntax on
 
   " # Variables #
-  let g:rehash256 = 1
-  let g:python_host_prog = '/usr/bin/python2.7'
+  let g:rehash256         = 1
+  let g:python_host_prog  = '/usr/bin/python2.7'
   let g:python3_host_prog = '/usr/bin/python3.7'
 
   " # Settings #
@@ -50,6 +50,9 @@ syntax on
     set scrolloff=3
     set linebreak
     set whichwrap=b,s,<,>,[,]
+    set wrap
+
+    set signcolumn=yes
 
     set foldmethod=manual
 
@@ -139,28 +142,28 @@ syntax on
     " Highlight search
     set hlsearch
 
-  " # Mappings #
-    " Leader Key remaped to ','
+  " # mappings #
+    " Leader Key maped to ','
     let mapleader=","
 
     " Search for visually selected text with //
     vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
 
-    :map <C-S-J> <Esc>:tabp<CR>
-    :map <C-S-K> <Esc>:tabn<CR>
-    :map <C-S-H> <Esc>:bp<CR>
-    :map <C-S-L> <Esc>:bn<CR>
+    :noremap <C-S-J> <Esc>:tabp<CR>
+    :noremap <C-S-K> <Esc>:tabn<CR>
+    :noremap <C-S-H> <Esc>:bp<CR>
+    :noremap <C-S-L> <Esc>:bn<CR>
 
     nnoremap <silent> [b :bprevious<CR>
     nnoremap <silent> ]b :bnext<CR>
     nnoremap <silent> [B :bfirst<CR>
     nnoremap <silent> ]B :blast<CR>
 
-    " Change window wit Ctrl + Alt
-    map <C-A-J> <C-W>j
-    map <C-A-K> <C-W>k
-    map <C-A-H> <C-W>h
-    map <C-A-L> <C-W>l
+    " Change window with Ctrl + Alt
+    noremap <C-A-J> <C-W>j
+    noremap <C-A-K> <C-W>k
+    noremap <C-A-H> <C-W>h
+    noremap <C-A-L> <C-W>l
 
     " Copy to clipboard
     vnoremap  <leader>y  "+y
@@ -183,6 +186,14 @@ syntax on
     noremap J 8j
     noremap K 8k
 
+    " noremaps leader x to :bd
+    nnoremap <leader>x :bd<CR>
+
+    " vnoremap <leader>l  '~/.config/xdg/nvim/init.vim'<cr>
+
+    " closes all buffers except focused one
+    " nnoremap <leader>X '%bd|e#|bd#'<CR>
+
     " no need for ex mode
     " nnoremap Q <nop>
     " nmap <CR> <nop>
@@ -191,20 +202,24 @@ syntax on
     " maps leader esc to command mode
     :tnoremap <leader><Esc> <C-\><C-n>
 
+    " set nowrap
+    au TermOpen * set nowrap
+    set scrollback=100000
+
     " Indent pasted block
     " nnoremap <leader>p p`[v`]=
 
     " opens folds with space
-    nnoremap <Space> za
-    vnoremap <Space> za
+    " nnoremap <Space> za
+    " vnoremap <Space> za
 
-    " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-    map Y y$
+    " noremap Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
+    noremap Y y$
 
     " Some vim features on leader
-    " map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-    " map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
-    " map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
+    " noremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+    " noremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
+    " noremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
     " spell check
     nnoremap <leader>sc :setlocal spell spelllang=en_us,de_de<cr>
@@ -223,9 +238,6 @@ syntax on
       let &undodir = myUndoDir
       set undofile
     endif
-
-:command Q qa!
-:command W wq!
 
 " PLUGINS
 " Plug PluginManager
@@ -249,6 +261,10 @@ call plug#begin()
     Plug 'xolox/vim-session'
   endif
 
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'tpope/vim-endwise'
+	Plug 'junegunn/fzf.vim' " general-purpose command-line fuzzy finder
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  } " asynchronous completion framework
 	Plug 'autozimu/LanguageClient-neovim', {
 				\ 'branch': 'next',
 				\ 'do': 'bash install.sh',
@@ -257,8 +273,6 @@ call plug#begin()
 	Plug 'simeji/winresizer'
 	Plug 'mhinz/vim-startify'
 	Plug 'w0rp/ale'
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  } " asynchronous completion framework
-	Plug 'junegunn/fzf.vim' " general-purpose command-line fuzzy finder
 	Plug 'ggreer/the_silver_searcher'
 	Plug 'sjl/gundo.vim'
 	Plug 'fszymanski/deoplete-emoji'
@@ -276,13 +290,14 @@ call plug#begin()
 	Plug '907th/vim-auto-save'
 	Plug 'godlygeek/tabular'
 	Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx']}
-	Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx']}
+  Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx']}
 	Plug 'joshdick/onedark.vim' " colorscheme
 	Plug 'kassio/neoterm' "  terminal helper, repl to code execution
+  Plug 'ryanoasis/vim-devicons'
+  " Plug 'jsfaint/gen_tags.vim'
   " Plug 'mhinz/vim-signify' " git/vcs signs
 	" Plug 'vim-latex/vim-latex'
 	" Plug 'trusktr/seti.vim' " colorscheme
-	" Plug 'ryanoasis/vim-devicons'
 	" Plug 'skywind3000/asyncrun.vim'
 	" Plug 'junegunn/vim-emoji'
 	" Plug 'vim-scripts/dbext.vim'
@@ -292,6 +307,10 @@ call plug#begin()
 	" Plug 'elzr/vim-json'
 	" Plug 'prettier/vim-prettier'
 call plug#end()
+
+" vim-jsx
+"------------------------------------"
+let g:jsx_ext_required = 1
 
 " Deoplete - asynchronous completion framework for neovim/Vim8
 "------------------------------------"
@@ -307,34 +326,24 @@ call plug#end()
     call deoplete#custom#option('ignore_case', v:false)
     call deoplete#custom#option('smart_case', v:false)
   endif
-  " call deoplete#custom#option('num_processes', 0)
-  " " call deoplete#custom#option('auto_complete_delay', 10)
-
-  " " use tab to forward cycle
-  " inoremap <silent><expr> <TAB>
-  "       \ pumvisible() ? "\<C-n>" :
-  "       \ <SID>check_back_space() ? "\<TAB>" :
-  "       \ deoplete#mappings#manual_complete()
-  " function! s:check_back_space() abort "{{{
-  "   let col = col('.') - 1
-  "   return !col || getline('.')[col - 1]  =~ '\s'
-  " endfunction"}}}
 
 " LanguageClient
 "------------------------------------"
   " Required for operations modifying multiple buffers like rename.
 	set hidden " also required for copying to sys clipboard!?
 
-        " \ 'javascript': ['javascript-typescript-stdio', 'stdio'],
+  let g:LanguageClient_autoStart                        = 1
+  " \ 'javascript': ['/usr/bin/javascript-typescript-stdio'],
   let g:LanguageClient_serverCommands = {
         \ 'ruby': ['solargraph', 'stdio']
         \ }
-  " let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
-  " let g:LanguageClient_loggingLevel = 'INFO'
-  " let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
+  let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+  let g:LanguageClient_loggingLevel = 'INFO'
+  let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
+  " let g:LanguageClient_diagnosticsEnable=0
 
   nnoremap <F6> :call LanguageClient_contextMenu()<CR>
-  " Or map each action separately
+  " Or noremap each action separately
   " nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
   " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
   " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
@@ -342,25 +351,25 @@ call plug#end()
 " fzf
   let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-  " fix fxf.vim enter GFiles Command mapping
-  nnoremap <ENTER> <>
+  " fix fxf.vim enter GFiles Command noremapping
+  " nnoremap <ENTER> <>
 
-  :map <C-U> :History<CR>
-  " :map c<C-U> :History:<CR>
-  " :map s<C-U> :History/<CR>
-  :map <C-P> :GFiles<CR>
-  :map <C-S> <Esc>:Lines<CR>
-  :map <C-D> <Esc>:Commits<CR>
-  :map <C-X> <Esc>:Tags<CR>
-  " :map g<C-P> :Files<CR>
-  " :map b<C-S> <Esc>:BLines<CR>
-  " :map b<C-D> <Esc>:BCommits<CR>
-  " :map b<C-X> <Esc>:BTags<CR>
-  :map <C-N> <Esc>:Buffers<CR>
-  :map <C-M> <Esc>:GFiles?<CR>
-  :map <C-O> :Commands<CR>
-  :map <C-A> <Esc>:Ag<CR>
-  :map <leader>h <Esc>:Helptags<CR>
+  :noremap <C-U> :History<CR>
+  " :noremap c<C-U> :History:<CR>
+  " :noremap s<C-U> :History/<CR>
+  :noremap <C-P> :GFiles<CR>
+  :noremap <C-S> <Esc>:Lines<CR>
+  :noremap <C-D> <Esc>:Commits<CR>
+  :noremap <C-X> <Esc>:Tags<CR>
+  " :noremap g<C-P> :Files<CR>
+  " :noremap b<C-S> <Esc>:BLines<CR>
+  " :noremap b<C-D> <Esc>:BCommits<CR>
+  " :noremap b<C-X> <Esc>:BTags<CR>
+  :noremap <C-N> <Esc>:Buffers<CR>
+  :noremap <C-M> <Esc>:GFiles?<CR>
+  :noremap <C-O> :Commands<CR>
+  :noremap <C-A> <Esc>:Ag<CR>
+  :noremap <leader>h <Esc>:Helptags<CR>
 
   "  Customize statusline colors
 	" function! s:fzf_statusline()
@@ -391,10 +400,10 @@ call plug#end()
 
 " Git fugitive
 "------------------------------------"
-  map <Leader>gs :Gstatus <CR>
-  map <Leader>gc :Gcommit <CR>
-  map <Leader>gd :Gdiff <CR>
-  map <Leader>gb :GV --author=Armin <CR>
+  noremap <Leader>gs :Gstatus <CR>
+  noremap <Leader>gc :Gcommit <CR>
+  noremap <Leader>gd :Gdiff <CR>
+  noremap <Leader>gb :GV --author=Armin <CR>
 
 " Gundo
 "------------------------------------"
@@ -462,11 +471,21 @@ nmap [h <Plug>GitGutterPrevHunk
 				\   'haml': ['haml_lint'],
 				\   'scss': ['stylelint'],
 				\}
-	let g:ale_fixers = {
+  let ale_fixers = {
 				\   'javascript': ['eslint'],
 				\   'ruby': ['rubocop']
 				\}
-	let g:ale_fix_on_save = 1
+
+	let g:ale_fixers = ale_fixers
+  let g:ale_fix_on_save = 1
+
+  function! AleFixersOn ()
+    let g:ale_fixers = ale_fixers
+  endfunction
+
+  function! AleFixersOff ()
+    let g:ale_fixers = {}
+  endfunction
 
 	nmap [e <Plug>(ale_previous_wrap)
 	nmap ]e <Plug>(ale_next_wrap)
@@ -485,10 +504,10 @@ nmap [h <Plug>GitGutterPrevHunk
 "------------------------------------------------------------
 	" close vim when NERDTree is the only left
 	" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-	map <leader>nt :NERDTreeToggle<CR>
-	map <leader>f :NERDTreeFind<CR>
-	map <C-A-N> :NERDTreeFind<CR>
-	map <leader>nb :Bookmark<CR>
+	noremap <leader>nt :NERDTreeToggle<CR>
+	noremap <leader>f :NERDTreeFind<CR>
+	noremap <C-A-N> :NERDTreeFind<CR>
+	noremap <leader>nb :Bookmark<CR>
 
 " Airline
 "------------------------------------"
@@ -588,7 +607,7 @@ let g:indent_guides_auto_colors = 0
 "   endfor
 " endfunction
 
-" map H :call <SID>SignCoverage(expand('%:p'))<cr>
+" noremap H :call <SID>SignCoverage(expand('%:p'))<cr>
 
 " Do we have local vimrc?
 if filereadable('.vimrc.local')
@@ -621,3 +640,29 @@ endif
   " delete all trailing white spaces - WATCH OUT
   autocmd BufWritePre * %s/\s\+$//e
 
+
+  " Zoom / Restore window.
+  function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+      execute t:zoom_winrestcmd
+      let t:zoomed = 0
+    else
+      let t:zoom_winrestcmd = winrestcmd()
+      resize
+      vertical resize
+      let t:zoomed = 1
+    endif
+  endfunction
+  command! ZoomToggle call s:ZoomToggle()
+  " alternative :-tabedit % and :tabclose
+  nnoremap <silent> <C-W>z :ZoomToggle<CR>
+
+  " Workaround <Paste> Issue, https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
+  au InsertLeave * set nopaste
+
+  " Recover and Delete Swap file
+  " augroup AutomaticSwapRecoveryAndDelete
+  "   autocmd!
+  "   autocmd SwapExists * :let v:swapchoice = 'r' | let b:swapname = v:swapname
+  "   autocmd VimLeave * :if exists("b:swapname") | call delete(b:swapname) | endif
+  " augroup end

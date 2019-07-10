@@ -1,0 +1,52 @@
+#!/bin/bash
+
+for i in "$@"
+do
+  case $i in
+    -v=*|--vpn=*)
+      VPN="${i#*=}"
+      ;;
+    -d=*|--dhcp=*)
+      VPN="${i#*=}"
+      ;;
+    -r=*|--restart=*)
+      RESTART="${i#*=}"
+      ;;
+    *)
+      # unknown option
+      ;;
+  esac
+done
+
+if [[ "$RESTART" == "true" ]]
+then
+  sudo systemctl stop openvpn-client@client.service
+  sudo systemctl restart systemd-networkd.service
+  sudo systemctl restart wpa_supplicant@wlp4s0.service
+  sudo systemctl stop dnscrypt-proxy.socket
+  sudo systemctl stop dnscrypt-proxy.service
+  echo 'network restart'
+fi
+
+if [[ "$VPN" == "false" ]]
+then
+  echo "stopped VPN"
+else
+  sudo systemctl stop openvpn-client@client.service
+fi
+
+if [[ "$DHCP" == "true" ]]
+then
+  sudo systemctl start dhcpcd.service
+  echo "started DHCPD"
+else
+  if [[ $(systemctl is-active --quiet dhcpcd.service) -ne 0 ]]
+  then
+    sudo systemctl stop dhcpcd.service
+  fi
+  sudo systemctl start dnscrypt-proxy.socket
+  sudo systemctl start dnscrypt-proxy.service
+fi
+sudo systemctl restart systemd-resolved.service
+
+echo 'done'

@@ -1,0 +1,21 @@
+#!/usr/bin/ruby
+# frozen_string_literal: true
+
+class GitCommitEdit
+  require 'open3'
+  require 'pry'
+  require 'byebug'
+  require 'pry-byebug'
+  require 'awesome_print'
+
+  def initialize
+    @raw = Open3.capture2e('git', 'show', '--name-only', '--no-color', ARGV[0])[0]
+    exec("vim -b #{file_map.join(' ')}")
+  end
+
+  def file_map
+    @raw.split("\n\n")[2].split("\n")
+  end
+end
+
+GitCommitEdit.new

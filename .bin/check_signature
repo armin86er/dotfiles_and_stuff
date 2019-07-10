@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+keyfile=$(mktemp --suffix=.gpg)
+function cleanup {
+    rm "$keyfile"
+}
+trap cleanup EXIT
+
+gpg2 --yes -o "$keyfile" --dearmor "$1"
+# gpg2 --status-fd 1 --no-default-keyring --keyring "$keyfile" --trust-model always --verify "$2" 2>/dev/null
+gpg2 --no-default-keyring --keyring "$keyfile" --trust-model always --verify "$2" 2> /dev/null && echo valid || echo invalid

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Default policies
+ufw default deny incoming
+ufw default deny outgoing
+
+# Openvpn interface (adjust interface accordingly to your configuration)
+ufw allow in on tun0
+ufw allow out on tun0
+
+# Local Network (adjust ip accordingly to your configuration)
+ufw allow in on wlp4s0 from 192.168.1.0/24
+ufw allow out on wlp4s0 to 192.168.1.0/24
+
+# Openvpn (adjust port accordingly to your configuration)
+ufw allow in on wlp4s0 from any port 1194
+ufw allow out on wlp4s0 to any port 1194

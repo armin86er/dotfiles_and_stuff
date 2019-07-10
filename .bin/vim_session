@@ -1,0 +1,12 @@
+#!/bin/bash
+
+nvim \
+$XDG_CONFIG_HOME/nvim/init.vim \
+~/.zshrc \
+~/.config/i3/config		\
+~/.config/i3status/config		\
+~/.config/i3/status.toml		\
+~/.oh-my-zsh/oh-my-zsh.rc		\
+~/.config/xdg/termite/config \
+~/.bin/vim_session \
+~/.bin

@@ -78,6 +78,7 @@ bindsym $alt+c exec ruby ~/.bin/i3/switch_workspace_3.rb
 bindsym $alt+Shift+z workspace $ws1
 bindsym $alt+Shift+x workspace $ws4
 bindsym $alt+Shift+c workspace $ws7
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -155,7 +156,7 @@ bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
 # finds out, if available)
 
 bar {
-  status_command ~/.bin/memoryi3Status.sh
+  status_command ~/.bin/i3_bar_mem
 }
 # bar {
 #       # font pango:DejaVu Sans Mono, FontAwesome 12
@@ -184,16 +185,16 @@ hide_edge_borders none
 exec syndaemon -i 1 -K -d
 exec redshift
 exec unclutter -idle 2 -noevents
-exec sh ~/.bin/dock.sh
 exec orage
 exec gpaste-client start
+exec sh ~/.bin/dock
+exec sh ~/.bin/keyboard_layout --us=true
 
-exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/armin/.config/i3/workspace-1.json'"
-exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/armin/.config/i3/workspace-2.3.json'"
+# exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/armin/.config/i3/workspace-1.json'"
+# exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/armin/.config/i3/workspace-2.3.json'"
 # exec termite --name=Journal -e "bash -c 'journalctl -f -b-0; exec /bin/bash'"
 # exec termite --name=Vim -e "bash -c 'sh ~/.bin/vimSession.sh; exec /bin/bash'"
 # exec termite --name=Shell -e "bash -c 'cd ~ && clear && screenfetch -c 255,41 -n ; exec /bin/bash'"
-exec sh ~/.bin/starti3Applications.sh
 
 # Keyboard Bindings
 bindsym $mod+q exec gpaste-client ui
@@ -212,13 +213,14 @@ bindsym $mod+n exec sqlitebrowser
 # bindsym $mod+v exec libreoffice
 bindsym $mod+m exec VBoxManage startvm ArchLinuxTesting
 
-bindsym $con+$alt+d exec ~/.bin/dock.sh
-bindsym $con+$alt+$mod+p exec ~/.bin/temp_booking_pictrs.sh
+bindsym $con+$alt+d exec ~/.bin/dock
+bindsym $con+$alt+$mod+p exec ~/.bin/temp_booking_pictrs
 bindsym $con+$alt+$mod+s exec systemctl poweroff
-bindsym $con+$alt+$mod+l exec ~/.bin/lock.sh
+bindsym $con+$alt+$mod+l exec ~/.bin/lock
+bindsym $con+$alt+$mod+r exec ~/.bin/turbo_start
 
-bindsym $con+$alt+y exec ~/.bin/setDEKeyboard
-bindsym $con+$alt+u exec ~/.bin/setUSKeyboard
+bindsym $con+$alt+y exec ~/.bin/keyboard_layout --de=true
+bindsym $con+$alt+u exec ~/.bin/keyboard_layout --us=true
 
 bindsym $mod+Print exec --no-startup-id xfce4-screenshooter -r -s ~/Pictures/Screenshots/
 bindsym --release $con+Print exec xfce4-screenshooter -f -s ~/Pictures/Screenshots/

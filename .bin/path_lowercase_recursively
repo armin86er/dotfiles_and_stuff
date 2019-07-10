@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Convert filenames to lowercase
 # and replace characters recursively
 #####################################

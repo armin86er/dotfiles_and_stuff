@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cryptsetup luksOpen /dev/sda3 root
 mkdir -p /mnt/btrfs-root
 mount -o defaults,relatime,space_cache /dev/mapper/root /mnt/btrfs-root

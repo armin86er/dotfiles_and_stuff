@@ -1,0 +1,24 @@
+#!/bin/bash
+
+mount_bu () {
+	sudo cryptsetup luksOpen /dev/sdb1 hdd
+	sudo mkdir /mnt/hdd
+	sudo mount /dev/mapper/hdd /mnt/hdd
+	sudo losetup -P /dev/loop0 /mnt/hdd/19_02.img
+	sudo cryptsetup luksOpen /dev/loop0p3 img
+	sudo btrfs filesystem label /dev/mapper/img 'Arch Linux BU'
+	sudo btrfs check --readonly /dev/mapper/img # recommended but slow
+	sudo btrfstune -u /dev/mapper/img # new UUID
+	sudo mkdir /mnt/img
+	sudo mount /dev/mapper/img /mnt/img
+}
+
+unmount_bu () {
+	sudo umount /mnt/img
+	sudo cryptsetup luksClose /dev/mapper/img
+	sudo losetup -d /dev/loop0
+	sudo umount /mnt/hdd
+	sudo cryptsetup luksClose /dev/mapper/hdd
+}
+
+# eval "$1"
