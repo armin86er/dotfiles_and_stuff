@@ -2,27 +2,31 @@ if [ -f ~/.zshrc_private ]; then
   source ~/.zshrc_private
 fi
 
-# The following lines were added by compinstall
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' matcher-list ''
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle :compinstall filename '~/.zshrc'
-# End of lines added by compinstall
+# # The following lines were added by compinstall
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*' matcher-list ''
+# zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+  # zstyle :compinstall filename '~/.zshrc'
+  # # End of lines added by compinstall
 
-fpath=( ~/.zfunc "${fpath[@]}" )
+  fpath=( ~/.zfunc "${fpath[@]}" )
 
-for i in $(ls ~/.zfunc); do autoload -Uz $i; done
+  for i in $(ls ~/.zfunc); do autoload -Uz $i; done
 
-alias ge='git edit'
-alias create_ctags='ctags -R -f .git/tags $PWD'
-alias update_vim='nvim +PlugUpgrade +PlugClean +PlugUpdate +PlugInstall +UpdateRemotePlugins +qa'
-alias feh='feh -ZxF'
-alias docker_clean=' \
-  docker container prune -f ; \
-  docker image prune -f ; \
-  docker network prune -f ; \
-  docker volume prune -f '
+  alias vterm="vim term://zsh"
+  alias journal-follow="journalctl -b -k -f | ccze -A -o nolookups"
+  alias ge="git edit"
+  alias create_ctags="ctags -R -f .git/tags $PWD"
+  alias update_vim="nvim +PlugUpgrade +PlugClean +PlugUpdate +PlugInstall +UpdateRemotePlugins"
+  alias feh="feh -ZxF"
+  alias docker_clean=" \
+    docker container prune -f ; \
+    docker image prune -f ; \
+    docker network prune -f ; \
+    docker volume prune -f "
 
+# export ZSH_THEME="spaceship"
+# export PROMPT=spaceship
 export TERMINAL=termite
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
@@ -30,10 +34,28 @@ export VISUAL=nvim
 export PAGER=/usr/bin/nvimpager && alias less=$PAGER
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export ZSH=/usr/share/oh-my-zsh/
+export ZSH=/usr/share/oh-my-zsh
 export GEM_PATH=$(ruby -e 'print Gem.user_dir')
-export PATH=~/.bin:$PATH:$GEM_PATH/bin
+export PICTRS_DOCKER_DIR=~/Workspace/Docker/webserver
+export PATH=~/.bin:$PATH:$GEM_PATH/bin:$PICTRS_DOCKER_DIR/helper
 export HOSTNAME=$(cat /etc/hostname)
+
+
+GREEN="029"
+ORANGE="166"
+ORANGE_LIGHT="214"
+GRAY="248"
+
+export SPACESHIP_GIT_BRANCH_COLOR="$GREEN"
+export SPACESHIP_DIR_COLOR="$ORANGE"
+export SPACESHIP_DOCKER_COLOR="$ORANGE"
+export SPACESHIP_DIR_COLOR="$ORANGE_LIGHT"
+export SPACESHIP_GIT_STATUS_COLOR="$GRAY"
+export SPACESHIP_PACKAGE_COLOR="161"
+
+export SPACESHIP_VI_MODE_NORMAL="[]"
+export SPACESHIP_VI_MODE_INSERT="[]"
+#        
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -54,9 +76,6 @@ setopt correct
 # Ignore known commands in history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
-
-autoload -Uz promptinit
-promptinit
 
 #may be used to "freeze/unfreeze" the terminal
 ttyctl -f
@@ -82,20 +101,27 @@ setopt PUSHD_MINUS
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-  COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to change the command execution time
-  # stamp shown in the history command output.
-  # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-  HIST_STAMPS="dd.mm.yyyy"
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="dd.mm.yyyy"
 
-  plugins=(
+plugins=(
   git
   archlinux
   systemd
   common-aliases
   vi-mode
   history-substring-search
+  dircycle
+  docker
+  sudo
+  yarn
+  # fasd
+  wd
+  # chucknorris # ?, installed packages fortune-mod cowsay
   #dirhistory
   # history
   # gem
@@ -106,9 +132,15 @@ ENABLE_CORRECTION="true"
   #cp
   #copyfile
   #extract
-  )
+)
 
-  autoload -Uz compinit && compinit
+# Non oh-my-zsh Plugins
+source /usr/share/doc/find-the-command/ftc.zsh #info
+# source /usr/lib/spaceship-prompt/spaceship.zsh
+# prompt_spaceship_setup
+# prompt spaceship
+
+autoload -Uz compinit && compinit
 
 # Keybindings
 ## https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/key-bindings.zsh
@@ -120,28 +152,32 @@ fi
 if [[ "${terminfo[knp]}" != "" ]]; then
   bindkey "${terminfo[knp]}" down-line-or-history     # [PageDown] - Down a line of history
 fi
+
 # start typing + [Up-Arrow] - fuzzy find history forward
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
   autoload -U up-line-or-beginning-search
   zle -N up-line-or-beginning-search
   bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
 fi
+
 # start typing + [Down-Arrow] - fuzzy find history backward
 if [[ "${terminfo[kcud1]}" != "" ]]; then
   autoload -U down-line-or-beginning-search
   zle -N down-line-or-beginning-search
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
+
 #bindkey ' ' magic-space # [Space] - do history expansion
-if [[ "${terminfo[kcbt]}" != "" ]]; then
-  bindkey "${terminfo[kcbt]}" reverse-menu-complete   # [Shift-Tab] - move through the completion menu backwards
-fi
+  if [[ "${terminfo[kcbt]}" != "" ]]; then
+    bindkey "${terminfo[kcbt]}" reverse-menu-complete   # [Shift-Tab] - move through the completion menu backwards
+  fi
+
 # Correct behaviour of home & end
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
-bindkey '^[[1;5C' forward-word                  # [Ctrl-RightArrow] - move forward one word
-bindkey '^[[1;5D' backward-word                 # [Ctrl-LeftArrow] - move backward one word]]]]'
+bindkey '^[[1;5C' forward-word  # [Ctrl-RightArrow] - move forward one word
+bindkey '^[[1;5D' backward-word # [Ctrl-LeftArrow] - move backward one word]]]]'
 bindkey "\e[3~" delete-char
 
 ## history-substring-search
@@ -152,62 +188,52 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+  bindkey -M vicmd 'k' history-substring-search-up
+  bindkey -M vicmd 'j' history-substring-search-down
 
-source $ZSH/oh-my-zsh.sh
+  source $ZSH/oh-my-zsh.sh # before prompt call
 
-case $HOST in
-  $DESKTOP_HOST)
-    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  autoload -Uz promptinit
+  promptinit
+  prompt spaceship
 
-  # Powerline
-  # source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-
-  powerline-daemon -q
-  . $PYTHON_POWERLINE/bindings/zsh/powerline.zsh
-
-  # zsh-syntax-highlighting
-  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-  # Completion File for tmuxinator
-    # source $gems/tmuxinator-$(tmuxinator -v | awk '{print $2}')/completion/tmuxinator.zsh
-    #source /usr/share/doc/pkgfile/command-not-found.zsh
-    ;;
-  *)
-    ;;
-esac
+  case $HOST in
+    $DESKTOP_HOST)
+      source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+      source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+      ;;
+    *)
+      ;;
+  esac
 
 
-# bindkey '^[[1~' '[[D'
-# bindkey '[[4~' '^[[C'
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+  function gi() { curl -L -s https://www.gitignore.io/api/$@ }
 
-function githubCount {
-  DEST=/tmp/temp-linecount-repo
-  git clone --depth 1 "$1" $DEST &&
-    cloc $DEST
-    rm -rf temp-linecount-repo
+  function githubCount {
+    DEST=/tmp/temp-linecount-repo
+    git clone --depth 1 "$1" $DEST &&
+      cloc $DEST
+          rm -rf temp-linecount-repo
+        }
+
+      function ytAudio() {
+        OLD=$PWD
+        DEST=$YT_AUDIO_DEST
+        cd $DEST
+        mkdir $1
+        cd $1
+        youtube-dl -f m4a $2
+        cd $OLD
+      }
+
+    function wave2mp3 {
+      ffmpeg -i $1 -vn -ar 44100 -ac 2 -ab 192k -f mp3 $1.mp3
+    }
+
+  function installed_compiler {
+    # Parse pacman output and determine compiler
+    for I in `pacman -Q | awk '{ print $1 }'`; do
+      IS_COMPILER=`pacman -Qi $I | egrep -i "compil"`
+      if [ ! "${IS_COMPILER}" = "" ]; then echo $I; fi
+    done
   }
-
-  function ytAudio() {
-    OLD=$PWD
-    DEST=$YT_AUDIO_DEST
-    cd $DEST
-    mkdir $1
-    cd $1
-    youtube-dl -f m4a $2
-    cd $OLD
-  }
-
-  function wave2mp3 {
-    ffmpeg -i $1 -vn -ar 44100 -ac 2 -ab 192k -f mp3 $1.mp3
-  }
-
-function installed_compiler {
-  # Parse pacman output and determine compiler
-  for I in `pacman -Q | awk '{ print $1 }'`; do
-    IS_COMPILER=`pacman -Qi $I | egrep -i "compil"`
-    if [ ! "${IS_COMPILER}" = "" ]; then echo $I; fi
-  done
-}

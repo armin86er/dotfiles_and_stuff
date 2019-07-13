@@ -1,47 +1,84 @@
 #!/bin/bash
 
-for i in "$@"
-do
+VPN=true
+DHCP=false
+RESTART=true
+
+# # # # Functions
+
+add() {
+  NETWORKS=$(sudo iwlist scan | sed -En 's/ESSID:"(.*)"/\1/p')
+  UNIQUE_NETS=$(printf "%s\n" "${NETWORKS[@]}" 2>/dev/null | sort -u)
+  IFS=$'\n'
+  echo "$UNIQUE_NETS"
+  # UNIQUE_NETS=($(echo "${NETWORKS[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+  for net in $UNIQUE_NETS; do
+    echo "${net[@]}"
+  done
+  exit
+}
+
+stop() {
+  sudo systemctl stop dnscrypt-proxy.socket
+  sudo systemctl stop dnscrypt-proxy.service
+  sudo systemctl stop openvpn-client@client.service
+  sudo systemctl stop systemd-networkd.socket
+  sudo systemctl stop systemd-networkd.service
+  sudo systemctl stop systemd-resolved.service
+  sudo systemctl stop wpa_supplicant@wlp4s0.service
+}
+
+start() {
+  sudo systemctl start systemd-networkd.socket
+  sudo systemctl start systemd-networkd.service
+  sudo systemctl start systemd-resolved.service
+  sudo systemctl start wpa_supplicant@wlp4s0.service
+  sudo systemctl start dnscrypt-proxy.socket
+  sudo systemctl start dnscrypt-proxy.service
+}
+
+# # # # Options
+
+for i in "$@"; do
   case $i in
-    -v=*|--vpn=*)
-      VPN="${i#*=}"
-      ;;
-    -d=*|--dhcp=*)
-      VPN="${i#*=}"
-      ;;
-    -r=*|--restart=*)
-      RESTART="${i#*=}"
-      ;;
-    *)
-      # unknown option
-      ;;
+  -n* | --no-vpn*)
+    echo match
+    VPN=false
+    ;;
+  -d* | --yes-dhcp*)
+    DHCP=true
+    ;;
+  --no-restart*)
+    RESTART=false
+    ;;
+  -a* | --add*)
+    add
+    ;;
+  *)
+    # unknown option
+    ;;
   esac
 done
 
-if [[ "$RESTART" == "true" ]]
-then
-  sudo systemctl stop openvpn-client@client.service
-  sudo systemctl restart systemd-networkd.service
-  sudo systemctl restart wpa_supplicant@wlp4s0.service
-  sudo systemctl stop dnscrypt-proxy.socket
-  sudo systemctl stop dnscrypt-proxy.service
+# # # # Sequnece
+
+if [[ "$RESTART" == "true" ]]; then
+  stop && start
+  # sudo systemctl restart macspoof@wlp4s0.service
   echo 'network restart'
 fi
 
-if [[ "$VPN" == "false" ]]
-then
+if [[ "$VPN" == "false" ]]; then
   echo "stopped VPN"
 else
-  sudo systemctl stop openvpn-client@client.service
+  sudo systemctl start openvpn-client@client.service
 fi
 
-if [[ "$DHCP" == "true" ]]
-then
+if [[ "$DHCP" == "true" ]]; then
   sudo systemctl start dhcpcd.service
   echo "started DHCPD"
 else
-  if [[ $(systemctl is-active --quiet dhcpcd.service) -ne 0 ]]
-  then
+  if [[ $(systemctl is-active --quiet dhcpcd.service) -ne 0 ]]; then
     sudo systemctl stop dhcpcd.service
   fi
   sudo systemctl start dnscrypt-proxy.socket

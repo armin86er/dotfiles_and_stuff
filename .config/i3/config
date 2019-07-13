@@ -217,7 +217,7 @@ bindsym $con+$alt+d exec ~/.bin/dock
 bindsym $con+$alt+$mod+p exec ~/.bin/temp_booking_pictrs
 bindsym $con+$alt+$mod+s exec systemctl poweroff
 bindsym $con+$alt+$mod+l exec ~/.bin/lock
-bindsym $con+$alt+$mod+r exec ~/.bin/turbo_start
+bindsym $con+$alt+$mod+t exec ~/.bin/turbo_start
 
 bindsym $con+$alt+y exec ~/.bin/keyboard_layout --de=true
 bindsym $con+$alt+u exec ~/.bin/keyboard_layout --us=true
@@ -244,6 +244,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 15
 # assign [class="DB Browser for SQLite"] 2
 
 # assign [class="LibreOffice"] 3
+assign [class="DB Browser for SQLite"] 5
 assign [class="Rhythmbox"] 3
 assign [class="VirtualBox"] 10
 assign [class="vlc"] 3

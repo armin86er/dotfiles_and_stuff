@@ -34,6 +34,15 @@ syntax on
     " Folding
     set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 
+    " Tab completion for filenames like bash
+    " https://stackoverflow.com/a/526940/6115544
+    set wildmode=longest,list,full
+    set wildmenu
+
+    " Cursor crosshair
+    " set cursorcolumn
+    set cursorline
+
     " Unsorted
     " hideComments
     :set fdm=expr
@@ -203,7 +212,7 @@ syntax on
     :tnoremap <leader><Esc> <C-\><C-n>
 
     " set nowrap
-    au TermOpen * set nowrap
+    au TermOpen * set nowrap "| AirlineToggle
     set scrollback=100000
 
     " Indent pasted block
@@ -473,6 +482,7 @@ nmap [h <Plug>GitGutterPrevHunk
 				\}
   let ale_fixers = {
 				\   'javascript': ['eslint'],
+				\   'sh': ['shfmt'],
 				\   'ruby': ['rubocop']
 				\}
 
@@ -666,3 +676,4 @@ endif
   "   autocmd SwapExists * :let v:swapchoice = 'r' | let b:swapname = v:swapname
   "   autocmd VimLeave * :if exists("b:swapname") | call delete(b:swapname) | endif
   " augroup end
+
