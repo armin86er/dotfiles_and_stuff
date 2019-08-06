@@ -1,6 +1,0 @@
-#!/bin/bash
-
-i3_workspace -w 1 -l browse
-i3_workspace -w 2 -l admin
-# i3_workspace -w 5 -l project-ar
-i3_workspace -w 8 -l project

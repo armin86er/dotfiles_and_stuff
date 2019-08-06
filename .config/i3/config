@@ -1,10 +1,11 @@
+# vim:filetype=i3config
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod mod4
 set $alt mod1
 set $con control
 
-font pango:inconsolata nerd 12
+font pango:inconsolata nerd 14
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -28,7 +29,7 @@ bindsym $alt+l focus right
 bindsym $alt+Tab focus left
 bindsym $alt+Shift+Tab focus right
 
-# ove window
+# move window
 bindsym $mod+Left move left
 bindsym $mod+Down move down
 bindsym $mod+Up move up
@@ -72,9 +73,9 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-bindsym $alt+z exec ruby ~/.bin/i3/switch_workspace_1.rb
-bindsym $alt+x exec ruby ~/.bin/i3/switch_workspace_2.rb
-bindsym $alt+c exec ruby ~/.bin/i3/switch_workspace_3.rb
+bindsym $alt+z exec ruby ~/.bin/i3/switch-workspace-1.rb
+bindsym $alt+x exec ruby ~/.bin/i3/switch-workspace-2.rb
+bindsym $alt+c exec ruby ~/.bin/i3/switch-workspace-3.rb
 bindsym $alt+Shift+z workspace $ws1
 bindsym $alt+Shift+x workspace $ws4
 bindsym $alt+Shift+c workspace $ws7
@@ -155,9 +156,56 @@ bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+# Use custom colors for black
+set $black       #282828
+set $darkblack   #1d2021
+set $transparent #00000000
+set $height 16
+
 bar {
-  status_command ~/.bin/i3_bar_mem
+  status_command I3_BAR_CONFIG_PATH=/home/armin/.config/i3blocks /usr/bin/i3blocks
+  # status_command 2>/tmp/i3blocks.err /usr/bin/i3blocks -vvv -c /home/armin/.config/i3blocks | tee /tmp/i3blocks.out
+  # i3bar_command /usr/bin/i3blocks
+    # position top
+    font pango:Inconsolata Nerd, Icons 10
+    # strip_workspace_numbers yes
+    separator_symbol " | "
+    # bindsym button4 nop
+    # bindsym button5 nop
+    # tray_output eDP1
+    # tray_output LVDS-0
+    tray_padding 2
+    height $height
+#     colors {
+#         # statusline         $white
+#         # background         $darkwhite
+#         # separator          $darkgreen
+
+# #                          BORDER       BACKGROUND   TEXT
+#         # focused_workspace  $transparent $transparent $darkwhite
+#         # inactive_workspace $transparent $transparent $white
+#         # active_workspace   $transparent $transparent $white
+#         urgent_workspace   $darkred     $darkred     $darkmagenta
+#         binding_mode       $darkred     $darkred     $green
+#     }
 }
+# bar {
+  # status_command ~/.bin/i3-bar-mem
+# }
 # bar {
 #       # font pango:DejaVu Sans Mono, FontAwesome 12
 #       # set font material:MaterialIcons Regular
@@ -188,7 +236,7 @@ exec unclutter -idle 2 -noevents
 exec orage
 exec gpaste-client start
 exec sh ~/.bin/dock
-exec sh ~/.bin/keyboard_layout --us=true
+exec sh ~/.bin/keyboard-layout --us=true
 
 # exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/armin/.config/i3/workspace-1.json'"
 # exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/armin/.config/i3/workspace-2.3.json'"
@@ -214,13 +262,13 @@ bindsym $mod+n exec sqlitebrowser
 bindsym $mod+m exec VBoxManage startvm ArchLinuxTesting
 
 bindsym $con+$alt+d exec ~/.bin/dock
-bindsym $con+$alt+$mod+p exec ~/.bin/temp_booking_pictrs
+bindsym $con+$alt+$mod+p exec ~/.bin/temp-booking-pictrs
 bindsym $con+$alt+$mod+s exec systemctl poweroff
 bindsym $con+$alt+$mod+l exec ~/.bin/lock
-bindsym $con+$alt+$mod+t exec ~/.bin/turbo_start
+bindsym $con+$alt+$mod+t exec ~/.bin/turbo-start
 
-bindsym $con+$alt+y exec ~/.bin/keyboard_layout --de=true
-bindsym $con+$alt+u exec ~/.bin/keyboard_layout --us=true
+bindsym $con+$alt+y exec ~/.bin/keyboard-layout --de=true
+bindsym $con+$alt+u exec ~/.bin/keyboard-layout --us=true
 
 bindsym $mod+Print exec --no-startup-id xfce4-screenshooter -r -s ~/Pictures/Screenshots/
 bindsym --release $con+Print exec xfce4-screenshooter -f -s ~/Pictures/Screenshots/

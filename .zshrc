@@ -16,10 +16,10 @@ fi
   alias vterm="vim term://zsh"
   alias journal-follow="journalctl -b -k -f | ccze -A -o nolookups"
   alias ge="git edit"
-  alias create_ctags="ctags -R -f .git/tags $PWD"
-  alias update_vim="nvim +PlugUpgrade +PlugClean +PlugUpdate +PlugInstall +UpdateRemotePlugins"
+  alias create-ctags="ctags -R -f .git/tags $PWD"
+  alias update-vim="nvim +PlugUpgrade +PlugClean +PlugUpdate +PlugInstall +UpdateRemotePlugins"
   alias feh="feh -ZxF"
-  alias docker_clean=" \
+  alias docker-clean=" \
     docker container prune -f ; \
     docker image prune -f ; \
     docker network prune -f ; \
@@ -36,8 +36,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export ZSH=/usr/share/oh-my-zsh
 export GEM_PATH=$(ruby -e 'print Gem.user_dir')
-export PICTRS_DOCKER_DIR=~/Workspace/Docker/webserver
-export PATH=~/.bin:$PATH:$GEM_PATH/bin:$PICTRS_DOCKER_DIR/helper
+export PATH=~/.bin:$PATH:$GEM_PATH/bin
 export HOSTNAME=$(cat /etc/hostname)
 
 
@@ -136,6 +135,7 @@ plugins=(
 
 # Non oh-my-zsh Plugins
 source /usr/share/doc/find-the-command/ftc.zsh #info
+
 # source /usr/lib/spaceship-prompt/spaceship.zsh
 # prompt_spaceship_setup
 # prompt spaceship
@@ -222,7 +222,7 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
         cd $DEST
         mkdir $1
         cd $1
-        youtube-dl -f m4a $2
+        youtube-dl -f bestaudio $2
         cd $OLD
       }
 

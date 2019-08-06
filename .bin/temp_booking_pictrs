@@ -1,3 +1,0 @@
-#!/bin/bash
-
-LOCALE=en /home/armin/.gem/ruby/2.6.0/bin/attendance_recorder booking toggle pictrs

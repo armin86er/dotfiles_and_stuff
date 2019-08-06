@@ -1,2 +1,2 @@
-qrencode $argv -o /tmp/qr.png
+qrencode $1 -o /tmp/qr.png
 feh -ZF /tmp/qr.png && rm /tmp/qr.png

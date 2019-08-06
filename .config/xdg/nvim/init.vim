@@ -212,7 +212,8 @@ syntax on
     :tnoremap <leader><Esc> <C-\><C-n>
 
     " set nowrap
-    au TermOpen * set nowrap "| AirlineToggle
+    " au TermOpen * set nowrap | :startinsert
+    " au BufEnter * if &buftype == 'terminal' | :startinsert | endif
     set scrollback=100000
 
     " Indent pasted block
@@ -303,6 +304,12 @@ call plug#begin()
 	Plug 'joshdick/onedark.vim' " colorscheme
 	Plug 'kassio/neoterm' "  terminal helper, repl to code execution
   Plug 'ryanoasis/vim-devicons'
+  Plug 'justinmk/vim-sneak'
+  Plug 'mboughaba/i3config.vim'
+  " Plug 'Shougo/deol.nvim'
+  " Plug 'brettanomyces/nvim-terminus'
+  " Plug 'glacambre/shelley'
+  " Plug 'kana/vim-textobj-user'
   " Plug 'jsfaint/gen_tags.vim'
   " Plug 'mhinz/vim-signify' " git/vcs signs
 	" Plug 'vim-latex/vim-latex'
@@ -483,7 +490,9 @@ nmap [h <Plug>GitGutterPrevHunk
   let ale_fixers = {
 				\   'javascript': ['eslint'],
 				\   'sh': ['shfmt'],
-				\   'ruby': ['rubocop']
+				\   'ruby': ['rubocop'],
+				\   'scss': ['stylelint'],
+        \   '*': ['remove_trailing_lines', 'trim_whitespace']
 				\}
 
 	let g:ale_fixers = ale_fixers
@@ -521,7 +530,7 @@ nmap [h <Plug>GitGutterPrevHunk
 
 " Airline
 "------------------------------------"
-  let g:airline_theme='powerlineish'
+  let g:airline_theme='distinguished'
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#buffer_idx_mode = 1
   nmap <leader>1 <Plug>AirlineSelectTab1
@@ -647,10 +656,6 @@ endif
   " on events, command mode in neovim terminal
   au FocusLost,TabLeave * call feedkeys("\<C-\>\<C-n>")
 
-  " delete all trailing white spaces - WATCH OUT
-  autocmd BufWritePre * %s/\s\+$//e
-
-
   " Zoom / Restore window.
   function! s:ZoomToggle() abort
     if exists('t:zoomed') && t:zoomed
@@ -676,4 +681,3 @@ endif
   "   autocmd SwapExists * :let v:swapchoice = 'r' | let b:swapname = v:swapname
   "   autocmd VimLeave * :if exists("b:swapname") | call delete(b:swapname) | endif
   " augroup end
-
