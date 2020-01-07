@@ -5,7 +5,6 @@
 
 runtime macros/matchit.vim
 
-
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
@@ -18,7 +17,7 @@ syntax on
   " # Variables #
   let g:rehash256         = 1
   let g:python_host_prog  = '/usr/bin/python2.7'
-  let g:python3_host_prog = '/usr/bin/python3.7'
+  let g:python3_host_prog = '/usr/bin/python3.8'
 
   " # Settings #
 
@@ -40,7 +39,7 @@ syntax on
     set wildmenu
 
     " Cursor crosshair
-    " set cursorcolumn
+    set cursorcolumn
     set cursorline
 
     " Unsorted
@@ -256,20 +255,20 @@ let docker_env = substitute(system('echo $DOCKER_ENV'), '\n', '', '') == 'true'
 " echo docker_env
 let hostname = substitute(system('hostname'), '\n', '', '')
 call plug#begin()
-  if hostname != $DESKTOP_HOST
-    " https://www.vim.org/scripts/script.php?script_id=273 missing
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-surround'
     Plug 'majutsushi/tagbar'
+    Plug 'vim-scripts/taglist.vim'
+    Plug 'vim-scripts/ack.vim'
+    Plug 'neovim/pynvim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'jiangmiao/auto-pairs'
     Plug 'airblade/vim-gitgutter'
     Plug 'xolox/vim-misc'
+    Plug 'xolox/vim-session'
     Plug 'tomasr/molokai'
     Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby']}
-    Plug 'xolox/vim-session'
-  endif
 
   Plug 'vim-ruby/vim-ruby'
   Plug 'tpope/vim-endwise'
@@ -306,6 +305,16 @@ call plug#begin()
   Plug 'ryanoasis/vim-devicons'
   Plug 'justinmk/vim-sneak'
   Plug 'mboughaba/i3config.vim'
+  Plug 'vim-pandoc/vim-pandoc'
+  Plug 'vim-pandoc/vim-pandoc-syntax'
+  Plug 'neomake/neomake'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'ianks/vim-tsx', { 'for': 'tsx' }
+  Plug 'mhartington/nvim-typescript', { 'for': 'ts' }
+  if executable('rustc')
+    Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+    Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+  endif
   " Plug 'Shougo/deol.nvim'
   " Plug 'brettanomyces/nvim-terminus'
   " Plug 'glacambre/shelley'
@@ -323,6 +332,15 @@ call plug#begin()
 	" Plug 'elzr/vim-json'
 	" Plug 'prettier/vim-prettier'
 call plug#end()
+
+" Racer
+"------------------------------------"
+" " set hidden
+" " let g:racer_cmd = '/home/seena/.cargo/bin/racer'
+" let g:racer_experimental_completer = 1
+" au FileType rust nmap <leader>rx <Plug>(rust-doc)
+" au FileType rust nmap <leader>rd <Plug>(rust-def)
+" au FileType rust nmap <leader>rs <Plug>(rust-def-split)
 
 " vim-jsx
 "------------------------------------"
@@ -345,17 +363,16 @@ let g:jsx_ext_required = 1
 
 " LanguageClient
 "------------------------------------"
-  " Required for operations modifying multiple buffers like rename.
-	set hidden " also required for copying to sys clipboard!?
-
-  let g:LanguageClient_autoStart                        = 1
+  let g:LanguageClient_autoStart = 1
   " \ 'javascript': ['/usr/bin/javascript-typescript-stdio'],
   let g:LanguageClient_serverCommands = {
+        \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+        \ 'javascript': ['javascript-typescript-stdio'],
         \ 'ruby': ['solargraph', 'stdio']
         \ }
-  let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
-  let g:LanguageClient_loggingLevel = 'INFO'
-  let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
+  " let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+  " let g:LanguageClient_loggingLevel = 'INFO'
+  " let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
   " let g:LanguageClient_diagnosticsEnable=0
 
   nnoremap <F6> :call LanguageClient_contextMenu()<CR>
@@ -367,7 +384,9 @@ let g:jsx_ext_required = 1
 " fzf
   let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-  " fix fxf.vim enter GFiles Command noremapping
+  let g:fzf_tags_command = 'ctags -R -f .git/tags $PWD'
+
+  " fix fxf.vim enter GFiles Command noremapping, doesn't work anymore
   " nnoremap <ENTER> <>
 
   :noremap <C-U> :History<CR>
@@ -420,6 +439,7 @@ let g:jsx_ext_required = 1
   noremap <Leader>gc :Gcommit <CR>
   noremap <Leader>gd :Gdiff <CR>
   noremap <Leader>gb :GV --author=Armin <CR>
+  set tags^=./.git/tags;
 
 " Gundo
 "------------------------------------"
@@ -481,17 +501,23 @@ nmap [h <Plug>GitGutterPrevHunk
 "Ale Linter
 "------------------------------------"
 	let g:ale_linters = {
-				\   'ruby': ['rubocop'],
-				\   'eruby': ['erubis'],
 				\   'javascript': ['eslint'],
-				\   'haml': ['haml_lint'],
+				\   'sh': ['shfmt'],
+				\   'ruby': ['rails_best_practices', 'rubocop', 'ruby', 'solargraph'],
+				\   'eruby': ['erb', 'erubi', 'erubis'],
+				\   'rust': ['cargo', 'rls', 'rustc'],
+				\   'haml': ['hamllint'],
+        \   'typescript': ['standard', 'tslint'],
 				\   'scss': ['stylelint'],
 				\}
   let ale_fixers = {
 				\   'javascript': ['eslint'],
 				\   'sh': ['shfmt'],
-				\   'ruby': ['rubocop'],
+				\   'ruby': ['rubocop', 'rufo', 'sorbet', 'standardrb'],
+				\   'rust': ['rustfmt'],
+        \   'typescript': ['tslint'],
 				\   'scss': ['stylelint'],
+				\   'html': ['fecs'],
         \   '*': ['remove_trailing_lines', 'trim_whitespace']
 				\}
 
@@ -681,3 +707,32 @@ endif
   "   autocmd SwapExists * :let v:swapchoice = 'r' | let b:swapname = v:swapname
   "   autocmd VimLeave * :if exists("b:swapname") | call delete(b:swapname) | endif
   " augroup end
+
+" function for 'fullscreen' mode
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set showtabline=0
+        set noshowcmd
+        set nonumber
+        set norelativenumber
+        set nocursorcolumn
+        set nocursorline
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showtabline=2
+        set showcmd
+        set number
+        set relativenumber
+        set cursorcolumn
+        set cursorline
+    endif
+endfunction
+" nnoremap <S-h> :call ToggleHiddenAll()<CR>

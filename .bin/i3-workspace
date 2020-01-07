@@ -1,0 +1,34 @@
+#!/bin/bash
+
+LAYOUT="project"
+PATH_PREFIX="$HOME/.config/i3/workspace"
+
+while getopts l:w:c:e: option; do
+  case "${option}" in
+
+  l) LAYOUT="${OPTARG}" ;;
+  w) WORKSPACE="${OPTARG}" ;;
+  c) CREATE="${OPTARG}" ;;
+  # e) EDIT="${OPTARG}" ;;
+  *) ;;
+  esac
+done
+
+echo "LAYOUT ${LAYOUT}"
+echo "WORKSPACE ${WORKSPACE}"
+echo "CREATE ${CREATE}"
+
+if [ -v WORKSPACE ]; then
+  if [ -v CREATE ]; then
+    FILE=$PATH_PREFIX-$CREATE.json
+    i3-save-tree --workspace "$WORKSPACE" >/tmp/usr_"$CREATE"
+    tail -n +2 /tmp/usr_"$CREATE" | fgrep -v '// splitv' | sed 's|//||g' >$FILE
+  else
+    i3-msg "workspace $WORKSPACE; append_layout $PATH_PREFIX-$LAYOUT.json" #2&> /dev/null
+    source "$PATH_PREFIX-$LAYOUT.sh"
+  fi
+else
+  echo "No -w param"
+fi
+
+echo 'done'
