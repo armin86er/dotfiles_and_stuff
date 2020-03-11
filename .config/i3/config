@@ -5,13 +5,13 @@ set $mod mod4
 set $alt mod1
 set $con control
 
-font pango:inconsolata nerd 14
+font pango:inconsolata nerd 16
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite --config=$XDG_CONFIG_HOME/termite/config
+bindsym $mod+Return exec termite
 # bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
@@ -240,19 +240,20 @@ exec sh ~/.bin/keyboard-layout --us=true
 
 # exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/armin/.config/i3/workspace-1.json'"
 # exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/armin/.config/i3/workspace-2.3.json'"
-# exec termite --name=Journal -e "bash -c 'journalctl -f -b-0; exec /bin/bash'"
-# exec termite --name=Vim -e "bash -c 'sh ~/.bin/vimSession.sh; exec /bin/bash'"
-# exec termite --name=Shell -e "bash -c 'cd ~ && clear && screenfetch -c 255,41 -n ; exec /bin/bash'"
+# exec alacritty --name=Journal -e "bash -c 'journalctl -f -b-0; exec /bin/bash'"
+# exec alacritty --name=Vim -e "bash -c 'sh ~/.bin/vimSession.sh; exec /bin/bash'"
+# exec alacritty --name=Shell -e "bash -c 'cd ~ && clear && screenfetch -c 255,41 -n ; exec /bin/bash'"
 
 # Keyboard Bindings
 bindsym $mod+q exec gpaste-client ui
 bindsym $mod+w exec firefox
 bindsym $mod+e exec thunderbird
 bindsym $mod+r exec chromium --args --profile-directory=Default
-bindsym $mod+shift+r exec chromium --args --profile-directory=Pictrs
+bindsym $mod+shift+p exec chromium --args --profile-directory=Pictrs
+bindsym $mod+shift+l exec chromium --args --profile-directory=Lemonade
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+y exec keepassx2
-bindsym $mod+a exec termite
+bindsym $mod+a exec alacritty
 bindsym $mod+d exec thunar
 bindsym $mod+z exec rhythmbox
 bindsym $mod+x exec vlc

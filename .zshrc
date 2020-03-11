@@ -2,28 +2,33 @@ if [ -f ~/.zshrc_private ]; then
   source ~/.zshrc_private
 fi
 
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+  # https://vi.stackexchange.com/questions/7644/use-vim-with-virtualenv/7654#7654
+  source "${VIRTUAL_ENV}/bin/activate"
+fi
+
 # # The following lines were added by compinstall
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # zstyle ':completion:*' matcher-list ''
 # zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-  # zstyle :compinstall filename '~/.zshrc'
-  # # End of lines added by compinstall
+# zstyle :compinstall filename '~/.zshrc'
+# # End of lines added by compinstall
 
-  fpath=( ~/.zfunc "${fpath[@]}" )
+fpath=( ~/.zfunc "${fpath[@]}" )
 
-  for i in $(ls ~/.zfunc); do autoload -Uz $i; done
+for i in $(ls ~/.zfunc); do autoload -Uz $i; done
 
-  alias vterm="vim term://zsh"
-  alias journal-follow="journalctl -b -k -f | ccze -A -o nolookups"
-  alias ge="git edit"
-  alias create-ctags="ctags -R -f .git/tags $PWD"
-  alias update-vim="nvim +PlugUpgrade +PlugClean +PlugUpdate +PlugInstall +UpdateRemotePlugins"
-  alias feh="feh -ZxF"
-  alias docker-clean=" \
-    docker container prune -f ; \
-    docker image prune -f ; \
-    docker network prune -f ; \
-    docker volume prune -f "
+alias vterm="vim term://zsh"
+alias journal-follow="journalctl -b -k -f | ccze -A -o nolookups"
+alias ge="git edit"
+alias create-ctags="ctags -R --extras=+q,+F,+r,+s -f .git/tags $PWD"
+alias update-vim="nvim +PlugUpgrade +PlugClean +PlugUpdate +PlugInstall +UpdateRemotePlugins"
+alias feh="feh -ZxF"
+alias docker-clean=" \
+  docker container prune -f ; \
+  docker image prune -f ; \
+  docker network prune -f ; \
+  docker volume prune -f "
 
 # export ZSH_THEME="spaceship"
 # export PROMPT=spaceship
@@ -36,7 +41,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export ZSH=/usr/share/oh-my-zsh
 export GEM_PATH=$(ruby -e 'print Gem.user_dir')
-export PATH=~/.bin:$PATH:$GEM_PATH/bin
+export PATH=~/.bin:$PATH:$GEM_PATH/bin:~/.node_modules/bin
 export HOSTNAME=$(cat /etc/hostname)
 
 
@@ -134,7 +139,7 @@ plugins=(
 )
 
 # Non oh-my-zsh Plugins
-source /usr/share/doc/find-the-command/ftc.zsh #info
+# source /usr/share/doc/find-the-command/ftc.zsh #info
 
 # source /usr/lib/spaceship-prompt/spaceship.zsh
 # prompt_spaceship_setup
@@ -188,52 +193,52 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # bind k and j for VI mode
-  bindkey -M vicmd 'k' history-substring-search-up
-  bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
-  source $ZSH/oh-my-zsh.sh # before prompt call
+source $ZSH/oh-my-zsh.sh # before prompt call
 
-  autoload -Uz promptinit
-  promptinit
-  prompt spaceship
+autoload -Uz promptinit
+promptinit
+prompt spaceship
 
-  case $HOST in
-    $DESKTOP_HOST)
-      source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-      source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      ;;
-    *)
-      ;;
-  esac
+case $HOST in
+  $DESKTOP_HOST)
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ;;
+  *)
+    ;;
+esac
 
 
-  function gi() { curl -L -s https://www.gitignore.io/api/$@ }
+function gi() { curl -L -s https://www.gitignore.io/api/$@ }
 
-  function githubCount {
-    DEST=/tmp/temp-linecount-repo
-    git clone --depth 1 "$1" $DEST &&
-      cloc $DEST
-          rm -rf temp-linecount-repo
-        }
+function githubCount {
+  DEST=/tmp/temp-linecount-repo
+  git clone --depth 1 "$1" $DEST &&
+    cloc $DEST
+        rm -rf temp-linecount-repo
+}
 
-      function ytAudio() {
-        OLD=$PWD
-        DEST=$YT_AUDIO_DEST
-        cd $DEST
-        mkdir $1
-        cd $1
-        youtube-dl -f bestaudio $2
-        cd $OLD
-      }
+function ytAudio() {
+  OLD=$PWD
+  DEST=$YT_AUDIO_DEST
+  cd $DEST
+  mkdir $1
+  cd $1
+  youtube-dl -f bestaudio $2
+  cd $OLD
+}
 
-    function wave2mp3 {
-      ffmpeg -i $1 -vn -ar 44100 -ac 2 -ab 192k -f mp3 $1.mp3
-    }
+function wave2mp3 {
+  ffmpeg -i $1 -vn -ar 44100 -ac 2 -ab 192k -f mp3 $1.mp3
+}
 
-  function installed_compiler {
-    # Parse pacman output and determine compiler
-    for I in `pacman -Q | awk '{ print $1 }'`; do
-      IS_COMPILER=`pacman -Qi $I | egrep -i "compil"`
-      if [ ! "${IS_COMPILER}" = "" ]; then echo $I; fi
-    done
-  }
+function installed_compiler {
+  # Parse pacman output and determine compiler
+  for I in `pacman -Q | awk '{ print $1 }'`; do
+    IS_COMPILER=`pacman -Qi $I | egrep -i "compil"`
+    if [ ! "${IS_COMPILER}" = "" ]; then echo $I; fi
+  done
+}

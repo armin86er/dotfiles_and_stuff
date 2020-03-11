@@ -54,7 +54,6 @@
                                             "swallows": [
                                                {
                                                "class": "^Termite$",
-                                               "title": "^Shell$",
                                                "transient_for": "^$"
                                                }
                                             ],
@@ -85,7 +84,6 @@
                                             "swallows": [
                                                {
                                                "class": "^Termite$",
-                                               "title": "^bash -c '~/.bin/vim_session && /bin/bash'$",
                                                "transient_for": "^$"
                                                }
                                             ],
@@ -152,7 +150,6 @@
                             "swallows": [
                                {
                                "class": "^Termite$",
-                               "title": "^journal$",
                                "transient_for": "^$"
                                }
                             ],
@@ -164,4 +161,3 @@
         }
     ]
 }
-

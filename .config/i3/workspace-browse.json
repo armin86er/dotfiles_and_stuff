@@ -21,7 +21,7 @@
             "percent": 0.333333333333333,
             "swallows": [
                {
-               "class": "^Firefox$",
+               "class": "^firefox$",
                "transient_for": "^$",
                "window_role": "^browser$"
                }
@@ -70,4 +70,3 @@
         }
     ]
 }
-

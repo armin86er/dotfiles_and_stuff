@@ -25,14 +25,14 @@ stop() {
   sudo systemctl stop systemd-networkd.socket
   sudo systemctl stop systemd-networkd.service
   sudo systemctl stop systemd-resolved.service
-  sudo systemctl stop wpa_supplicant@wlp4s0.service
+  # sudo systemctl stop wpa_supplicant@wlp4s0.service
 }
 
 start() {
   sudo systemctl start systemd-networkd.socket
   sudo systemctl start systemd-networkd.service
   sudo systemctl start systemd-resolved.service
-  sudo systemctl start wpa_supplicant@wlp4s0.service
+  # sudo systemctl start wpa_supplicant@wlp4s0.service
   sudo systemctl start dnscrypt-proxy.socket
   sudo systemctl start dnscrypt-proxy.service
 }
@@ -60,9 +60,9 @@ for i in "$@"; do
   esac
 done
 
-# # # # Sequnece
+# # # # Sequence
 
-if [[ "$RESTART" == "true" ]]; then
+if [[ "$RESTART" == true ]]; then
   stop && start
   # sudo systemctl restart macspoof@wlp4s0.service
   echo 'network restart'

@@ -1,4 +1,3 @@
 #!/bin/bash
 
-# sh -c "xsecurelock" &
-i3lock -c 211c20 && systemctl suspend
+systemctl hibernate
